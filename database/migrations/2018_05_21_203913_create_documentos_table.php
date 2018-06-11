@@ -19,6 +19,7 @@ class CreateDocumentosTable extends Migration
             $table->string('descripcion')->nullable();
             $table->integer('tipo_id')->unsigned();
             $table->date('fecha_doc')->nullable();
+            $table->string('url')->nullable();
             $table->timestamps();
 
         $table->foreign('tipo_id')->references('id')->on('tipos');

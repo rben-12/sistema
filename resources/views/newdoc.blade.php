@@ -10,9 +10,10 @@
       </div>
 
     <div class="col-sm-8 col-sm-offset-2">
+        @include('infob')
       <div class="panel panel-primary">
         <div class="panel-heading"><strong>Agregar archivos</strong></div>
-        @include('infob')
+       
           <div class="panel-body">
             <form method="POST" action="storage/create" accept-charset="UTF-8" enctype="multipart/form-data">
               

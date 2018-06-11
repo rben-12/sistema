@@ -25,13 +25,26 @@
                     <i class="glyphicon glyphicon-hdd"></i>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{route('articulos.index')}}">Inventario
+           
+
+            <li class="nav-item dropdown" role="menu">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Gestion
                     <i class="glyphicon glyphicon-signal"></i>
+                    <span class="caret"></span>
                 </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="{{route('articulos.index')}}">inventario</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">Resguardo</a>
+                    </li>
+                </ul> 
             </li>
+
             <li class="nav-item">
-                <a href="newdoc" class="nav-link">Documentos
+                <a href="{{route('documentos.index')}}" class="nav-link">Documentos
                     <i class="glyphicon glyphicon-file"></i>
                 </a>
             </li>

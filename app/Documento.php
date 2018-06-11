@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Documento extends Model
 {
-    protected $table = 'documento';
+    protected $table = 'documentos';
     protected $fillable = [
         'folio',
         'descripcion',
