@@ -5,13 +5,14 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="alert alt text-center">
-          <a href="#"  class="btn btn-success pull-right" data-toggle="modal" data-target="#" >Nuevo</a>
-          <h4><strong>Docuemntos</strong></h4>
+          <a href="modal-doc"  class="btn btn-success pull-right" data-toggle="modal" data-target="#" >Nuevo</a>
+          <h4><strong class="l">Documentos</strong></h4>
       </div> 
     </div>
 
 <div class="col-sm-8 col-sm-offset-2">
-      @include('infob') 
+      @include('infob')
+      @include('info') 
   <div class="panel panel-primary">
       <div class="panel-heading"> <strong>Docuementos</strong></div>
 

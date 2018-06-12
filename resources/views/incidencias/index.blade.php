@@ -31,7 +31,7 @@
                     <th class="text-center">departamento</th>
                     <th class="text-center">solucion</th>
                     <th class="text-center">Fecha y Hora</th>
-                    <th class="text-center">funciones</th>
+                    <th class="text-center">acciones</th>
                 </tr>
             </thead>    
             <tb>

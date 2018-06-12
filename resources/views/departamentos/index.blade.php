@@ -29,7 +29,7 @@
                     <th class="text-center">Departamento</th>
                     <th class="text-center">vlan</th>
                     <th class="text-center">Fecha y Hora</th>
-                    <th></th>
+                    <th>acciones</th>
                 </tr>
             </thead>    
             <tb>

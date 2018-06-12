@@ -63,11 +63,11 @@
                         </select>
                 </div>
 
-            <div class="form-group">
-                    <label for="">Ubicación</label>
-                    <input type="text" name='ubicacion' class="form-control" required>
-            </div>
             
+            <div class="form-group">
+                <label for="comment">Ubicación</label>
+                <textarea class="form-control" name='ubicacion' rows="5" ></textarea>
+              </div> 
 
             <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Guardar</button>

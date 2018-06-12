@@ -3,7 +3,7 @@
         <div class="modal-content">
                 <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>   
-                <h4>Agregar</h4>    
+                <h4>Agregar nueva incidencia</h4>    
                 </div>
 
             <div class="modal-body">
@@ -18,12 +18,12 @@
                         <option value="{{$asu->id}}">{{$asu->asunto}}</option>
                         @endforeach
                         </select> 
-                    </div>
+                    </div> 
 
                 <div class="form-group">
-                    <label for="">descripción</label>
-                    <input type="text" class="form-control" name="descripcion">
-                </div>
+                    <label for="comment">descripcion</label>
+                    <textarea class="form-control" rows="5" name="descripcion"></textarea>
+                </div> 
                 <div class="form-group">
                     <label for="">encargado</label>
                         <select name="encargado_id" class="form-control" required>
@@ -41,9 +41,9 @@
                             </select> 
                     </div>
                     <div class="form-group">
-                        <label for="">solución</label>
-                        <input type="text" class="form-control" name="solucion">
-                    </div>
+                        <label for="comment">solución</label>
+                        <textarea class="form-control" rows="5" name="solucion"></textarea>
+                      </div> 
                         
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success">Guardar</button>

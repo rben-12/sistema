@@ -16,7 +16,7 @@ class DocumentoController extends Controller
     public function index()
     {
         return view('documentos.index')->with([
-            'documentos' => Documento::all(),
+            'documentos' => Documento::paginate(10),
             'tipos' => Tipo::all()
         ]);
     }
@@ -28,7 +28,9 @@ class DocumentoController extends Controller
      */
     public function create()
     {
-        //
+        return view('documentos.create')->with([
+            'tipos' => Tipo::all()
+        ]);
     }
 
     /**

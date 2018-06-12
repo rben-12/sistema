@@ -62,11 +62,11 @@
                             <div>
                                 <button type="submit" class="btn btn-primary btn-block btn-flat"> Ingresar</button>
                               </div>
-                              <div> <br>
+                              <!--<div> <br>
                                 <a class="message" href="{{ route('password.request') }}">
                                     ¿Olvidaste tu contraseña?
                                 </a>
-                            </div>
+                            </div>-->
                         </div>
 
                     </form>

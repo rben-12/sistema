@@ -47,7 +47,7 @@
                 <th class=" text-center">Ubicación</th>
 
                 <!-- <th class=" text-center">Fecha y hora</th> -->
-                <th>funciones</th>
+                <th>acciones</th>
               </tr>
             </thead>
 
