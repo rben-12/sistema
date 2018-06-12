@@ -26,6 +26,7 @@ class DocumentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         return view('documentos.create')->with([
@@ -41,7 +42,8 @@ class DocumentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Documento::create($request->all());
+        return redirect()->route('documentos.index')->with('infob', 'El registro fue agregado exitosamento');
     }
 
     /**

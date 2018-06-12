@@ -62,7 +62,6 @@
                             @endforeach
                         </select>
                 </div>
-
             
             <div class="form-group">
                 <label for="comment">Ubicación</label>
