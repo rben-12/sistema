@@ -34,9 +34,9 @@ class Articulo extends Model
         return $this->belongsto(Categoria::class, 'categoria_id', 'id');
     }
 
-    public function resguardo()
+    public function resguardos()
     {
-        return $this->belongsto(Resguardo::class, 'ariculo_id', 'id');
+        return $this->hasMany(Resguardo::class, 'articulo_id', 'id');
     }
 
     

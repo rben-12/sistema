@@ -25,8 +25,8 @@ class Resguardo extends Model
         return $this->belongsTo(Departamento::class, 'departamento_id', 'id');
     }
 
-    public function articulos()
+    public function articulo()
     {
-        return $this->hasMany(Articulo::class, 'artiulo_id', 'id');
+        return $this->belongsTo(Articulo::class, 'articulo_id', 'id');
     }
 }
