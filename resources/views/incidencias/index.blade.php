@@ -22,7 +22,7 @@
                 páginas {{$incidencias->currentPage()}} 
                 de {{$incidencias->lastPage()}}
             </p>
-        <table class="table tc table-bordered table-striped table-hover table-responsive">
+        <table class="table tc table-bordered table-striped table-hover table-condensed table-responsive">
             <thead>
                 <tr>
                     <th class="text-center">asunto</th>
@@ -31,7 +31,7 @@
                     <th class="text-center">departamento</th>
                     <th class="text-center">solucion</th>
                     <th class="text-center">Fecha y Hora</th>
-                    <th class="text-center">acciones</th>
+                    <th class="text-center">funciones</th>
                 </tr>
             </thead>    
             <tb>

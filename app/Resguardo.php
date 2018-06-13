@@ -9,9 +9,10 @@ class Resguardo extends Model
     protected $table ='resguardos';
     protected $fillable =[
         'n_resguardo',
-        'reguardante',
+        'resguardante',
         'puesto',
         'departamento_id',
+        'descripcion',
         'extencion',
         'ip_address',
         'mac_address',

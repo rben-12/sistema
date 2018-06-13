@@ -25,7 +25,7 @@
             {{$articulos->total ()}} registros | página {{$articulos->currentPage()}} de {{$articulos->lastPage()}}
 
           </p>
-          <table class="table tc  table-striped table-bordered table-hover table-condensed table-responsive">
+          <table class="table tc table-striped table-bordered table-hover table-condensed table-responsive">
 
 
             <!-- <tr>
@@ -35,11 +35,11 @@
 
             <thead>
               <tr>
-                <th class="text-center">id</th>
+                <th class="text-center">#</th>
                 <th class=" text-center">categoria</th>
                 <th class=" text-center">Descripción</th>
-                <th class=" text-center">Inventario Interno</th>
-                <th class=" text-center">Inventario Externo</th>
+                <th class=" text-center" width="20px">Inventario Interno</th>
+                <th class=" text-center" width="20px">Inventario Externo</th>
                 <th class=" text-center">Serie</th>
                 <th class=" text-center">Marca</th>
                 <th class=" text-center">Modelo</th>
@@ -47,7 +47,7 @@
                 <th class=" text-center">Ubicación</th>
 
                 <!-- <th class=" text-center">Fecha y hora</th> -->
-                <th>acciones</th>
+                <th class="text-center">funciones</th>
               </tr>
             </thead>
 

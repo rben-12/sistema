@@ -16,7 +16,8 @@ Route::resources([
     'articulos' => 'ArticuloController',
     'departamentos' => 'DepartamentoController',
     'incidencias' => 'IncidenciaController',
-    'documentos' => 'DocumentoController'
+    'documentos' => 'DocumentoController',
+    'resguardos' => 'ResguardoController'
 ]);
 
 Route::get('/', function () {

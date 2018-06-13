@@ -19,6 +19,7 @@ class CreateResguardosTable extends Migration
             $table->string('resguardante');
             $table->string('puesto');
             $table->integer('departamento_id')->unsigned();
+            $table->string('descripcion');
             $table->string('extencion')->nullable();
             $table->string('ip_address')->nullable();
             $table->string('mac_address')->nullable();

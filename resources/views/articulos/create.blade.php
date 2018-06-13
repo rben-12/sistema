@@ -65,7 +65,7 @@
             
             <div class="form-group">
                 <label for="comment">Ubicación</label>
-                <textarea class="form-control" name='ubicacion' rows="5" ></textarea>
+                <textarea class="form-control" name='ubicacion' rows="3" ></textarea>
               </div> 
 
             <div class="modal-footer">

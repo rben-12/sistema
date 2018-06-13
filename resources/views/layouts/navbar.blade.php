@@ -38,7 +38,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#">Resguardo</a>
+                        <a href="{{route('resguardos.index')}}">Resguardo</a>
                     </li>
                 </ul> 
             </li>
