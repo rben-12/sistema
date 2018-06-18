@@ -12,7 +12,8 @@
     </div>
       
     <div class="col-sm-10 col-sm-offset-1">
-        @include('articulos.create') 
+        @include('articulos.create')
+        
         @include('info') 
         @include('infob')
       <div class="panel panel-primary">
@@ -35,7 +36,7 @@
 
             <thead>
               <tr>
-                <th class="text-center">#</th>
+                <th class="text-center">id</th>
                 <th class=" text-center">categoria</th>
                 <th class=" text-center">Descripción</th>
                 <th class=" text-center" width="20px">Inventario Interno</th>
@@ -47,7 +48,7 @@
                 <th class=" text-center">Ubicación</th>
 
                 <!-- <th class=" text-center">Fecha y hora</th> -->
-                <th class="text-center">funciones</th>
+                <th class="text-center" >funciones</th>
               </tr>
             </thead>
 
@@ -68,7 +69,7 @@
                 <td class="m">{{$a->ubicacion}}</td>
 
 
-                <td>
+                <td >
                   
                   <form action="{{route('articulos.destroy', $a->id)}}" method="POST">
                       {{ csrf_field() }}
@@ -81,6 +82,9 @@
 
                   <a href="{{route('articulos.show', $a->id)}}" class="btn btn-warning btn-xs">
                     <i class='glyphicon glyphicon-eye-open'></i></a>
+
+                  <!--<a type="link" class="btn btn-info btn-xs pull-right" href="">
+                    <i class='glyphicon glyphicon-time'></i></a>-->
                 </td>
               </tr>
               @endforeach

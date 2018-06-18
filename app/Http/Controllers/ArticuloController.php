@@ -8,6 +8,7 @@ use App\Marca;
 use App\Status;
 use App\Categoria;
 use App\Articulo;
+use App\Resguardo;
 class ArticuloController extends Controller
 {
     /**
@@ -21,13 +22,17 @@ class ArticuloController extends Controller
     { 
         
         return view('articulos.index')->with([
-            'articulos' => Articulo::paginate(2),
+            'articulos' => Articulo::paginate(10),
             'categorias' => Categoria::all(),
             'marcas' => Marca::all(),
-            'statuses' => Status::all()
+            'statuses' => Status::all(),
+            'resguardos' => Resguardo::all()
+            
         ]);
     
     }
+   
+    
 
     /**
      * Show the form for creating a new resource.
@@ -69,7 +74,8 @@ class ArticuloController extends Controller
             'articulo' => Articulo::find($id),
             'categorias' => Categoria::all(),
             'marcas' => Marca::all(),
-            'statuses' => Status::all()
+            'statuses' => Status::all(),
+            'resguardos' => Resguardo::all()
         ]); 
     }
 

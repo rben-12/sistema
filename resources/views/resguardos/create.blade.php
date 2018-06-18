@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">extencion</label>
+                        <label for="">extension</label>
                         <input type="text" class="form-control" name="extencion">
                     </div>
 

@@ -19,7 +19,7 @@ Route::resources([
     'documentos' => 'DocumentoController',
     'resguardos' => 'ResguardoController'
 ]);
-
+//Route::get('articulos', 'ArticuloController@detalles');
 Route::get('/', function () {
     return view('auth/login');
 });

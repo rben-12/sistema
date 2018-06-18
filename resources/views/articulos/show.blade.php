@@ -90,6 +90,15 @@
                                     <td class="t2 m">{{$articulo->updated_at}}</td>
                                 </tr>
                             </tb>
+                            <tb>
+                                <tr>
+                                    <th width="20px" class="t1 m">resguardante</th>
+                                    @foreach($articulo->resguardos as $ar)
+                                    <td class="t2 m">{{$ar->resguardante}}</td>
+                                    @endforeach
+                                    
+                                </tr>
+                            </tb>
                         </table>
                         <div class="form-group">
                             <a type="link" class="btn btn-warning pull-right" href="{{route('articulos.index')}}">regresar</a>
