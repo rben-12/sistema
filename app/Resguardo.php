@@ -13,7 +13,7 @@ class Resguardo extends Model
         'puesto',
         'departamento_id',
         'descripcion',
-        'extencion',
+        'extension',
         'ip_address',
         'mac_address',
         'articulo_id',
