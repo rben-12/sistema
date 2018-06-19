@@ -18,7 +18,7 @@
         @include('infob')
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <strong>dispositivos en inventario</strong>
+          <strong>dispositivos en inventario </strong> <a href="{{ route('pdf', 'inventario') }}" class="btn btn-info" type="button">Exportar PDF</a>
         </div>
 
         <div class="panel-body">

@@ -33,7 +33,7 @@
     <div id="app">
         @include('layouts.navbar')
                 <div>
-                  <img src="/img/spf.png">
+                  <img src="{{ asset('/img/SPF.png') }}">
                 </div> 
         <!-- <div class="container">
             <div class="row"> -->
