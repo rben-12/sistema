@@ -11,18 +11,21 @@
 |
 */
 
-Route::resources([
-    'marcas' => 'MarcaController',
-    'articulos' => 'ArticuloController',
-    'departamentos' => 'DepartamentoController',
-    'incidencias' => 'IncidenciaController',
-    'documentos' => 'DocumentoController',
-    'resguardos' => 'ResguardoController'
-]);
+Route::group(['middleware'=>'auth'], function(){
+    Route::resources([
+        'marcas' => 'MarcaController',
+        'articulos' => 'ArticuloController',
+        'departamentos' => 'DepartamentoController',
+        'incidencias' => 'IncidenciaController',
+        'documentos' => 'DocumentoController',
+        'resguardos' => 'ResguardoController'
+    ]);
+});
+
 //Route::get('articulos', 'ArticuloController@detalles');
 Route::get('/', function () {
     return view('auth/login');
-});
+})->middleware('guest');
 
 Auth::routes([]);
 
@@ -42,3 +45,5 @@ Route::get('storage/{archivo}', function ($archivo) {
     //si no se encuentra lanzamos un error 404.
     abort(404);
 });
+
+Route::get('/pdf/{tipo}', 'pdfController@index')->name('pdf')->middleware('auth');
