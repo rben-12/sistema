@@ -56,7 +56,11 @@ class ResguardoController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('articulos.show')->with([
+            'resguardo' => Resguardo::find($id),
+            'articulos' => Articulo::all(),
+            'departamentos' => Departamentos::all(),
+        ]);
     }
 
     /**
@@ -67,7 +71,11 @@ class ResguardoController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('resguardos.edit')->with([
+            'resguardo' => Resguardo::find($id),
+            'articulos' => Articulo::all(),
+            'departamentos' => Departamento::all()
+        ]); 
     }
 
     /**
@@ -79,7 +87,8 @@ class ResguardoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Resguardo::find($id)->update($request->all());
+        return redirect()->route('resguardos.index')->with('infob', 'El registro fue actualizado exitosamento');
     }
 
     /**
@@ -90,6 +99,7 @@ class ResguardoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Resguardo::destroy($id);
+        return back()->with('info', 'El registro fue eliminano');
     }
 }
