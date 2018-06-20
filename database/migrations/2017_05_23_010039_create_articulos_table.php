@@ -19,7 +19,7 @@ class CreateArticulosTable extends Migration
             $table->string('descripcion')->nullable(); 
             $table->string('inv_interno')->nullable()->unique();
             $table->string('inv_externo')->nullable()->unique();
-            $table->string('serie')->unique();
+            $table->string('serie')->nullable()->unique();
             $table->integer('marca_id')->unsigned();
             $table->string('modelo');
             $table->integer('status_id')->unsigned();

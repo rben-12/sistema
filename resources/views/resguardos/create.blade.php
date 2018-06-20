@@ -53,9 +53,9 @@
                         <input type="text" class="form-control" name="mac_address">
                     </div>
 
-                   <div class="form-group">
+                    <div class="form-group">
                         <label for="">asignar dispositivo</label>
-                        <input type="text" class="form-control" name="articulo_id" placeholder="ingrese el id del dispositivo">
+                        <input type="text" class="form-control" name="articulo_id" placeholder="ingrese el id del dispositivo" required>
                     </div>
 
                    <div class="form-group">

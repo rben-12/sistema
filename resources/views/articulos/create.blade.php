@@ -31,7 +31,7 @@
                 </div>    
                 <div class="form-group">
                     <label for="">Inventario externo</label>
-                    <input type="text" name='inv_externo' class="form-control" required>
+                    <input type="text" name='inv_externo' class="form-control" required >
                 </div>
                 
                 <div class="form-group">
@@ -70,7 +70,7 @@
 
             <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Guardar</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>  
+                    <a href="{{route('articulos.index')}}" class="btn btn-danger" >Cancelar</a>
             </div>
             
             </form>

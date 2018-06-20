@@ -11,7 +11,7 @@
       </div>
     </div>
         
-<div class="col-sm-8 col-sm-offset-2">
+    <div class="col-sm-10 col-sm-offset-1">
     @include('resguardos.create')
     @include('infob')
     @include('info')
@@ -34,9 +34,12 @@
                         <th class="text-center">resguardante</th>
                         <th class="text-center">puesto</th>
                         <th class="text-center">departamento</th>
-                        <th class="text-center">descripcion</th>
-                        <th class="text-center">id asignado</th>
+                        <!--<th class="text-center">descripcion</th>-->
+                        <th class="text-center">id dispositivos</th>
+                        <th class=" text-center">categoria</th>
                         <th class="text-center">inventario interno</th>
+                        <th class="text-center">inventario externo</th>
+                        <th class="text-center">serie</th>
                         
                         <th>acciones</th>
                     </tr>
@@ -49,19 +52,26 @@
                         <td class="m">{{$r->resguardante}}</td>
                         <td class="m">{{$r->puesto}}</td>
                         <td class="m">{{$r->departamento->departamento}}</td>
-                        <td class="m">{{$r->descripcion}}</td>
+                        <!--<td class="m">{{$r->descripcion}}</td>-->
                         <td class="m">{{$r->articulo->id}}</td>
+                        <td class="m">{{$r->articulo->categoria->categoria}}</td>
                         <td class="m">{{$r->articulo->inv_interno}}</td>
+                        <td class="m">{{$r->articulo->inv_externo}}</td>
+                        <td class="m">{{$r->articulo->serie}}</td>
                         <td>
                     
                             <form action="{{route('resguardos.destroy', $r->id)}}" method="POST">
                                 {{ csrf_field() }}
                                 {{method_field('DELETE')}}
-                                <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs"> <i class='glyphicon glyphicon-trash'></i></button>
+                                <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs">
+                                <i class="glyphicon glyphicon-trash"></i></button>
                             </form>
         
                             <a href="{{route('resguardos.edit', $r->id)}}" class="btn btn-success btn-xs">
-                            <i class='glyphicon glyphicon-edit'></i></a>
+                            <i class="glyphicon glyphicon-edit"></i></a>
+
+                            <a href="{{route('resguardos.show', $r->id)}}" class="btn btn-warning btn-xs">
+                            <i class="glyphicon glyphicon-eye-open"></i></a>
                         </td>
                     </tr>
                 @endforeach
