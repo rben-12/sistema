@@ -17,7 +17,9 @@
     @include('info')
         
     <div class="panel panel-primary">
-        <div class="panel-heading"><strong>resguardos</strong></div>
+        <div class="panel-heading">
+            <strong>resguardos </strong> <a href="{{ route('pdf', 'resguardo') }}" class="btn btn-info" type="button">Exportar PDF</a>
+        </div>
             <div class="panel-body">
                 <p>
                     {{$resguardos->total()}} registros|

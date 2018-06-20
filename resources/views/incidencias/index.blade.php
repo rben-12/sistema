@@ -15,7 +15,9 @@
         @include('info')
         
 <div class="panel panel-primary">
-    <div class="panel-heading"><strong> registro de incidencias </strong></div>
+    <div class="panel-heading">
+        <strong> registro de incidencias </strong> <a href="{{ route('pdf', 'incidencias') }}" class="btn btn-info" type="button">Exportar PDF</a>
+    </div>
         <div class="panel-body">
             <p>
                 {{$incidencias->total()}} registros|
