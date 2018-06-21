@@ -17,6 +17,12 @@
         .center{
             text-align: center;
         }
+        .m{
+        text-transform: uppercase;
+        }
+        .tc{
+        text-align: center; 
+        }
     </style>
 </head>
 
@@ -26,11 +32,11 @@
             <img src="{{ public_path().$image }}" alt="Logo" height="75px">
         </div>
         <div class="center col-md-4">
-            <h1>Secretaria de Planeacion y Finanzas <br> Direccion de Informatica <br> Reporte de Bienes</h1>
+            <h1 style="font-size:30px;">Secretaria de Planeacion y Finanzas <br> Direccion de Informatica <br> Reporte de Bienes</h1>
         </div>
         <div></div>
     </div>
-    <table class="table tc table-striped table-bordered table-hover table-condensed table-responsive">
+    <table class="table m tc table-striped table-bordered table-hover table-condensed table-responsive">
         <thead>
             <tr>
                 @if ($tipos == 'incidencias')
@@ -53,14 +59,16 @@
                     <th class=" text-center">Status</th>
                     <th class=" text-center">Ubicación</th>
                 @elseif($tipos=='resguardo')
-                    <th class="text-center">#</th>
                     <th class="text-center">Num. resguardo</th>
                     <th class="text-center">resguardante</th>
                     <th class="text-center">puesto</th>
                     <th class="text-center">departamento</th>
-                    <th class="text-center">descripcion</th>
-                    <th class="text-center">id asignado</th>
+                    <th class=" text-center">dispositivo</th>
                     <th class="text-center">inventario interno</th>
+                    <th class="text-center">inventario externo</th>
+                    <th class="text-center">serie</th>
+                    <th class="text-center">marca</th>
+                    <th class="text-center">modelo</th>
                 @endif
             </tr>
         </thead>
@@ -86,14 +94,16 @@
                     <td class="m">{{$a->status->status}}</td>
                     <td class="m">{{$a->ubicacion}}</td>
                 @elseif($tipos=='resguardo')
-                    <td class="m">{{$a->id}}</td>
                     <td class="m">{{$a->n_resguardo}}</td>
                     <td class="m">{{$a->resguardante}}</td>
                     <td class="m">{{$a->puesto}}</td>
                     <td class="m">{{$a->departamento->departamento}}</td>
-                    <td class="m">{{$a->descripcion}}</td>
-                    <td class="m">{{$a->articulo->id}}</td>
+                    <td class="m">{{$a->articulo->categoria->categoria}}</td>
                     <td class="m">{{$a->articulo->inv_interno}}</td>
+                    <td class="m">{{$a->articulo->inv_externo}}</td>
+                    <td class="m">{{$a->articulo->serie}}</td>
+                    <td class="m">{{$a->articulo->marca->marca}}</td>
+                    <td class="m">{{$a->articulo->modelo}}</td>
                 @endif
             </tr>
         </tbody>
