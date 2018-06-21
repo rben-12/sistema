@@ -17,6 +17,7 @@
     <!--<link href="{{ asset('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css') }}" rel="stylesheet">-->
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/mine.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" />
 
     <!--<link href="{{ asset('css/app.css') }}" rel="stylesheet">-->
 
@@ -45,6 +46,14 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
+    <script>
+        $( document ).ready(function() {
+            $('#skills').tagsinput({
+            confirmKeys: [13, 44]  
+            });
+        });
+    </script>
     <script>
         $.ajaxSetup({
             headers: {

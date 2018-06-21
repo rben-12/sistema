@@ -93,9 +93,17 @@
                             <tb>
                                 <tr>
                                     <th width="20px" class="t1 m">resguardante</th>
-                                    @foreach($articulo->resguardos as $ar)
-                                    <td class="t2 m">{{$ar->resguardante}}</td>
-                                    @endforeach
+                                    {{-- <td class="t2 m">{{$articulo->resguardo->resguardante}}</td> --}}
+                                    {{-- <td class="t2 m">{{$resguardante->resguardante}}</td> --}}
+                                    @if ($articulo->resguardo!=null)
+                                        <td class="t2 m">{{$articulo->resguardo->resguardante}}</td>
+                                    @else
+                                        <td class="t2 m">No se ha asignao a resguardo</td>
+                                    @endif
+                                    
+                                    {{-- @foreach($resguardo->resguardos as $ar)
+                                    <td class="t2 m">{{$ar->resguardo->resguardante}}</td>
+                                    @endforeach --}}
                                     
                                 </tr>
                             </tb>

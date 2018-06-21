@@ -18,7 +18,10 @@
         
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <strong>resguardos </strong> <a href="{{ route('pdf', 'resguardo') }}" class="btn btn-info" type="button">Exportar PDF</a>
+            <strong>resguardos </strong> 
+            <a href="{{ route('pdf', 'resguardo') }}" class="btn btn-info" target="_blank">
+                Exportar PDF
+            </a>
         </div>
             <div class="panel-body">
                 <p>
@@ -26,6 +29,7 @@
                     páginas {{$resguardos->currentPage()}} 
                     de {{$resguardos->lastPage()}}
                 </p>
+                {{-- {{ dd($resguardos) }} --}}
             <table class="table tc  table-striped table-bordered table-hover table-condensed table-responsive">
                 <thead>
                     <tr>
@@ -35,8 +39,8 @@
                         <th class="text-center">puesto</th>
                         <th class="text-center">departamento</th>
                         <th class="text-center">descripcion</th>
-                        <th class="text-center">id asignado</th>
-                        <th class="text-center">inventario interno</th>
+                        {{-- <th class="text-center">id asignado</th> --}}
+                        {{-- <th class="text-center">inventario interno</th> --}}
                         
                         <th>acciones</th>
                     </tr>
@@ -50,8 +54,8 @@
                         <td class="m">{{$r->puesto}}</td>
                         <td class="m">{{$r->departamento->departamento}}</td>
                         <td class="m">{{$r->descripcion}}</td>
-                        <td class="m">{{$r->articulo->id}}</td>
-                        <td class="m">{{$r->articulo->inv_interno}}</td>
+                        {{-- <td class="m">{{$r->articulo->id}}</td> --}}
+                        {{-- <td class="m">{{$r->articulo->inv_interno}}</td> --}}
                         <td>
                     
                             <form action="{{route('resguardos.destroy', $r->id)}}" method="POST">
@@ -62,6 +66,10 @@
         
                             <a href="{{route('resguardos.edit', $r->id)}}" class="btn btn-success btn-xs">
                             <i class='glyphicon glyphicon-edit'></i></a>
+
+                            <a href="{{route('resguardos.show', $r->n_resguardo)}}" class="btn btn-info btn-xs">
+                                <i class='glyphicon glyphicon-eye-open'></i>
+                            </a>
                         </td>
                     </tr>
                 @endforeach

@@ -9,6 +9,7 @@ use App\Status;
 use App\Categoria;
 use App\Articulo;
 use App\Resguardo;
+use App\Resguardos_history;
 class ArticuloController extends Controller
 {
     /**
@@ -70,13 +71,25 @@ class ArticuloController extends Controller
      */
     public function show($id)
     {
-        return view('articulos.show')->with([
-            'articulo' => Articulo::find($id),
-            'categorias' => Categoria::all(),
-            'marcas' => Marca::all(),
-            'statuses' => Status::all(),
-            'resguardos' => Resguardo::all()
-        ]); 
+        $articulo = Articulo::find($id);
+        $categorias = Categoria::all();
+        $resguardo = Resguardos_history::where('articulo_id', '=', $id)->first();
+        if ($resguardo!=null) {
+            $resguardante = Resguardo::where('id', '=', $resguardo->resguardo_id)->first();
+        }
+        
+
+        // dd($resguardo);
+
+        return view('articulos.show', compact('articulo', 'categorias', 'resguardante'));
+        //dd($articulo);
+        // return view('articulos.show')->with([
+        //     'articulo' => Articulo::find($id),
+        //     'categorias' => Categoria::all(),
+        //     'marcas' => Marca::all(),
+        //     'statuses' => Status::all(),
+        //     'resguardos' => Resguardo::all()
+        // ]); 
     }
 
     /**

@@ -36,7 +36,12 @@ class Articulo extends Model
 
     public function resguardos()
     {
-        return $this->hasMany(Resguardo::class, 'articulo_id', 'id');
+        return $this->hasMany(Resguardos_history::class, 'articulo_id', 'id');
+    }
+
+    public function resguardo()
+    {
+        return $this->belongsto(Resguardo::class, 'id', 'id');
     }
 
     

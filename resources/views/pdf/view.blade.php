@@ -17,6 +17,37 @@
         .center{
             text-align: center;
         }
+        /* Sticky footer styles
+-------------------------------------------------- */
+        html {
+        position: relative;
+        min-height: 100%;
+        }
+        body {
+        /* Margin bottom by footer height */
+        margin-bottom: 60px;
+        }
+        .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        /* Set the fixed height of the footer here */
+        height: 60px;
+        }
+
+
+        /* Custom page CSS
+        -------------------------------------------------- */
+        /* Not required for template or sticky footer method. */
+
+        .container {
+        width: auto;
+        max-width: 680px;
+        padding: 0 15px;
+        }
+        .container .text-muted {
+        margin: 20px 0;
+        }
     </style>
 </head>
 
@@ -28,8 +59,23 @@
         <div class="center col-md-4">
             <h1>Secretaria de Planeacion y Finanzas <br> Direccion de Informatica <br> Reporte de Bienes</h1>
         </div>
-        <div></div>
     </div>
+    <table class="table">
+        <tr>
+            <td>
+                Usuario: {{ Auth::user()->name }} <br>
+                @if($tipos=='resguardo_h')
+                    Resguardante: {{ $resguardante->resguardante }}
+                @endif
+            </td>
+            <td>
+                Fecha: {{$ldate = date('d-m-Y')}} <br>
+                @if($tipos=='resguardo_h')
+                    N° de Resguardo: {{ $id }}
+                @endif
+            </td>
+        </tr>
+    </table>
     <table class="table tc table-striped table-bordered table-hover table-condensed table-responsive">
         <thead>
             <tr>
@@ -59,8 +105,13 @@
                     <th class="text-center">puesto</th>
                     <th class="text-center">departamento</th>
                     <th class="text-center">descripcion</th>
-                    <th class="text-center">id asignado</th>
-                    <th class="text-center">inventario interno</th>
+                @elseif($tipos=='resguardo_h')
+                    <th class="text-center">Cant</th>
+                    <th class="text-center">Descripcion</th>
+                    <th class="text-center">Serie</th>
+                    <th class="text-center">Marca</th>
+                    <th class="text-center">Modelo</th>
+                    <th class="text-center">Inv Interno</th>
                 @endif
             </tr>
         </thead>
@@ -92,12 +143,48 @@
                     <td class="m">{{$a->puesto}}</td>
                     <td class="m">{{$a->departamento->departamento}}</td>
                     <td class="m">{{$a->descripcion}}</td>
-                    <td class="m">{{$a->articulo->id}}</td>
-                    <td class="m">{{$a->articulo->inv_interno}}</td>
+                @elseif($tipos=='resguardo_h')
+                    <td>1</td>
+                    <td>{{ $a->descripcion }}</td>
+                    <td>{{ $a->serie }}</td>
+                    <td>{{ $a->marca->marca }}</td>
+                    <td>{{ $a->modelo }}</td>
+                    <td>{{ $a->articulo->inv_interno }}</td>
                 @endif
             </tr>
         </tbody>
         @endforeach
     </table>
+    @if ($tipos=='resguardo_h')
+        <footer class="footer">
+            <table>
+                <tr>
+                    <td>
+                        Resguardante <br> &nbsp;
+                    </td>
+                    <td>
+                        Autorizó <br> &nbsp;
+                    </td>
+                    <td>
+                        Autorizó <br> &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <u>{{ $resguardante->resguardante }}</u> <br>
+                        Nombre y firma
+                    </td>
+                    <td>
+                        <u>Ing. Carlos Juarez Ovando</u> <br>
+                        Jefe del Depto de soporte a redes <br> y telefonia
+                    </td>
+                    <td>
+                        <u>C. Rafael Leon Diaz</u> <br>
+                        Jefe del Depto de Inventario
+                    </td>
+                </tr>
+            </table>
+        </footer>
+    @endif
 </body>
 </html>

@@ -1,5 +1,4 @@
 @extends('layouts.app') @section('content')
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12">
@@ -18,7 +17,10 @@
         @include('infob')
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <strong>dispositivos en inventario </strong> <a href="{{ route('pdf', 'inventario') }}" class="btn btn-info" type="button">Exportar PDF</a>
+          <strong>dispositivos en inventario </strong> 
+          <a href="{{ route('pdf', 'inventario') }}" class="btn btn-info" target="_blank">
+            Exportar PDF
+          </a>
         </div>
 
         <div class="panel-body">

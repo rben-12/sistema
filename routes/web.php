@@ -46,4 +46,7 @@ Route::get('storage/{archivo}', function ($archivo) {
     abort(404);
 });
 
-Route::get('/pdf/{tipo}', 'pdfController@index')->name('pdf')->middleware('auth');
+Route::group(['prefix'=>'pdf', 'middleware'=>'auth'], function(){
+    $this->get('/{tipo}', 'pdfController@index')->name('pdf');
+    $this->get('/resguardo/{id}', 'pdfController@showH')->name('pdf_h');
+});

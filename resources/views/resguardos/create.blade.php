@@ -55,7 +55,7 @@
 
                    <div class="form-group">
                         <label for="">asignar dispositivo</label>
-                        <input type="text" class="form-control" name="articulo_id" placeholder="ingrese el id del dispositivo">
+                        <input type="text" id="skills" data-role="tagsinput" class="form-control" name="articulo_id" placeholder="ingrese el id del dispositivo">
                     </div>
 
                    <div class="form-group">
