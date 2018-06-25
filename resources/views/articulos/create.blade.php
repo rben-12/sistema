@@ -63,10 +63,20 @@
                         </select>
                 </div>
             
-            <div class="form-group">
-                <label for="comment">Ubicación</label>
-                <textarea class="form-control" name='ubicacion' rows="3" ></textarea>
-              </div> 
+                <div class="form-group">
+                    <label for="">ip address</label>
+                    <input type="text" class="form-control" name="ip_address">
+                </div>
+
+                <div class="form-group">
+                    <label for="">mac address</label>
+                    <input type="text" class="form-control" name="mac_address">
+                </div>
+            
+                <div class="form-group">
+                    <label for="comment">Ubicación</label>
+                    <textarea class="form-control" name='ubicacion' rows="3" ></textarea>
+                </div> 
 
             <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Guardar</button>

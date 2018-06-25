@@ -58,16 +58,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">ip address</label>
-                        <input type="text" value="{{$resguardo->ip_address}}" class="form-control" name="ip_address">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="">mac address</label>
-                        <input type="text" value="{{$resguardo->mac_address}}" class="form-control" name="mac_address">
-                    </div>
-
-                    <div class="form-group">
                         <label for="">asignar dispositivo</label>
                         <input type="text" value="{{$resguardo->articulo_id}}" class="form-control" name="articulo_id" placeholder="ingrese el id del dispositivo" required>
                     </div>

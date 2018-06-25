@@ -48,11 +48,10 @@
                     <th class=" text-center">Fecha Y Hora</th>
 
                 @elseif($tipos=='inventario')
-                    <th class="text-center">id</th>
                     <th class=" text-center">categoria</th>
                     <th class=" text-center">Descripción</th>
-                    <th class=" text-center" width="20px">Inventario Interno</th>
-                    <th class=" text-center" width="20px">Inventario Externo</th>
+                    <th class=" text-center">Inventario Interno</th>
+                    <th class=" text-center">Inventario Externo</th>
                     <th class=" text-center">Serie</th>
                     <th class=" text-center">Marca</th>
                     <th class=" text-center">Modelo</th>
@@ -83,7 +82,6 @@
                     <td class="m">{{$a->solucion}}</td>
                     <td class="m">{{$a->created_at}}</td>
                 @elseif($tipos=='inventario')
-                    <td class="m">{{$a->id}}</td>
                     <td class="m">{{$a->categoria->categoria}}</td>
                     <td class="m">{{$a->descripcion}}</td>
                     <td class="m">{{$a->inv_interno}}</td>

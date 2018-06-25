@@ -70,6 +70,16 @@
         </div>
 
         <div class="form-group">
+            <label for="">ip address</label>
+            <input type="text" value="{{$articulo->ip_address}}" class="form-control" name="ip_address">
+        </div>
+
+        <div class="form-group">
+            <label for="">mac address</label>
+            <input type="text" value="{{$articulo->mac_address}}" class="form-control" name="mac_address">
+        </div>
+
+        <div class="form-group">
             <label for="">Ubicación</label>
             <input value="{{$articulo->ubicacion}}" type="text" name='ubicacion' class="form-control" required>
         </div>

@@ -23,6 +23,8 @@ class CreateArticulosTable extends Migration
             $table->integer('marca_id')->unsigned();
             $table->string('modelo');
             $table->integer('status_id')->unsigned();
+            $table->string('ip_address')->nullable();
+            $table->string('mac_address')->nullable();
             $table->string('ubicacion');
             $table->timestamps();
             
