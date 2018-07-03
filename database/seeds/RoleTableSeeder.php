@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use App\Role;
 class RoleTableSeeder extends Seeder
 {
@@ -11,6 +12,8 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('roles')->truncate();
+
         $role = new Role();
         $role->name = 'admin';
         $role->description = 'Administrator';

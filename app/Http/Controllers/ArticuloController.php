@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\support\facades\Session;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Marca;
 use App\Status;
 use App\Categoria;
@@ -60,8 +61,14 @@ class ArticuloController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'inv_externo' => 'required|unique:articulos',
+            'inv_interno' => 'required|unique:articulos',
+            'serie' => 'required|unique:articulos',
+        ]);
         Articulo::create($request->all());
         return redirect()->route('articulos.index')->with('infob', 'El registro fue agregado exitosamento');
+        
     }
     /**
      * Display the specified resource.

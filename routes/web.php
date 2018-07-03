@@ -50,3 +50,15 @@ Route::group(['prefix'=>'pdf', 'middleware'=>'auth'], function(){
     $this->get('/{tipo}', 'pdfController@index')->name('pdf');
     $this->get('/resguardo/{id}', 'pdfController@showH')->name('pdf_h');
 });
+
+Route::get('/getArticulosToAdd', 'ResguardoController@get')
+    ->name('articulos.get')
+    ->middleware('auth');
+
+Route::POST('/addArticuloToRes/', 'ResguardoController@addArtRes')
+    ->name('artAddRes.add')
+    ->middleware('auth');
+
+Route::POST('/deleteArticuloToRes/{id}', 'ResguardoController@deleteArToRes')
+    ->name('artDeleteRes.delete')
+    ->middleware('auth');

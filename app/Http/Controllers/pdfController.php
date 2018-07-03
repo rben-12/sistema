@@ -114,10 +114,13 @@ class pdfController extends Controller
     public function showH($id)
     {
         $image = '/img/SPF.png';
+        $data = Articulo::where('resguardo_id', '=', $id)->get();
         
-        $data = Resguardos_history::join('resguardos', 'resguardos.id', '=', 'resguardos_histories.resguardo_id')
-        ->join('articulos', 'articulos.id', '=', 'resguardos_histories.articulo_id')
-        ->where('resguardos.n_resguardo', '=', $id)->get();
+        // $resguardante = Resguardo::where('n_resguardo', '=', $id)->first();
+        
+        // $data = Resguardos_history::join('resguardos', 'resguardos.id', '=', 'resguardos_histories.resguardo_id')
+        // ->join('articulos', 'articulos.id', '=', 'resguardos_histories.articulo_id')
+        // ->where('resguardos.n_resguardo', '=', $id)->get();
     
         $resguardante = Resguardo::where('n_resguardo', '=', $id)->first();
 

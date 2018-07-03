@@ -17,7 +17,8 @@ class Resguardo extends Model
         'ip_address',
         'mac_address',
         'articulo_id',
-        'archivo'
+        'archivo',
+        'usuario_id'
 
     ];
 
@@ -26,8 +27,12 @@ class Resguardo extends Model
         return $this->belongsTo(Departamento::class, 'departamento_id', 'id');
     }
 
+    public function articulos()
+    {
+        return $this->hasMany(Articulo::class, 'resguardo_id', 'id');
+    }
     public function articulo()
     {
-        return $this->belongsTo(Articulo::class, 'articulo_id', 'id');
+        return $this->belongsTo(Articulo::class, 'id', 'id');
     }
 }

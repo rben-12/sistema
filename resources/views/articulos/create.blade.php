@@ -12,7 +12,7 @@
     
         <form action="{{route('articulos.store')}}" method="post">
                 {{csrf_field()}}
-
+            <input type="hidden" name="usuario_id" value="{{ Auth::user()->id }}">
                 <div class="form-group">
                 <label for="">Categoria</label>
                     <select name="categoria_id" class="form-control" required>

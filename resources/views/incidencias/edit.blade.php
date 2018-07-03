@@ -37,7 +37,7 @@
                     <label for="">encargado</label>
                     <select name="encargado_id" class="form-control" required>
                         @foreach($encargados as $e)
-                        <option value="{{$e->id}}" {{($incidencia->encargado_id = $e->id)? 'selected': ''}}>{{$e->encargado}}</option>
+                        <option value="{{$e->id}}" {{($incidencia->encargado_id == $e->id)? 'selected': ''}}>{{$e->encargado}}</option>
                         @endforeach
                     </select>
                 </div>

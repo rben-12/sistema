@@ -43,10 +43,6 @@
                         {{-- <th class="text-center">inventario interno</th> --}}
                         <!--<th class="text-center">descripcion</th>-->
                         <th class="text-center">id dispositivos</th>
-                        <th class=" text-center">categoria</th>
-                        <th class="text-center">inventario interno</th>
-                        <th class="text-center">inventario externo</th>
-                        <th class="text-center">serie</th>
                         
                         <th>acciones</th>
                     </tr>
@@ -63,30 +59,35 @@
                         {{-- <td class="m">{{$r->articulo->id}}</td> --}}
                         {{-- <td class="m">{{$r->articulo->inv_interno}}</td> --}}
                         {{-- <!--<td class="m">{{$r->descripcion}}</td>--> --}}
-                        <td class="m">{{$r->articulo->id}}</td>
-                        <td class="m">{{$r->articulo->categoria->categoria}}</td>
-                        <td class="m">{{$r->articulo->inv_interno}}</td>
-                        <td class="m">{{$r->articulo->inv_externo}}</td>
-                        <td class="m">{{$r->articulo->serie}}</td>
+                        <td class="m">{{$r->articulo_id}}</td>
                         <td>
-                    
-                            <form action="{{route('resguardos.destroy', $r->id)}}" method="POST">
-                                {{ csrf_field() }}
-                                {{method_field('DELETE')}}
-                                <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs">
-                                <i class="glyphicon glyphicon-trash"></i></button>
-                            </form>
-        
-                            <a href="{{route('resguardos.edit', $r->id)}}" class="btn btn-success btn-xs">
-                            <i class='glyphicon glyphicon-edit'></i></a>
-
-                            <a href="{{route('resguardos.show', $r->n_resguardo)}}" class="btn btn-info btn-xs">
-                                <i class='glyphicon glyphicon-eye-open'></i>
-                            </a>
-                            <i class="glyphicon glyphicon-edit"></i></a>
-
-                            <a href="{{route('resguardos.show', $r->id)}}" class="btn btn-warning btn-xs">
-                            <i class="glyphicon glyphicon-eye-open"></i></a>
+                            @if (Auth::user()->hasRole('admin'))
+                                <form action="{{route('resguardos.destroy', $r->id)}}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{method_field('DELETE')}}
+                                    <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs">
+                                    <i class="glyphicon glyphicon-trash"></i></button>
+                                </form>
+                                <a href="{{route('resguardos.edit', $r->id)}}" class="btn btn-success btn-xs">
+                                    <i class='glyphicon glyphicon-edit'></i>
+                                </a>
+                                <a href="{{route('resguardos.show', $r->n_resguardo)}}" class="btn btn-warning btn-xs">
+                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                </a>
+                            @elseif(Auth::user()->id == $r->usuario_id)
+                                <form action="{{route('resguardos.destroy', $r->id)}}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{method_field('DELETE')}}
+                                    <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs">
+                                    <i class="glyphicon glyphicon-trash"></i></button>
+                                </form>
+                                <a href="{{route('resguardos.edit', $r->id)}}" class="btn btn-success btn-xs">
+                                    <i class='glyphicon glyphicon-edit'></i>
+                                </a>
+                                <a href="{{route('resguardos.show', $r->n_resguardo)}}" class="btn btn-warning btn-xs">
+                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                </a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

@@ -76,6 +76,6 @@ class DatabaseSeeder extends Seeder
         Categoria::create([
             'categoria' => 'SWITCH'
         ]);
-
+        $this->call(ArticulosSeeder::class);
     }
 }

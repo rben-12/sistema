@@ -24,7 +24,7 @@ class Resguardos_history extends Model
 
     public function articulo()
     {
-        return $this->belongsTo(Articulo::class, 'articulo_id', 'id');
+        return $this->belongsTo(Articulo::class, 'id', 'id');
     }
 
     public function resguardo_h()

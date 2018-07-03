@@ -9,6 +9,7 @@
             <div class="modal-body">
                 <form action="{{route('resguardos.store')}}" method="POST">
                         {{csrf_field()}}
+                        <input type="hidden" name="usuario_id" value="{{ Auth::user()->id }}">
                     <div class="form-group">
                         <label for="">numero de resguardo</label>
                         <input type="text" class="form-control" name="n_resguardo" required>

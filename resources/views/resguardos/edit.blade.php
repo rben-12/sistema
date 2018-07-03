@@ -21,6 +21,7 @@
             <div class="panel-body">
 
             <form action="{{route('resguardos.update', $resguardo)}}" method="post">
+                {{-- {{ dd($resguardo) }} --}}
                 {{csrf_field()}}
                 {{method_field('PUT')}}
                 
@@ -54,7 +55,7 @@
 
                     <div class="form-group">
                         <label for="">extension</label>
-                        <input type="text" value="{{$resguardo->extension}}" class="form-control" name="extencion">
+                        <input type="text" value="{{$resguardo->extencion}}" class="form-control" name="extencion">
                     </div>
 
                     <div class="form-group">
@@ -69,7 +70,12 @@
 
                     <div class="form-group">
                         <label for="">asignar dispositivo</label>
-                        <input type="text" value="{{$resguardo->articulo_id}}" class="form-control" name="articulo_id" placeholder="ingrese el id del dispositivo" required>
+                        {{-- @foreach ($resguardo->articulos as $item)
+                            {{ $item->id }},
+                        @endforeach --}}
+                        <input type="text" id="skills" data-role="tagsinput" value="{{$resguardo->articulo_id}}" class="form-control" name="articulo_id" placeholder="ingrese el id del dispositivo">
+                        {{-- {{$resguardo->articulos[0]->id}} --}}
+                        {{-- <input type="text" value="{{$resguardo->articulo_id}}" class="form-control" name="articulo_id" placeholder="ingrese el id del dispositivo" required> --}}
                     </div>
 
                    <div class="form-group">

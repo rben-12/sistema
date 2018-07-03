@@ -16,7 +16,8 @@ class Articulo extends Model
         'marca_id',
         'modelo', 
         'status_id', 
-        'ubicacion',    
+        'ubicacion',
+        'usuario_id'   
 ];
 
    public function status() 
@@ -41,7 +42,11 @@ class Articulo extends Model
 
     public function resguardo()
     {
-        return $this->belongsto(Resguardo::class, 'id', 'id');
+        return $this->belongsto(Resguardo::class, 'resguardo_id', 'id');
+    }
+    public function articulo()
+    {
+        return $this->belongsTo(Articulo::class, 'resguardo_id', 'id');
     }
 
     

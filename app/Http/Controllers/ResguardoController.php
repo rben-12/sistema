@@ -58,6 +58,8 @@ class ResguardoController extends Controller
         $resguardos->extencion = Request()->extencion;
         $resguardos->ip_address = Request()->ip_address;
         $resguardos->mac_address = Request()->mac_address;
+        $resguardos->articulo_id = Request()->articulo_id;
+        $resguardos->usuario_id = Request()->usuario_id;
         $resguardos->extencion = Request()->extencion;
 
 
@@ -66,7 +68,7 @@ class ResguardoController extends Controller
         $tags = Request()->input('articulo_id');
         //dd($tags);
         $loc = explode(",", $tags);
-
+        // dd($loc);
         $n_resguardo = Resguardo::where('n_resguardo', '=', Request()->n_resguardo)->first();
         if ($n_resguardo!=null) {
             return redirect()->route('resguardos.index')->with('infob', 'ya se ha registrado este numero de resguardo');
@@ -77,26 +79,34 @@ class ResguardoController extends Controller
             if ($resguardante==null) {
                 //guardando las tags
                 // if ($resguardos->save()) {
+                    $resguardos->save();
+                    $resguardo_id = $resguardos->id;
                     foreach ($loc as $location)
                     {
-                        $tag = new Resguardos_history();
-                        $tagFind = Resguardos_history::find($location);
-                        // dd($tagFind);
-                        if ($tagFind!=null) {
-                            //return "encontrado";
-                            return redirect()->route('resguardos.index')->with('infob', 'ya se ha asignado ese articulo a otra persona');
-                        }
-                        else{
-                            $resguardos->save();
-                            $resguardo_id = $resguardos->id;
+                        // dd($location);
+                        $tag = Articulo::where('id', $location)->update(['resguardo_id'=>$resguardo_id]);
+                        // $tag->articulo_id = $location;
+                        // $tag->resguardo_id = $resguardo_id;
+                        // $tag->update();
+                        //return redirect()->route('resguardos.index')->with('infob', 'Resguardo creado exitosamente');
+                        // $tagFind = Resguardos_history::find($location);
+                        // // dd($tagFind);
+                        // // if ($tagFind!=null) {
+                        //     //return "encontrado";
+                        //     //return redirect()->route('resguardos.index')->with('infob', 'ya se ha asignado ese articulo a otra persona');
+                        // // }
+                        // // else{
+                        //     $resguardos->save();
+                        //     $resguardo_id = $resguardos->id;
 
-                            $tag->articulo_id = $location;
-                            $tag->resguardo_id = $resguardo_id;
-                            $tag->save();
+                        //     $tag->articulo_id = $location;
+                        //     $tag->resguardo_id = $resguardo_id;
+                        //     $tag->save();
 
-                            return redirect()->route('resguardos.index')->with('infob', 'Resguardo creado exitosamente');
-                        }
+                        //     return redirect()->route('resguardos.index')->with('infob', 'Resguardo creado exitosamente');
+                        // // }
                     }
+                    return redirect()->route('resguardos.index')->with('infob', 'Resguardo creado exitosamente');
                 // }
             }
             else
@@ -115,19 +125,21 @@ class ResguardoController extends Controller
     public function show($id)
     {
         // return $id;
-        $resguardoShow = Resguardos_history::join('resguardos', 'resguardos.id', '=', 'resguardos_histories.resguardo_id')
-            ->join('articulos', 'articulos.id', '=', 'resguardos_histories.articulo_id')
-            ->where('resguardos.n_resguardo', '=', $id)->get();
+        // $resguardoShow = Resguardos_history::join('resguardos', 'resguardos.id', '=', 'resguardos_histories.resguardo_id')
+        //     ->join('articulos', 'articulos.id', '=', 'resguardos_histories.articulo_id')
+        //     ->where('resguardos.n_resguardo', '=', $id)->get();
+
+        $resguardoShow = Articulo::where('resguardo_id', '=', $id)->get();
         
         $resguardante = Resguardo::where('n_resguardo', '=', $id)->first();
 
         // dd($resguardoShow);
         return view('resguardos.show', compact('resguardoShow', 'id', 'resguardante'));
-        return view('articulos.show')->with([
-            'resguardo' => Resguardo::find($id),
-            'articulos' => Articulo::all(),
-            'departamentos' => Departamentos::all(),
-        ]);
+        // return view('articulos.show')->with([
+        //     'resguardo' => Resguardo::find($id),
+        //     'articulo' => Articulo::all(),
+        //     'departamentos' => Departamento::all(),
+        // ]);
     }
 
     /**
@@ -140,7 +152,7 @@ class ResguardoController extends Controller
     {
         return view('resguardos.edit')->with([
             'resguardo' => Resguardo::find($id),
-            'articulos' => Articulo::all(),
+            'articulo' => Articulo::all(),
             'departamentos' => Departamento::all()
         ]); 
     }
@@ -154,8 +166,46 @@ class ResguardoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Resguardo::find($id)->update($request->all());
-        return redirect()->route('resguardos.index')->with('infob', 'El registro fue actualizado exitosamento');
+        // dd($id);
+        // dd($request);
+        // Resguardo::find($id)->update($request->all());
+        // $resguardo = new Resguardo();
+
+        $resguardoFind = Resguardo::find($id);
+        // dd($resguardoFind);
+        // $resguardoHFind = Resguardos_history::where('resguardo_id', $resguardoFind->id)->get();
+        // dd($resguardoHFind);
+        $resguardoAr = Articulo::select('id')->where('resguardo_id', '=', $id)->get();
+
+        $resguardoFind->descripcion = $request['descripcion'];
+        $resguardoFind->extension = $request['extencion'];
+        $resguardoFind->articulo_id = $request['articulo_id'];
+
+        $tags = Request()->input('articulo_id');
+        //dd($tags);
+        $loc = explode(",", $tags);
+        
+        // $ids = [];
+        foreach ($resguardoAr as $key) {
+            $ids [] = $key->id;
+        }
+        foreach($loc as $key2){
+            if (in_array($key2, $ids)){
+                echo "existe ".$key2."<br>";
+            }
+            else {
+                //echo "no existe ".$key2."<br>";
+                $update = Articulo::where('id',$key2)->update(['resguardo_id'=>$id]);
+                $update2 = Resguardo::where('id',$id)->update(['articulo_id'=>$tags]);
+            }
+        }
+        // $resultado = array_diff_assoc($loc, $ids);
+        // dd($resultado);
+
+        // dd($loc);
+
+        
+        // return redirect()->route('resguardos.index')->with('infob', 'El registro fue actualizado exitosamento');
     }
 
     /**
@@ -167,6 +217,36 @@ class ResguardoController extends Controller
     public function destroy($id)
     {
         Resguardo::destroy($id);
+        return back()->with('info', 'El registro fue eliminano');
+    }
+
+    public function get(Request $request)
+    {
+        // return $request->busqueda;
+        $busqueda = Articulo::where('inv_interno', $request->busqueda)->orWhere('inv_externo', $request->busqueda)->get();
+        if ($busqueda!=null) {
+            return response()->json($busqueda);
+        }
+        else{
+            return('No se encontro articulo');
+        }
+        
+    }
+
+    public function addArtRes(Request $request)
+    {
+        // return($request->nResguardo);
+        $add = Articulo::where('id', $request->id)->update(['resguardo_id'=>$request->nResguardo]);
+        $getRes = Resguardo::where('n_resguardo', $request->nResguardo)->first();
+        $artResg = $getRes->articulo_id.','.$request->id;
+        $updateRes = Resguardo::where('n_resguardo', $request->nResguardo)->update(['articulo_id'=>$artResg]);
+        // return ($artResg);
+    }
+
+    public function deleteArToRes($id)
+    {
+        // return($id);
+        $resGet = Articulo::where('id',$id)->update(['resguardo_id'=>'0']);
         return back()->with('info', 'El registro fue eliminano');
     }
 }

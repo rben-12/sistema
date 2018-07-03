@@ -35,7 +35,9 @@
         height: 60px;
         }
 
-
+        .text-center {
+            text-align: center;
+        }
         /* Custom page CSS
         -------------------------------------------------- */
         /* Not required for template or sticky footer method. */
@@ -47,6 +49,7 @@
         }
         .container .text-muted {
         margin: 20px 0;
+        }
         .m{
         text-transform: uppercase;
         }
@@ -81,35 +84,35 @@
             </td>
         </tr>
     </table>
+    {{-- <table class="table tc table-striped table-bordered table-hover table-condensed table-responsive"> --}}
     <table class="table tc table-striped table-bordered table-hover table-condensed table-responsive">
-    <table class="table m tc table-striped table-bordered table-hover table-condensed table-responsive">
         <thead>
             <tr>
                 @if ($tipos == 'incidencias')
                     <th class="text-center">Asunto</th>
-                    <th class=" text-center">Descripción</th>
-                    <th class=" text-center">Encargado</th>
-                    <th class=" text-center">Departamento</th>
-                    <th class=" text-center">Solucion</th>
-                    <th class=" text-center">Fecha Y Hora</th>
+                    <th class="text-center">Descripción</th>
+                    <th class="text-center">Encargado</th>
+                    <th class="text-center">Departamento</th>
+                    <th class="text-center">Solucion</th>
+                    <th class="text-center">Fecha Y Hora</th>
 
                 @elseif($tipos=='inventario')
                     <th class="text-center">id</th>
-                    <th class=" text-center">categoria</th>
-                    <th class=" text-center">Descripción</th>
-                    <th class=" text-center" width="20px">Inventario Interno</th>
-                    <th class=" text-center" width="20px">Inventario Externo</th>
-                    <th class=" text-center">Serie</th>
-                    <th class=" text-center">Marca</th>
-                    <th class=" text-center">Modelo</th>
-                    <th class=" text-center">Status</th>
-                    <th class=" text-center">Ubicación</th>
+                    <th class="text-center">categoria</th>
+                    <th class="text-center">Descripción</th>
+                    <th class="text-center" width="20px">Inventario Interno</th>
+                    <th class="text-center" width="20px">Inventario Externo</th>
+                    <th class="text-center">Serie</th>
+                    <th class="text-center">Marca</th>
+                    <th class="text-center">Modelo</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Ubicación</th>
                 @elseif($tipos=='resguardo')
                     <th class="text-center">Num. resguardo</th>
-                    <th class="text-center">resguardante</th>
-                    <th class="text-center">puesto</th>
-                    <th class="text-center">departamento</th>
-                    <th class="text-center">descripcion</th>
+                    <th class="text-center">Resguardante</th>
+                    <th class="text-center">Puesto</th>
+                    <th class="text-center">Departamento</th>
+                    <th class="text-center">Descripcion</th>
                 @elseif($tipos=='resguardo_h')
                     <th class="text-center">Cant</th>
                     <th class="text-center">Descripcion</th>
@@ -117,12 +120,7 @@
                     <th class="text-center">Marca</th>
                     <th class="text-center">Modelo</th>
                     <th class="text-center">Inv Interno</th>
-                    <th class=" text-center">dispositivo</th>
-                    <th class="text-center">inventario interno</th>
-                    <th class="text-center">inventario externo</th>
-                    <th class="text-center">serie</th>
-                    <th class="text-center">marca</th>
-                    <th class="text-center">modelo</th>
+                    <th class="text-center">Inv externo</th>
                 @endif
             </tr>
         </thead>
@@ -154,18 +152,13 @@
                     <td class="m">{{$a->departamento->departamento}}</td>
                     <td class="m">{{$a->descripcion}}</td>
                 @elseif($tipos=='resguardo_h')
-                    <td>1</td>
-                    <td>{{ $a->descripcion }}</td>
-                    <td>{{ $a->serie }}</td>
-                    <td>{{ $a->marca->marca }}</td>
-                    <td>{{ $a->modelo }}</td>
-                    <td>{{ $a->articulo->inv_interno }}</td>
-                    <td class="m">{{$a->articulo->categoria->categoria}}</td>
-                    <td class="m">{{$a->articulo->inv_interno}}</td>
-                    <td class="m">{{$a->articulo->inv_externo}}</td>
-                    <td class="m">{{$a->articulo->serie}}</td>
-                    <td class="m">{{$a->articulo->marca->marca}}</td>
-                    <td class="m">{{$a->articulo->modelo}}</td>
+                    <td class="m">1</td>
+                    <td class="m">{{ $a->descripcion }}</td>
+                    <td class="m">{{ $a->serie }}</td>
+                    <td class="m">{{ $a->marca->marca }}</td>
+                    <td class="m">{{ $a->modelo }}</td>
+                    <td class="m">{{ $a->inv_interno }}</td>
+                    <td class="m">{{$a->inv_externo}}</td>
                 @endif
             </tr>
         </tbody>

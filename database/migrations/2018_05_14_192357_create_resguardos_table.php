@@ -20,15 +20,16 @@ class CreateResguardosTable extends Migration
             $table->string('puesto');
             $table->integer('departamento_id')->unsigned();
             $table->string('descripcion');
-            $table->string('extension')->nullable();
+            $table->string('extencion')->nullable();
             $table->string('ip_address')->nullable();
             $table->string('mac_address')->nullable();
-            $table->integer('articulo_id')->unsigned();
+            $table->string('articulo_id')->nullable();
+            $table->integer('usuario_id')->unsigned();
             $table->string('archivo')->nullable();
             $table->timestamps();
 
         $table->foreign('departamento_id')->references('id')->on('departamentos');
-        $table->foreign('articulo_id')->references('id')->on('articulos');
+        //$table->foreign('articulo_id')->references('id')->on('articulos');
         });
     }
 

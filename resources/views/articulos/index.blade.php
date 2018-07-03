@@ -15,6 +15,15 @@
         
         @include('info') 
         @include('infob')
+        @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+      @endif
       <div class="panel panel-primary">
         <div class="panel-heading">
           <strong>dispositivos en inventario </strong> 
@@ -72,18 +81,31 @@
 
 
                 <td >
-                  
-                  <form action="{{route('articulos.destroy', $a->id)}}" method="POST">
-                      {{ csrf_field() }}
-                      {{method_field('DELETE')}}
-                      <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs"> <i class='glyphicon glyphicon-trash'></i></button>
-                  </form>
+                  {{-- {{ Auth::user() }} --}}
+                  @if (Auth::user()->hasRole('admin'))
+                    <form action="{{route('articulos.destroy', $a->id)}}" method="POST">
+                        {{ csrf_field() }}
+                        {{method_field('DELETE')}}
+                        <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs"> <i class='glyphicon glyphicon-trash'></i></button>
+                    </form>
 
-                  <a href="{{route('articulos.edit', $a->id)}}" class="btn btn-success btn-xs">
-                    <i class='glyphicon glyphicon-edit'></i></a>
+                    <a href="{{route('articulos.edit', $a->id)}}" class="btn btn-success btn-xs">
+                      <i class='glyphicon glyphicon-edit'></i></a>
 
-                  <a href="{{route('articulos.show', $a->id)}}" class="btn btn-warning btn-xs">
-                    <i class='glyphicon glyphicon-eye-open'></i></a>
+                    <a href="{{route('articulos.show', $a->id)}}" class="btn btn-warning btn-xs">
+                      <i class='glyphicon glyphicon-eye-open'></i></a>
+                  @elseif(Auth::user()->id == $a->usuario_id)
+                    <form action="{{route('articulos.destroy', $a->id)}}" method="POST">
+                        {{ csrf_field() }}
+                        {{method_field('DELETE')}}
+                        <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs"> <i class='glyphicon glyphicon-trash'></i></button>
+                    </form>
+                    <a href="{{route('articulos.edit', $a->id)}}" class="btn btn-success btn-xs">
+                      <i class='glyphicon glyphicon-edit'></i></a>
+
+                    <a href="{{route('articulos.show', $a->id)}}" class="btn btn-warning btn-xs">
+                      <i class='glyphicon glyphicon-eye-open'></i></a>
+                  @endif
 
                   <!--<a type="link" class="btn btn-info btn-xs pull-right" href="">
                     <i class='glyphicon glyphicon-time'></i></a>-->
