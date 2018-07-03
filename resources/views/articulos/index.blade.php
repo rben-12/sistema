@@ -19,7 +19,13 @@
       <div class="panel panel-primary">
         <div class="panel-heading">
           <strong>dispositivos en inventario </strong> <a href="{{ route('pdf', 'inventario') }}" class="btn btn-info" type="button">Exportar PDF</a>
-        </div>
+            <form class="navbar-form navbar-left pull-right" role="search" action="{{ route('articulos.index') }}" style="margin: 0;" method="GET">
+              <div class="form-group">
+              <input type="text" name="articulo" class="form-control" placeholder="Buscar en inventario...">
+              </div>
+              <button class="btn btn-info" type="submit">buscar</button>
+            </form>
+          </div>
 
         <div class="panel-body">
           <p>

@@ -17,6 +17,12 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
         <strong> registro de incidencias </strong> <a href="{{ route('pdf', 'incidencias') }}" class="btn btn-info" type="button">Exportar PDF</a>
+        <form class="navbar-form navbar-left pull-right" role="search" action="{{ route('incidencias.index') }}" style="margin: 0;" method="GET">
+            <div class="form-group">
+            <input type="text" name="" class="form-control" placeholder="Buscar incidencia...">
+            </div>
+            <button class="btn btn-info" type="submit">buscar</button>
+          </form>
     </div>
         <div class="panel-body">
             <p>
