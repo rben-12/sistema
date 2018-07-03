@@ -15,10 +15,10 @@ class MarcaController extends Controller
 
     
     
-    public function index()
+    public function index(Request $request)
     {
         return view('marca.index')->with([
-            'marcas' => Marca::paginate(4)
+            'marcas' => Marca::marca($request->get('marca'))->paginate(4)
         ]);
     }
 

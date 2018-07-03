@@ -16,14 +16,21 @@
             @include('info')
         
 <div class="panel panel-primary">
-    <div class="panel-heading"><strong> catalogo de departamentos</strong> </div>
+    <div class="panel-heading"><strong> catalogo de departamentos</strong> 
+        <form class="navbar-form navbar-left pull-right" role="search" action="{{ route('departamentos.index') }}" style="margin: 0;" method="GET">
+            <div class="form-group">
+            <input type="text" name="departamento" class="form-control" placeholder="Buscar departamento...">
+            </div>
+            <button class="btn btn-info" type="submit">buscar</button>
+        </form> <br><br>
+    </div>
         <div class="panel-body">
             <p>
                 {{$departamentos->total()}} registros|
                 páginas {{$departamentos->currentPage()}} 
                 de {{$departamentos->lastPage()}}
             </p>
-        <table class="table table-bordered table-striped table-hover table-responsive">
+        <table class="table tc table-bordered table-striped table-hover table-responsive">
             <thead>
                 <tr>
                     <th class="text-center">Departamento</th>

@@ -49,5 +49,19 @@ class Articulo extends Model
         return $this->belongsTo(Articulo::class, 'resguardo_id', 'id');
     }
 
+    public function scopeArticulo($query, $articulo)
+    {
+        if(trim($articulo))
+        return $query->where('categoria_id', 'LIKE', "%$articulo%")
+        ->orwhere('descripcion', 'LIKE', "%$articulo%")
+        ->orwhere('inv_interno', 'LIKE', "%$articulo%")
+        ->orwhere('inv_externo', 'LIKE', "%$articulo%")
+        ->orwhere('serie', 'LIKE', "%$articulo%")
+        ->orwhere('modelo', 'LIKE', "%$articulo%")
+        ->orwhere('ubicacion', 'LIKE', "%$articulo%");
+
+        //return $query->where(\DB::raw("CONCAT(categoria_id, descripcion, inv_interno, inv_externo, serie, modelo)"), 'LIKE', "%$articulo%");
+    }
+
     
 }

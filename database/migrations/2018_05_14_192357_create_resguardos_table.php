@@ -25,6 +25,8 @@ class CreateResguardosTable extends Migration
             $table->string('mac_address')->nullable();
             $table->string('articulo_id')->nullable();
             $table->integer('usuario_id')->unsigned();
+            $table->string('extension')->nullable();
+            $table->integer('articulo_id')->unsigned();
             $table->string('archivo')->nullable();
             $table->timestamps();
 

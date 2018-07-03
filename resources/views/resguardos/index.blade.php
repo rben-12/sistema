@@ -18,10 +18,13 @@
         
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <strong>resguardos </strong> 
-            <a href="{{ route('pdf', 'resguardo') }}" class="btn btn-info" target="_blank">
-                Exportar PDF
-            </a>
+            <strong>resguardos </strong> <a href="{{ route('pdf', 'resguardo') }}" target="_blank" class="btn btn-info" type="button">Exportar PDF</a>
+            <form class="navbar-form navbar-left pull-right" role="search" action="" style="margin: 0;" method="GET">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Buscar en resguardo...">
+              </div>
+              <button class="btn btn-info" type="submit">buscar</button>
+            </form>
         </div>
             <div class="panel-body">
                 <p>

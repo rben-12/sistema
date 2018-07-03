@@ -25,6 +25,8 @@ class CreateArticulosTable extends Migration
             $table->integer('status_id')->unsigned();
             $table->integer('resguardo_id')->nullable();
             $table->integer('usuario_id');
+            $table->string('ip_address')->nullable();
+            $table->string('mac_address')->nullable();
             $table->string('ubicacion');
             $table->timestamps();
             
