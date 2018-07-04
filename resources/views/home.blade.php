@@ -61,7 +61,8 @@
 
                 <div class="panel-body">
                 <p>
-                    usted tiene:
+                  ¡Bienvenido! {{ Auth::user()->name }}
+                  <br> usted tiene:
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}

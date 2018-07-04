@@ -56,8 +56,8 @@ class ResguardoController extends Controller
         $resguardos->departamento_id = Request()->departamento_id;
         $resguardos->descripcion = Request()->descripcion;
         $resguardos->extencion = Request()->extencion;
-        $resguardos->ip_address = Request()->ip_address;
-        $resguardos->mac_address = Request()->mac_address;
+        //$resguardos->ip_address = Request()->ip_address;
+        //$resguardos->mac_address = Request()->mac_address;
         $resguardos->articulo_id = Request()->articulo_id;
         $resguardos->usuario_id = Request()->usuario_id;
         $resguardos->extencion = Request()->extencion;

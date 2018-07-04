@@ -37,6 +37,7 @@ class ArticuloController extends Controller
         ->orWhere('inv_externo', 'LIKE', '%'.$request->get('query').'%')
         ->orWhere('serie', 'LIKE', '%'.$request->get('query').'%')
         ->orWhere('modelo', 'LIKE', '%'.$request->get('query').'%')
+        ->orWhere('ubicacion', 'LIKE', '%'.$request->get('query').'%')
         ->paginate(20);
 
         return view('articulos.index')->with([
@@ -96,6 +97,9 @@ class ArticuloController extends Controller
     public function show($id)
     {
         $articulo = Articulo::find($id);
+        /*if(\Auth::user()->id != $articulo->usuario_id){
+            return redirect()->route('articulos.index');
+        }*/
         $categorias = Categoria::all();
         $resguardo = Resguardos_history::where('articulo_id', '=', $id)->first();
         if ($resguardo!=null) {
@@ -124,6 +128,10 @@ class ArticuloController extends Controller
      */
     public function edit($id)
     { 
+       /*$articulo = Articulo::find($id);
+        if(\Auth::user()->id != $articulo->usuario_id){
+            return redirect()->route('articulos.index');
+        }*/
         return view('articulos.partials.edit')->with([
             'articulo' => Articulo::find($id),
             'categorias' => Categoria::all(),

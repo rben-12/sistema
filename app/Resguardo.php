@@ -14,8 +14,8 @@ class Resguardo extends Model
         'departamento_id',
         'descripcion',
         'extension',
-        'ip_address',
-        'mac_address',
+        //'ip_address',
+        //'mac_address',
         'articulo_id',
         'archivo',
         'usuario_id'
