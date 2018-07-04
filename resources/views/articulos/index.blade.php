@@ -32,7 +32,7 @@
           </a>
           <form class="navbar-form navbar-left pull-right" role="search" action="{{ route('articulos.index') }}" style="margin: 0;" method="GET">
             <div class="form-group">
-            <input type="text" name="articulo" class="form-control" placeholder="Buscar departamento...">
+            <input type="text" name="query" class="form-control" placeholder="Buscar departamento...">
             </div>
             <button class="btn btn-info" type="submit">buscar</button>
           </form>
@@ -75,14 +75,14 @@
               @foreach($articulos as $a)
               <tr>
                 <td class="m">{{$a->id}}</td>
-                <td class="m">{{$a->categoria->categoria}}</td>
+                <td class="m">{{$a->categoria}}</td>
                 <td class="m">{{$a->descripcion}}</td>
                 <td class="m">{{$a->inv_interno}}</td>
                 <td class="m">{{$a->inv_externo}}</td>
                 <td class="m">{{$a->serie}}</td>
-                <td class="m">{{$a->marca->marca}}</td>
+                <td class="m">{{$a->marca}}</td>
                 <td class="m">{{$a->modelo}}</td>
-                <td class="m">{{$a->status->status}}</td>
+                <td class="m">{{$a->status}}</td>
                 <td class="m">{{$a->ubicacion}}</td>
 
 

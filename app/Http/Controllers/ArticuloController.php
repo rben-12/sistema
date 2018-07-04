@@ -11,6 +11,7 @@ use App\Categoria;
 use App\Articulo;
 use App\Resguardo;
 use App\Resguardos_history;
+use DB;
 class ArticuloController extends Controller
 {
     /**
@@ -22,9 +23,19 @@ class ArticuloController extends Controller
 
     public function index(Request $request)
     { 
+        //return $request->get('query');
+        $query = DB::table('articulos AS a')
+        ->join('marcas AS m', 'a.marca_id', '=', 'm.id')
+        ->join('categorias AS c', 'a.categoria_id', '=', 'c.id')
+        ->join('statuses AS s', 'a.status_id', '=', 's.id')
+        ->where('descripcion', 'LIKE', '%'.$request->get('query').'%')
+        ->orWhere('marca', 'LIKE', '%'.$request->get('query').'%')
+        ->orWhere('categoria', 'LIKE', '%'.$request->get('query').'%')
+        ->paginate(20);
+
         return view('articulos.index')->with([
 	        //'articulos'=>Articulo::paginate(10),
-            'articulos' => Articulo::artic($request->get('articulo'))->paginate(10),
+            'articulos' => $query,
             'categorias' => Categoria::all(),
             'marcas' => Marca::all(),
             'statuses' => Status::all(),
