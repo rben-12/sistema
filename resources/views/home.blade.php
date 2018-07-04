@@ -70,7 +70,7 @@
                     @if(Auth::user()->hasRole('admin'))
                         <div>Acceso como administrador</div>
                     @else
-                        <div>Acceso usuario</div>
+                        <div>Acceso como usuario</div>
                     @endif
                 </p>
                 </div>
