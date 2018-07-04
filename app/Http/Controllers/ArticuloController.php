@@ -28,6 +28,7 @@ class ArticuloController extends Controller
         ->join('marcas AS m', 'a.marca_id', '=', 'm.id')
         ->join('categorias AS c', 'a.categoria_id', '=', 'c.id')
         ->join('statuses AS s', 'a.status_id', '=', 's.id')
+        ->select('a.*', 'm.marca', 'c.categoria', 's.status')
         ->where('descripcion', 'LIKE', '%'.$request->get('query').'%')
         ->orWhere('marca', 'LIKE', '%'.$request->get('query').'%')
         ->orWhere('categoria', 'LIKE', '%'.$request->get('query').'%')
