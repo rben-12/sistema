@@ -35,10 +35,10 @@ class Articulo extends Model
         return $this->belongsto(Categoria::class, 'categoria_id', 'id');
     }
 
-    public function resguardos()
+    /*public function resguardos()
     {
-        return $this->hasMany(Resguardos_history::class, 'articulo_id', 'id');
-    }
+        //return $this->hasMany(Resguardos_history::class, 'articulo_id', 'id');
+    }*/
 
     public function resguardo()
     {
@@ -49,7 +49,7 @@ class Articulo extends Model
         return $this->belongsTo(Articulo::class, 'resguardo_id', 'id');
     }
 
-    public function scopeArticulo($query, $articulo)
+    public function scopeArtic($query, $articulo)
     {
         if(trim($articulo))
         return $query->where('categoria_id', 'LIKE', "%$articulo%")

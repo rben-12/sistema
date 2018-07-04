@@ -30,6 +30,12 @@
           <a href="{{ route('pdf', 'inventario') }}" class="btn btn-info" target="_blank">
             Exportar PDF
           </a>
+          <form class="navbar-form navbar-left pull-right" role="search" action="{{ route('articulos.index') }}" style="margin: 0;" method="GET">
+            <div class="form-group">
+            <input type="text" name="articulo" class="form-control" placeholder="Buscar departamento...">
+            </div>
+            <button class="btn btn-info" type="submit">buscar</button>
+          </form>
         </div>
 
         <div class="panel-body">

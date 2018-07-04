@@ -51,4 +51,10 @@ tbody{
 .l{
     color: white;
 }
+.carousel-inner { 
+    text-align: center; 
+}
+.carousel .item > img {
+     display: inline-block; 
+}
 

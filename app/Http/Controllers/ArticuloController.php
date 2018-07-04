@@ -22,9 +22,9 @@ class ArticuloController extends Controller
 
     public function index(Request $request)
     { 
-    //dd($request->get('categoria'));
         return view('articulos.index')->with([
-            'articulos' => Articulo::articulo($request->get('articulo'))->paginate(10),
+	        //'articulos'=>Articulo::paginate(10),
+            'articulos' => Articulo::artic($request->get('articulo'))->paginate(10),
             'categorias' => Categoria::all(),
             'marcas' => Marca::all(),
             'statuses' => Status::all(),
