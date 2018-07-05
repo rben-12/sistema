@@ -4,6 +4,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="alert alt">
+                    <a href="{{route('resguardos.index')}}" class="btn btn-success pull-right">listado</a>
                   <h4>
                     <strong class="l">detalle del resguardo n°{{ $id }}</strong>
                     <input type="hidden" name="nResguardo" id="nResguardo" value="{{ $id }}">
