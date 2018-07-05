@@ -97,9 +97,12 @@ class ArticuloController extends Controller
     public function show($id)
     {
         $articulo = Articulo::find($id);
-        /*if(\Auth::user()->id != $articulo->usuario_id){
+        if (\Auth::user()->hasRole('admin')){
+        }
+        elseif (\Auth::user()->id != $articulo->usuario_id){
+            
             return redirect()->route('articulos.index');
-        }*/
+        }
         $categorias = Categoria::all();
         $resguardo = Resguardos_history::where('articulo_id', '=', $id)->first();
         if ($resguardo!=null) {
@@ -128,10 +131,13 @@ class ArticuloController extends Controller
      */
     public function edit($id)
     { 
-       /*$articulo = Articulo::find($id);
-        if(\Auth::user()->id != $articulo->usuario_id){
+        $articulo = Articulo::find($id);
+        if (\Auth::user()->hasRole('admin')){
+        }
+        elseif (\Auth::user()->id != $articulo->usuario_id){
+            
             return redirect()->route('articulos.index');
-        }*/
+        }
         return view('articulos.partials.edit')->with([
             'articulo' => Articulo::find($id),
             'categorias' => Categoria::all(),

@@ -72,7 +72,12 @@
 
             <tbody>
               <!--style="font-size:13px;"-->
+           
+  
               @foreach($articulos as $a)
+              
+              {{-- {{ Auth::user() }} --}}
+              @if (Auth::user()->hasRole('admin'))
               <tr>
                 <td class="m">{{$a->id}}</td>
                 <td class="m">{{$a->categoria}}</td>
@@ -87,8 +92,8 @@
 
 
                 <td >
-                  {{-- {{ Auth::user() }} --}}
-                  @if (Auth::user()->hasRole('admin'))
+                
+                  
                     <form action="{{route('articulos.destroy', $a->id)}}" method="POST">
                         {{ csrf_field() }}
                         {{method_field('DELETE')}}
@@ -100,7 +105,23 @@
 
                     <a href="{{route('articulos.show', $a->id)}}" class="btn btn-warning btn-xs">
                       <i class='glyphicon glyphicon-eye-open'></i></a>
-                  @elseif(Auth::user()->id == $a->usuario_id)
+                    </td>
+                  
+                  @elseif (Auth::user()->id == $a->usuario_id)
+                  
+                    <td class="m">{{$a->id}}</td>
+                    <td class="m">{{$a->categoria}}</td>
+                    <td class="m">{{$a->descripcion}}</td>
+                    <td class="m">{{$a->inv_interno}}</td>
+                    <td class="m">{{$a->inv_externo}}</td>
+                    <td class="m">{{$a->serie}}</td>
+                    <td class="m">{{$a->marca}}</td>
+                    <td class="m">{{$a->modelo}}</td>
+                    <td class="m">{{$a->status}}</td>
+                    <td class="m">{{$a->ubicacion}}</td>
+    
+    
+                    <td >
                     <form action="{{route('articulos.destroy', $a->id)}}" method="POST">
                         {{ csrf_field() }}
                         {{method_field('DELETE')}}
@@ -111,12 +132,14 @@
 
                     <a href="{{route('articulos.show', $a->id)}}" class="btn btn-warning btn-xs">
                       <i class='glyphicon glyphicon-eye-open'></i></a>
+                    </td>
+                  </tr>
                   @endif
 
                   <!--<a type="link" class="btn btn-info btn-xs pull-right" href="">
                     <i class='glyphicon glyphicon-time'></i></a>-->
-                </td>
-              </tr>
+                
+              
               @endforeach
 
             </tbody>
