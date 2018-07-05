@@ -18,4 +18,10 @@ class Departamento extends Model
         return $this->hasMany(Resguardo::class, 'departamento_id', 'id');
     }
 
+    public function scopeDepartamento($query, $departamento)
+    {
+        if(trim($departamento))
+        $query->where('departamento', 'LIKE', "%$departamento%");
+    }
+
 }

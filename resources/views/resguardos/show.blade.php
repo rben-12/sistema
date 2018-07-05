@@ -33,27 +33,29 @@
                                 Asignar articulo
                             </a>
                         </div> <br>
-                        <table class="table table-bordered">
+                        <table class="table tc table-striped table-bordered table-hover table-condensed table-responsive">
                             <thead>
                                 <tr>
-                                    <th>Cant</th>
-                                    <th>Descripcion</th>
-                                    <th>Serie</th>
-                                    <th>Marca</th>
-                                    <th>Modelo</th>
-                                    <th>Inv interno</th>
-                                    <th>Acciones</th>
+                                    <th class="text-center">Cant</th>
+                                    <th class="text-center">Descripcion</th>
+                                    <th class="text-center">Serie</th>
+                                    <th class="text-center">Marca</th>
+                                    <th class="text-center">Modelo</th>
+                                    <th class="text-center">Inv interno</th>
+                                    <th class="text-center">Inv externo</th>
+                                    <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody id="list">
                                 @foreach ($resguardoShow as $item)
                                     <tr>
                                         <td>1</td>
-                                        <td>{{ $item->descripcion }}</td>
-                                        <td>{{ $item->serie }}</td>
-                                        <td>{{ $item->marca->marca }}</td>
-                                        <td>{{ $item->modelo }}</td>
-                                        <td>{{ $item->inv_interno }}</td>
+                                        <td class="m">{{ $item->descripcion }}</td>
+                                        <td class="m">{{ $item->serie }}</td>
+                                        <td class="m">{{ $item->marca->marca }}</td>
+                                        <td class="m">{{ $item->modelo }}</td>
+                                        <td class="m">{{ $item->inv_interno }}</td>
+                                        <td class="m">{{ $item->inv_externo }}</td>
                                         <td>
                                             <form action="{{ route('artDeleteRes.delete', $item->id) }}" method="POST">
                                                 {{ csrf_field() }}
@@ -183,7 +185,7 @@
                     data: data,
                     success:function(data){
                         console.log(data);
-                        addRow(data);
+                        // addRow(data);
                         $("#alerta_message").show();
                         $("#searchToAdd").modal('hide');
                         window.setTimeout(function(){ 

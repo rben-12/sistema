@@ -11,6 +11,7 @@ use App\Categoria;
 use App\Articulo;
 use App\Resguardo;
 use App\Resguardos_history;
+use DB;
 class ArticuloController extends Controller
 {
     /**
@@ -22,10 +23,26 @@ class ArticuloController extends Controller
 
     public function index(Request $request)
     { 
-    //dd($request->get('categoria'));
+        //return $request->get('query');
+        $query = DB::table('articulos AS a')
+        ->join('marcas AS m', 'a.marca_id', '=', 'm.id')
+        ->join('categorias AS c', 'a.categoria_id', '=', 'c.id')
+        ->join('statuses AS s', 'a.status_id', '=', 's.id')
+        ->select('a.*', 'm.marca', 'c.categoria', 's.status')
+        ->where('descripcion', 'LIKE', '%'.$request->get('query').'%')
+        ->orWhere('marca', 'LIKE', '%'.$request->get('query').'%')
+        ->orWhere('categoria', 'LIKE', '%'.$request->get('query').'%')
+        ->orWhere('status', 'LIKE', '%'.$request->get('query').'%')
+        ->orWhere('inv_interno', 'LIKE', '%'.$request->get('query').'%')
+        ->orWhere('inv_externo', 'LIKE', '%'.$request->get('query').'%')
+        ->orWhere('serie', 'LIKE', '%'.$request->get('query').'%')
+        ->orWhere('modelo', 'LIKE', '%'.$request->get('query').'%')
+        ->orWhere('ubicacion', 'LIKE', '%'.$request->get('query').'%')
+        ->paginate(20);
+
         return view('articulos.index')->with([
-            // 'articulos' => Articulo::paginate(10),
-            'articulos' => Articulo::articulo($request->get('articulo'))->paginate(10),
+	        //'articulos'=>Articulo::paginate(10),
+            'articulos' => $query,
             'categorias' => Categoria::all(),
             'marcas' => Marca::all(),
             'statuses' => Status::all(),
@@ -80,6 +97,12 @@ class ArticuloController extends Controller
     public function show($id)
     {
         $articulo = Articulo::find($id);
+        if (\Auth::user()->hasRole('admin')){
+        }
+        elseif (\Auth::user()->id != $articulo->usuario_id){
+            
+            return redirect()->route('articulos.index');
+        }
         $categorias = Categoria::all();
         $resguardo = Resguardos_history::where('articulo_id', '=', $id)->first();
         $hResguardo = Resguardos_history::join('resguardos', 'resguardos_histories.resguardo_id', '=' ,'resguardos.id')
@@ -110,6 +133,13 @@ class ArticuloController extends Controller
      */
     public function edit($id)
     { 
+        $articulo = Articulo::find($id);
+        if (\Auth::user()->hasRole('admin')){
+        }
+        elseif (\Auth::user()->id != $articulo->usuario_id){
+            
+            return redirect()->route('articulos.index');
+        }
         return view('articulos.partials.edit')->with([
             'articulo' => Articulo::find($id),
             'categorias' => Categoria::all(),

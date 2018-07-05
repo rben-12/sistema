@@ -26,14 +26,17 @@
       @endif
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <strong>dispositivos en inventario </strong> <a href="{{ route('pdf', 'inventario') }}" target="_blank" class="btn btn-info" type="button">Exportar PDF</a>
-            <form class="navbar-form navbar-left pull-right" role="search" action="{{ route('articulos.index') }}" style="margin: 0;" method="GET">
-              <div class="form-group">
-              <input type="text" name="articulo" class="form-control" placeholder="Buscar en inventario...">
-              </div>
-              <button class="btn btn-info" type="submit">buscar</button>
-            </form>
-          </div>
+          <strong>dispositivos en inventario </strong> 
+          <a href="{{ route('pdf', 'inventario') }}" class="btn btn-info" target="_blank">
+            Exportar PDF
+          </a>
+          <form class="navbar-form navbar-left pull-right" role="search" action="{{ route('articulos.index') }}" style="margin: 0;" method="GET">
+            <div class="form-group">
+            <input type="text" name="query" class="form-control" placeholder="Buscar articulo...">
+            </div>
+            <button class="btn btn-info" type="submit">buscar</button>
+          </form>
+        </div>
 
         <div class="panel-body">
           <p>
@@ -69,23 +72,28 @@
 
             <tbody>
               <!--style="font-size:13px;"-->
+           
+  
               @foreach($articulos as $a)
+              
+              {{-- {{ Auth::user() }} --}}
+              @if (Auth::user()->hasRole('admin'))
               <tr>
                 <td class="m">{{$a->id}}</td>
-                <td class="m">{{$a->categoria->categoria}}</td>
+                <td class="m">{{$a->categoria}}</td>
                 <td class="m">{{$a->descripcion}}</td>
                 <td class="m">{{$a->inv_interno}}</td>
                 <td class="m">{{$a->inv_externo}}</td>
                 <td class="m">{{$a->serie}}</td>
-                <td class="m">{{$a->marca->marca}}</td>
+                <td class="m">{{$a->marca}}</td>
                 <td class="m">{{$a->modelo}}</td>
-                <td class="m">{{$a->status->status}}</td>
+                <td class="m">{{$a->status}}</td>
                 <td class="m">{{$a->ubicacion}}</td>
 
 
                 <td >
-                  {{-- {{ Auth::user() }} --}}
-                  @if (Auth::user()->hasRole('admin'))
+                
+                  
                     <form action="{{route('articulos.destroy', $a->id)}}" method="POST">
                         {{ csrf_field() }}
                         {{method_field('DELETE')}}
@@ -97,7 +105,23 @@
 
                     <a href="{{route('articulos.show', $a->id)}}" class="btn btn-warning btn-xs">
                       <i class='glyphicon glyphicon-eye-open'></i></a>
-                  @elseif(Auth::user()->id == $a->usuario_id)
+                    </td>
+                  
+                  @elseif (Auth::user()->id == $a->usuario_id)
+                  
+                    <td class="m">{{$a->id}}</td>
+                    <td class="m">{{$a->categoria}}</td>
+                    <td class="m">{{$a->descripcion}}</td>
+                    <td class="m">{{$a->inv_interno}}</td>
+                    <td class="m">{{$a->inv_externo}}</td>
+                    <td class="m">{{$a->serie}}</td>
+                    <td class="m">{{$a->marca}}</td>
+                    <td class="m">{{$a->modelo}}</td>
+                    <td class="m">{{$a->status}}</td>
+                    <td class="m">{{$a->ubicacion}}</td>
+    
+    
+                    <td >
                     <form action="{{route('articulos.destroy', $a->id)}}" method="POST">
                         {{ csrf_field() }}
                         {{method_field('DELETE')}}
@@ -108,12 +132,14 @@
 
                     <a href="{{route('articulos.show', $a->id)}}" class="btn btn-warning btn-xs">
                       <i class='glyphicon glyphicon-eye-open'></i></a>
+                    </td>
+                  </tr>
                   @endif
 
                   <!--<a type="link" class="btn btn-info btn-xs pull-right" href="">
                     <i class='glyphicon glyphicon-time'></i></a>-->
-                </td>
-              </tr>
+                
+              
               @endforeach
 
             </tbody>

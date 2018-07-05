@@ -56,8 +56,8 @@ class ResguardoController extends Controller
         $resguardos->departamento_id = Request()->departamento_id;
         $resguardos->descripcion = Request()->descripcion;
         $resguardos->extencion = Request()->extencion;
-        $resguardos->ip_address = Request()->ip_address;
-        $resguardos->mac_address = Request()->mac_address;
+        //$resguardos->ip_address = Request()->ip_address;
+        //$resguardos->mac_address = Request()->mac_address;
         $resguardos->articulo_id = Request()->articulo_id;
         $resguardos->usuario_id = Request()->usuario_id;
         $resguardos->extencion = Request()->extencion;
@@ -169,44 +169,50 @@ class ResguardoController extends Controller
     {
         // dd($id);
         // dd($request);
-        // Resguardo::find($id)->update($request->all());
+        Resguardo::find($id)
+            ->update(['resguardante'=>$request->resguardante,
+                    'puesto'=>$request->puesto,
+                    'departamento_id'=>$request->departamento_id,
+                    'descripcion'=>$request->descripcion,
+                    'estencion'=>$request->extencion
+            ]);
         // $resguardo = new Resguardo();
 
-        $resguardoFind = Resguardo::find($id);
-        // dd($resguardoFind);
-        // $resguardoHFind = Resguardos_history::where('resguardo_id', $resguardoFind->id)->get();
-        // dd($resguardoHFind);
-        $resguardoAr = Articulo::select('id')->where('resguardo_id', '=', $id)->get();
+        // $resguardoFind = Resguardo::find($id);
+        // // dd($resguardoFind);
+        // // $resguardoHFind = Resguardos_history::where('resguardo_id', $resguardoFind->id)->get();
+        // // dd($resguardoHFind);
+        // $resguardoAr = Articulo::select('id')->where('resguardo_id', '=', $id)->get();
 
-        $resguardoFind->descripcion = $request['descripcion'];
-        $resguardoFind->extension = $request['extencion'];
-        $resguardoFind->articulo_id = $request['articulo_id'];
+        // $resguardoFind->descripcion = $request['descripcion'];
+        // $resguardoFind->extension = $request['extencion'];
+        // $resguardoFind->articulo_id = $request['articulo_id'];
 
-        $tags = Request()->input('articulo_id');
-        //dd($tags);
-        $loc = explode(",", $tags);
+        // $tags = Request()->input('articulo_id');
+        // //dd($tags);
+        // $loc = explode(",", $tags);
         
-        // $ids = [];
-        foreach ($resguardoAr as $key) {
-            $ids [] = $key->id;
-        }
-        foreach($loc as $key2){
-            if (in_array($key2, $ids)){
-                echo "existe ".$key2."<br>";
-            }
-            else {
-                //echo "no existe ".$key2."<br>";
-                $update = Articulo::where('id',$key2)->update(['resguardo_id'=>$id]);
-                $update2 = Resguardo::where('id',$id)->update(['articulo_id'=>$tags]);
-            }
-        }
+        // // $ids = [];
+        // foreach ($resguardoAr as $key) {
+        //     $ids [] = $key->id;
+        // }
+        // foreach($loc as $key2){
+        //     if (in_array($key2, $ids)){
+        //         echo "existe ".$key2."<br>";
+        //     }
+        //     else {
+        //         //echo "no existe ".$key2."<br>";
+        //         $update = Articulo::where('id',$key2)->update(['resguardo_id'=>$id]);
+        //         $update2 = Resguardo::where('id',$id)->update(['articulo_id'=>$tags]);
+        //     }
+        // }
         // $resultado = array_diff_assoc($loc, $ids);
         // dd($resultado);
 
         // dd($loc);
 
         
-        // return redirect()->route('resguardos.index')->with('infob', 'El registro fue actualizado exitosamento');
+        return redirect()->route('resguardos.index')->with('infob', 'El registro fue actualizado exitosamento');
     }
 
     /**

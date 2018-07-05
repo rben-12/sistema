@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Articulo extends Model
 {
     protected $table ='articulos';
-    protected $fillable =[
+    protected $fillable = [
         'categoria_id',
         'descripcion',
         'inv_interno', 
@@ -18,7 +18,7 @@ class Articulo extends Model
         'status_id', 
         'ubicacion',
         'usuario_id'   
-];
+    ];
 
    public function status() 
     {
@@ -35,10 +35,10 @@ class Articulo extends Model
         return $this->belongsto(Categoria::class, 'categoria_id', 'id');
     }
 
-    public function resguardos()
+    /*public function resguardos()
     {
-        return $this->hasMany(Resguardo::class, 'articulo_id', 'id');
-    }
+        //return $this->hasMany(Resguardos_history::class, 'articulo_id', 'id');
+    }*/
 
     public function resguardo()
     {
@@ -49,7 +49,7 @@ class Articulo extends Model
     //     return $this->belongsTo(Articulo::class, 'resguardo_id', 'id');
     // }
 
-    public function scopeArticulo($query, $articulo)
+   /* public function scopeArtic($query, $articulo)
     {
         if(trim($articulo))
         return $query->where('categoria_id', 'LIKE', "%$articulo%")
@@ -59,9 +59,5 @@ class Articulo extends Model
         ->orwhere('serie', 'LIKE', "%$articulo%")
         ->orwhere('modelo', 'LIKE', "%$articulo%")
         ->orwhere('ubicacion', 'LIKE', "%$articulo%");
-
-        //return $query->where(\DB::raw("CONCAT(categoria_id, descripcion, inv_interno, inv_externo, serie, modelo)"), 'LIKE', "%$articulo%");
-    }
-
-    
+    }*/
 }

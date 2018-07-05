@@ -185,7 +185,7 @@
                         <u>Ing. Carlos Juarez Ovando</u> <br>
                         Jefe del Depto de soporte a redes <br> y telefonia
                     </td>
-                    <td>
+                   <td>
                         <u>C. Rafael Leon Diaz</u> <br>
                         Jefe del Depto de Inventario
                     </td>

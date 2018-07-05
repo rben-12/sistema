@@ -12,10 +12,10 @@ class DepartamentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         return view('departamentos.index')->with([
-            'departamentos' => Departamento::paginate(5)
+            'departamentos' => Departamento::departamento($request->get('departamento'))->paginate(5)
         ]);
     }
 

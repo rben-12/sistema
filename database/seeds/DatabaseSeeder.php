@@ -19,10 +19,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-        $this->call(RoleTableSeeder::class);
-        $this->call(UserTableSeeder::class);
-        
         Status::create([
             'status' => 'Revisado'
         ]);
@@ -56,8 +52,6 @@ class DatabaseSeeder extends Seeder
         Marca::create([
             'marca' => 'GRANDESTREAM'
         ]); 
-
-
         Asunto::create([
             'asunto' => 'sin internet'
         ]);
@@ -76,6 +70,10 @@ class DatabaseSeeder extends Seeder
         Categoria::create([
             'categoria' => 'SWITCH'
         ]);
+
+        $this->call(RoleTableSeeder::class);
+        $this->call(UserTableSeeder::class);
         $this->call(ArticulosSeeder::class);
+        //$this->call(ArticulosSeeder::class);
     }
 }

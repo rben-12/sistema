@@ -27,7 +27,7 @@
                 
                 <div class="form-group">
                     <label for="">número de resguardo</label>
-                    <input type="text" value="{{$resguardo->n_resguardo}}" class="form-control" name="n_resguardo" required>
+                    <input type="text" value="{{$resguardo->n_resguardo}}" class="form-control" name="n_resguardo" readonly required>
                 </div>
 
                 <div class="form-group">
@@ -58,15 +58,15 @@
                         <input type="text" value="{{$resguardo->extencion}}" class="form-control" name="extencion">
                     </div>
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="">asignar dispositivo</label>
                         {{-- @foreach ($resguardo->articulos as $item)
                             {{ $item->id }},
-                        @endforeach --}}
+                        @endforeach
                         <input type="text" id="skills" data-role="tagsinput" value="{{$resguardo->articulo_id}}" class="form-control" name="articulo_id" placeholder="ingrese el id del dispositivo">
-                        {{-- {{$resguardo->articulos[0]->id}} --}}
-                        {{-- <input type="text" value="{{$resguardo->articulo_id}}" class="form-control" name="articulo_id" placeholder="ingrese el id del dispositivo" required> --}}
-                    </div>
+                        {{$resguardo->articulos[0]->id}}
+                        <input type="text" value="{{$resguardo->articulo_id}}" class="form-control" name="articulo_id" placeholder="ingrese el id del dispositivo" required>
+                    </div> --}}
 
                    <div class="form-group">
                             <label>archivo</label>

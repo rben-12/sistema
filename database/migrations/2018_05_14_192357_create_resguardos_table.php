@@ -21,12 +21,12 @@ class CreateResguardosTable extends Migration
             $table->integer('departamento_id')->unsigned();
             $table->string('descripcion');
             $table->string('extencion')->nullable();
-            $table->string('ip_address')->nullable();
-            $table->string('mac_address')->nullable();
-            $table->string('articulo_id')->nullable();
+            //$table->string('ip_address')->nullable();
+            //$table->string('mac_address')->nullable();
+            //$table->string('articulo_id')->nullable();
             $table->integer('usuario_id')->unsigned();
             $table->string('extension')->nullable();
-            $table->integer('articulo_id')->unsigned();
+            $table->string('articulo_id')->nullable();
             $table->string('archivo')->nullable();
             $table->timestamps();
 
