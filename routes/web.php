@@ -62,3 +62,7 @@ Route::POST('/addArticuloToRes/', 'ResguardoController@addArtRes')
 Route::POST('/deleteArticuloToRes/{id}', 'ResguardoController@deleteArToRes')
     ->name('artDeleteRes.delete')
     ->middleware('auth');
+
+Route::GET('/getLastResguardo', 'ResguardoController@getNoResguardo')
+    ->name('getLastResguardo.get')
+    ->middleware('auth');

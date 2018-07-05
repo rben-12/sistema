@@ -108,6 +108,25 @@
                                 </tr>
                             </tb>
                         </table>
+                        <h4 class="text-center">Historial de resguardos</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>N° resguardo</th>
+                                    <th>Reguardante</th>
+                                    <th>Extension</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($hResguardo as $item)
+                                    <tr>
+                                        <td>{{ $item->n_resguardo }}</td>
+                                        <td>{{ $item->resguardante }}</td>
+                                        <td>{{ $item->extencion }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                         <div class="form-group">
                             <a type="link" class="btn btn-warning pull-right" href="{{route('articulos.index')}}">regresar</a>
                         </div>

@@ -37,17 +37,17 @@ class Articulo extends Model
 
     public function resguardos()
     {
-        return $this->hasMany(Resguardos_history::class, 'articulo_id', 'id');
+        return $this->hasMany(Resguardo::class, 'articulo_id', 'id');
     }
 
     public function resguardo()
     {
         return $this->belongsto(Resguardo::class, 'resguardo_id', 'id');
     }
-    public function articulo()
-    {
-        return $this->belongsTo(Articulo::class, 'resguardo_id', 'id');
-    }
+    // public function articulo()
+    // {
+    //     return $this->belongsTo(Articulo::class, 'resguardo_id', 'id');
+    // }
 
     public function scopeArticulo($query, $articulo)
     {

@@ -24,6 +24,7 @@ class ArticuloController extends Controller
     { 
     //dd($request->get('categoria'));
         return view('articulos.index')->with([
+            // 'articulos' => Articulo::paginate(10),
             'articulos' => Articulo::articulo($request->get('articulo'))->paginate(10),
             'categorias' => Categoria::all(),
             'marcas' => Marca::all(),
@@ -81,6 +82,8 @@ class ArticuloController extends Controller
         $articulo = Articulo::find($id);
         $categorias = Categoria::all();
         $resguardo = Resguardos_history::where('articulo_id', '=', $id)->first();
+        $hResguardo = Resguardos_history::join('resguardos', 'resguardos_histories.resguardo_id', '=' ,'resguardos.id')
+            ->where('resguardos_histories.articulo_id', $id)->get();
         if ($resguardo!=null) {
             $resguardante = Resguardo::where('id', '=', $resguardo->resguardo_id)->first();
         }
@@ -88,7 +91,7 @@ class ArticuloController extends Controller
 
         // dd($resguardo);
 
-        return view('articulos.show', compact('articulo', 'categorias', 'resguardante'));
+        return view('articulos.show', compact('articulo', 'categorias', 'resguardante', 'hResguardo'));
         //dd($articulo);
         // return view('articulos.show')->with([
         //     'articulo' => Articulo::find($id),

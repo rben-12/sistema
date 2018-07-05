@@ -128,6 +128,7 @@ class ResguardoController extends Controller
         // $resguardoShow = Resguardos_history::join('resguardos', 'resguardos.id', '=', 'resguardos_histories.resguardo_id')
         //     ->join('articulos', 'articulos.id', '=', 'resguardos_histories.articulo_id')
         //     ->where('resguardos.n_resguardo', '=', $id)->get();
+        // dd($id);
 
         $resguardoShow = Articulo::where('resguardo_id', '=', $id)->get();
         
@@ -217,13 +218,18 @@ class ResguardoController extends Controller
     public function destroy($id)
     {
         Resguardo::destroy($id);
+        $resGet = Articulo::where('resguardo_id',$id)->update(['resguardo_id'=>'0']);
         return back()->with('info', 'El registro fue eliminano');
     }
 
     public function get(Request $request)
     {
         // return $request->busqueda;
-        $busqueda = Articulo::where('inv_interno', $request->busqueda)->orWhere('inv_externo', $request->busqueda)->get();
+        $busqueda = Articulo::where('inv_interno', $request->busqueda)
+            ->orWhere('inv_externo', $request->busqueda)
+            ->orWhere('serie', $request->busqueda)
+            ->orWhere('modelo', $request->busqueda)
+            ->get();
         if ($busqueda!=null) {
             return response()->json($busqueda);
         }
@@ -235,18 +241,66 @@ class ResguardoController extends Controller
 
     public function addArtRes(Request $request)
     {
-        // return($request->nResguardo);
         $add = Articulo::where('id', $request->id)->update(['resguardo_id'=>$request->nResguardo]);
         $getRes = Resguardo::where('n_resguardo', $request->nResguardo)->first();
-        $artResg = $getRes->articulo_id.','.$request->id;
+        $resguardoShow = Articulo::where('resguardo_id', '=', $getRes->id)->orderBy('id', 'DESC')->limit(1)->first();
+        $artResg = '';
+        if ($getRes->articulo_id!=null) {
+            $artResg = $getRes->articulo_id.','.$request->id;
+        }
+        else{
+            $artResg = $request->id;
+        }
         $updateRes = Resguardo::where('n_resguardo', $request->nResguardo)->update(['articulo_id'=>$artResg]);
         // return ($artResg);
+        $resHistory = new Resguardos_history();
+        $resHistory->articulo_id = $request->id;
+        $resHistory->resguardo_id = $getRes->id;
+        // return $resHistory;
+        $resHistory->save();
+
+        return response()->json($resguardoShow);
     }
 
     public function deleteArToRes($id)
     {
         // return($id);
-        $resGet = Articulo::where('id',$id)->update(['resguardo_id'=>'0']);
+        $artGet = Articulo::find($id);
+        $resetArt = Articulo::where('id',$id)->update(['resguardo_id'=>'0']);
+        $resGet = Resguardo::where('id', $artGet->resguardo_id)->first();
+        $loc = explode(",", $resGet->articulo_id);
+        $clave = array_search($id, $loc);
+        unset($loc[$clave]);
+        $loc2 = implode(",", $loc);
+        // dd($loc2);
+        // var_export($loc);
+        $resetRes = Resguardo::where('id', $artGet->resguardo_id)->update(['articulo_id'=>$loc2]);
         return back()->with('info', 'El registro fue eliminano');
+    }
+
+    public function getNoResguardo()
+    {
+        // return($id);
+        $resNresguardo = Resguardo::orderBy('n_resguardo', 'DESC')->first();
+        $nresguardo = '';
+        // dd ($resNresguardo);
+        $start = '';
+        if ($resNresguardo!=null) {
+            $nresguardo = $resNresguardo->n_resguardo+1;
+            $start = $nresguardo;
+        }
+        else
+        {
+            $start = 1;
+        }
+        $count = 1;
+        $digits = 8;
+        $res = '';
+        for ($n = $start; $n < $start + $count; $n++) {
+           $res = str_pad($n, $digits, "0", STR_PAD_LEFT);
+        }
+        //return $res;
+        return response()->json($res);
+
     }
 }

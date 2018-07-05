@@ -12,7 +12,8 @@
                         <input type="hidden" name="usuario_id" value="{{ Auth::user()->id }}">
                     <div class="form-group">
                         <label for="">numero de resguardo</label>
-                        <input type="text" class="form-control" name="n_resguardo" required>
+                        <input type="text" class="form-control" name="n_resguardo" id="n_resguardo" value="ss" readonly required>
+                        <input type="checkbox" name="" id="n_withDocument"> nuevo con documento
                     </div>
 
                     <div class="form-group">
@@ -44,10 +45,10 @@
                         <input type="text" class="form-control" name="extencion">
                     </div>
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="">asignar dispositivo</label>
                         <input type="text" id="skills" data-role="tagsinput" class="form-control" name="articulo_id" placeholder="ingrese el id del dispositivo">
-                    </div>
+                    </div> --}}
 
                    <div class="form-group">
                             <label>archivo</label>

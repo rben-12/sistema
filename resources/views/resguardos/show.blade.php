@@ -11,7 +11,13 @@
                 </div>
             </div>
             <div class="col-sm-8 col-sm-offset-2">
-                @include('info') 
+                @include('info')
+                <div id="alerta_message" class="alert alert-success" hidden>
+                    Se guardo correctamente
+                    <button type="button" class="close" data-dismiss="alert">
+                        &times;
+                    </button>
+                </div>
                 @include('infob')
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -39,7 +45,7 @@
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="list">
                                 @foreach ($resguardoShow as $item)
                                     <tr>
                                         <td>1</td>
@@ -88,7 +94,6 @@
                             
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-success">Guardar</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>  
                         </div>
                     </div>
@@ -177,14 +182,35 @@
                     url: '{{ route('artAddRes.add') }}',
                     data: data,
                     success:function(data){
-                        // console.log(data);
-                        location.reload();
+                        console.log(data);
+                        addRow(data);
+                        $("#alerta_message").show();
+                        $("#searchToAdd").modal('hide');
+                        window.setTimeout(function(){ 
+                            location.reload();
+                        } ,3000);
                     },
                     error:function(data){
                         console.log('Error: ', data);
                     }
                 })
             });
+            function addRow(data)
+            {
+                var row='<tr>'+
+                            '<td>1</td>'+
+                            '<td>'+data.descripcion+'</td>'+
+                            '<td>'+data.serie+'</td>'+
+                            '<td>'+data.marca+'</td>'+
+                            '<td>'+data.modelo+'</td>'+
+                            '<td>'+data.inv_interno+'</td>'+
+                            '<td>'+
+                                    '<button type="submit" onclick="return confirm("Seguro que desea eliminar")" class="btn btn-danger btn-xs"> <i class="glyphicon glyphicon-trash"></i></button>'+
+                                
+                            '</td>'+
+                        '</tr>';
+                $('#list').append(row);
+            }
         });
     </script>
 @endsection
