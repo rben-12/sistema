@@ -80,9 +80,9 @@ class ArticuloController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'inv_externo' => 'required|unique:articulos',
-            'inv_interno' => 'required|unique:articulos',
-            'serie' => 'required|unique:articulos',
+            'inv_externo' => 'unique:articulos',
+            'inv_interno' => 'unique:articulos',
+            'serie' => 'unique:articulos',
         ]);
         Articulo::create($request->all());
         return redirect()->route('articulos.index')->with('infob', 'El registro fue agregado exitosamento');
