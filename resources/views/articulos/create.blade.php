@@ -27,16 +27,16 @@
                 </div>
                 <div class="form-group">
                     <label for="">Inventario interno</label>
-                    <input type="text" name='inv_interno' class="form-control" required>
+                    <input type="text" name='inv_interno' class="form-control">
                 </div>    
                 <div class="form-group">
                     <label for="">Inventario externo</label>
-                    <input type="text" name='inv_externo' class="form-control" required >
+                    <input type="text" name='inv_externo' class="form-control">
                 </div>
                 
                 <div class="form-group">
                         <label for="">Numero de serie</label>
-                        <input type="text" name='serie' class="form-control" required>
+                        <input type="text" name='serie' class="form-control">
                     </div>
     
                 <div class="form-group">
@@ -75,7 +75,7 @@
             
                 <div class="form-group">
                     <label for="comment">Ubicación</label>
-                    <textarea class="form-control" name='ubicacion' rows="3" ></textarea>
+                    <textarea class="form-control" name='ubicacion' rows="3" required></textarea>
                 </div> 
 
             <div class="modal-footer">

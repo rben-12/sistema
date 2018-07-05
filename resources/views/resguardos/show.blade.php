@@ -36,7 +36,8 @@
                         <table class="table tc table-striped table-bordered table-hover table-condensed table-responsive">
                             <thead>
                                 <tr>
-                                    <th class="text-center">Cant</th>
+                                    <th class="text-center">Id</th>
+                                    <th class="text-center">Categoria</th>
                                     <th class="text-center">Descripcion</th>
                                     <th class="text-center">Serie</th>
                                     <th class="text-center">Marca</th>
@@ -49,7 +50,8 @@
                             <tbody id="list">
                                 @foreach ($resguardoShow as $item)
                                     <tr>
-                                        <td>1</td>
+                                        <td>{{ $item->id }}</td>
+                                        <td class="m">{{ $item->categoria->categoria }}</td>
                                         <td class="m">{{ $item->descripcion }}</td>
                                         <td class="m">{{ $item->serie }}</td>
                                         <td class="m">{{ $item->marca->marca }}</td>
