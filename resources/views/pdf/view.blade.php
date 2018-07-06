@@ -24,7 +24,7 @@
         min-height: 100%;
         }
         body {
-        /* Margin bottom by footer height */
+        /* Margin bottom by footer height*/
         margin-bottom: 60px;
         }
         .footer {
@@ -53,39 +53,62 @@
         .m{
         text-transform: uppercase;
         }
-        .tc{
-        text-align: center; 
+        .left {
+        float: left !important;
+        }
+        .right {
+        float: right !important;
+        }
+        .cen {
+        float: center ;
+        }
+        .border {
+        border-top-width: thin;
+        border-bottom-width: thin;
+        border-right-width: thin;
+        border-left-width: thin;
         }
     </style>
 </head>
 
 <body>
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-2 left">
             <img src="{{ public_path().$image }}" alt="Logo" height="75px">
         </div>
-        <div class="center col-md-4">
-            <h1 style="font-size:30px;">Secretaria de Planeacion y Finanzas <br> Direccion de Informatica <br> Reporte de Bienes</h1>
+        <div class="col-md-4 center cen">
+            <h1 style="font-size:30px; margin: 0px; ">
+                Secretaria de Planeacion y Finanzas <br> Direccion de Informatica <br> 
+                @if ($tipos == 'incidencias')
+                    Reporte de Incidencias
+                @elseif($tipos=='inventario')
+                    Reporte de Inventario
+                @elseif($tipos=='resguardo')
+                    Resguardos
+                @elseif($tipos=='resguardo_h')
+                    Resguardo
+                @endif
+            </h1>
         </div>
     </div>
-    <table class="table">
-        <tr>
-            <td>
+    <!--<table class="table">
+        <tr>-->
+        <div class="row" style="margin: 10px; font-size:15px;">
+            <div class="left">
                 Usuario: {{ Auth::user()->name }} <br>
                 @if($tipos=='resguardo_h')
-                    Resguardante: {{ $resguardante->resguardante }}
+                   Resguardante: {{ $resguardante->resguardante }}
                 @endif
-            </td>
-            <td>
+            </div>
+            <div class="right">
                 Fecha: {{$ldate = date('d-m-Y')}} <br>
                 @if($tipos=='resguardo_h')
                     N° de Resguardo: {{ $id }}
                 @endif
-            </td>
-        </tr>
-    </table>
-    {{-- <table class="table tc table-striped table-bordered table-hover table-condensed table-responsive"> --}}
-    <table class="table tc table-striped table-bordered table-hover table-condensed table-responsive">
+            </div>
+        </div>
+    {{-- <table class="table center table-striped table-bordered table-hover table-condensed table-responsive"> --}}
+    <table class="table center table-striped table-bordered table-hover table-condensed table-responsive">
         <thead>
             <tr>
                 @if ($tipos == 'incidencias')
@@ -97,7 +120,7 @@
                     <th class="text-center">Fecha Y Hora</th>
 
                 @elseif($tipos=='inventario')
-                    <th class=" text-center">categoria</th>
+                    <th class=" text-center">Categoria</th>
                     <th class=" text-center">Descripción</th>
                     <th class=" text-center">Inventario Interno</th>
                     <th class=" text-center">Inventario Externo</th>
@@ -166,29 +189,29 @@
         <footer class="footer">
             <table>
                 <tr>
-                    <td>
+                    <td class="left">
                         Resguardante <br> &nbsp;
                     </td>
-                    <td>
+                    <td class="right">
                         Autorizó <br> &nbsp;
                     </td>
-                    <td>
+                    <!--<td>
                         Autorizó <br> &nbsp;
-                    </td>
+                    </td>-->
                 </tr>
                 <tr>
-                    <td>
+                    <td class="left">
                         <u>{{ $resguardante->resguardante }}</u> <br>
                         Nombre y firma
                     </td>
-                    <td>
-                        <u>Ing. Carlos Juarez Ovando</u> <br>
+                    <td class="right">
+                        <u>{{ Auth::user()->name }}</u> <br>
                         Jefe del Depto de soporte a redes <br> y telefonia
                     </td>
-                   <td>
+                  <!-- <td>
                         <u>C. Rafael Leon Diaz</u> <br>
                         Jefe del Depto de Inventario
-                    </td>
+                    </td> -->
                 </tr>
             </table>
         </footer>

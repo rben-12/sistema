@@ -55,6 +55,13 @@ tbody{
     text-align: center; 
 }
 .carousel .item > img {
-     display: inline-block; 
+     display: inline-block;
 }
-
+.left {
+    float: left !important;
+}
+.right {
+    float: right !important;
+}
+  
+  

@@ -32,13 +32,13 @@ class ArticuloController extends Controller
         ->where('descripcion', 'LIKE', '%'.$request->get('query').'%')
         ->orWhere('marca', 'LIKE', '%'.$request->get('query').'%')
         ->orWhere('categoria', 'LIKE', '%'.$request->get('query').'%')
-        ->orWhere('status', 'LIKE', '%'.$request->get('query').'%')
+        ->orWhere('status', 'LIKE', $request->get('query').'%')
         ->orWhere('inv_interno', 'LIKE', '%'.$request->get('query').'%')
         ->orWhere('inv_externo', 'LIKE', '%'.$request->get('query').'%')
         ->orWhere('serie', 'LIKE', '%'.$request->get('query').'%')
         ->orWhere('modelo', 'LIKE', '%'.$request->get('query').'%')
         ->orWhere('ubicacion', 'LIKE', '%'.$request->get('query').'%')
-        ->paginate(20);
+        ->paginate(10);
 
         return view('articulos.index')->with([
 	        //'articulos'=>Articulo::paginate(10),
