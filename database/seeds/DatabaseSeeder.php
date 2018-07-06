@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             'status' => 'No Revisado'
         ]);
         Status::create([
-            'status' => 'En Stock'
+            'status' => 'Stock'
         ]);
         Status::create([
             'status' => 'Prestamo'
