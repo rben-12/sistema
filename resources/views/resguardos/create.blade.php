@@ -50,10 +50,17 @@
                         <input type="text" id="skills" data-role="tagsinput" class="form-control" name="articulo_id" placeholder="ingrese el id del dispositivo">
                     </div> --}}
 
-                   <div class="form-group">
-                            <label>archivo</label>
-                            <input type="file" class="form-control" name="archivo" enctype="multipart/form-data">
-                    </div> 
+                    <div class="form-group">
+                            <label>adjunto</label>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                                    <i class="glyphicon glyphicon-file"></i> Cargar
+                                    </a>
+                                </span>
+                                <input id="thumbnail" class="form-control" type="text" name="url">
+                            </div>
+                    </div>
 
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success">Guardar</button>

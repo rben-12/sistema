@@ -36,10 +36,12 @@
                     <li>
                         <a href="{{route('articulos.index')}}">inventario</a>
                     </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="{{route('resguardos.index')}}">Resguardo</a>
-                    </li>
+                    @if (Auth::user()->hasRole('admin'))
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{route('resguardos.index')}}">Resguardo</a>
+                        </li>
+                    @endif
                 </ul> 
             </li>
 
@@ -48,34 +50,35 @@
                     <i class="glyphicon glyphicon-file"></i>
                 </a>
             </li>
-
-            <li class="nav-item dropdown" role="menu">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Catalogos
-                    <i class="glyphicon glyphicon-list"></i>
-                    <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                    <li>
-                        <a href="{{route('marcas.index')}}">Marcas</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="{{route('departamentos.index')}}">departamentos</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">Something else here</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">Separated link</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">One more separated link</a>
-                    </li>
-                </ul>
-            </li>
+            @if (Auth::user()->hasRole('admin'))
+                <li class="nav-item dropdown" role="menu">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Catalogos
+                        <i class="glyphicon glyphicon-list"></i>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="{{route('marcas.index')}}">Marcas</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{route('departamentos.index')}}">departamentos</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">Something else here</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">Separated link</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">One more separated link</a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
         </ul>
         <ul class="nav navbar-nav">
             &nbsp;

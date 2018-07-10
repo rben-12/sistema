@@ -68,9 +68,16 @@
                         <input type="text" value="{{$resguardo->articulo_id}}" class="form-control" name="articulo_id" placeholder="ingrese el id del dispositivo" required>
                     </div> --}}
 
-                   <div class="form-group">
-                            <label>archivo</label>
-                            <input type="file" value="$reguardo->archivo" class="form-control" name="archivo" enctype="multipart/form-data">
+                    <div class="form-group">
+                            <label>adjunto</label>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                                    <i class="glyphicon glyphicon-file"></i> Cargar
+                                    </a>
+                                </span>
+                                <input id="thumbnail" class="form-control" type="text" name="url">
+                            </div>
                     </div> 
     
                 <div class="form-group">

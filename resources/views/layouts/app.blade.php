@@ -49,12 +49,14 @@
     <script src="{{ asset('js/app.js') }}"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script> --}}
     <script src="{{ asset('bootstrap/js/bootstrap-tagsinput.js') }}"></script>
+    <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
     <script>
         $( document ).ready(function() {
             $('#skills').tagsinput({
             confirmKeys: [13, 44]  
             });
         });
+        $('#lfm').filemanager('file');
     </script>
     <script>
         $.ajaxSetup({

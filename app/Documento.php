@@ -11,7 +11,7 @@ class Documento extends Model
         'folio',
         'descripcion',
         'tipo_id',
-        'fecha_docs',
+        'fecha_doc',
         'url'
     ];
 

@@ -19,7 +19,7 @@
 
     <div class="panel-body">
       
-      <table  class="table  table-striped table-bordered table-hover table-condensed table-responsive">
+      <table  class="table text-center table-striped table-bordered table-hover table-condensed table-responsive">
           
        <thead>
               <tr>
@@ -29,8 +29,7 @@
                   <th class=" text-center">Tipo</th>
                   <th class="text-center">fecha docs</th>
                   <th class=" text-center">Archivo</th>
-
-                  <th></th>
+                  <th class=" text-center">Tipo de archivo</th>
               </tr>
             </thead> 
            
@@ -43,11 +42,21 @@
                   <td class="m">{{$doc->descripcion}}</td>
                   <td class="m">{{$doc->tipo->tipo}}</td>
                   <td class="m">{{$doc->fecha_doc}}</td>
-                  <td class="m">{{$doc->url}}</td>
-                  
-                  
+                  <td class="m">
+                    <a href="{{$doc->url}}" target="_blank">
+                      @if (pathinfo($doc->url, PATHINFO_EXTENSION) == 'pdf')
+                        Ver <img src="{{ asset('img/iconPdf.ico') }}" alt="">
+                      @elseif(pathinfo($doc->url, PATHINFO_EXTENSION) == 'docx')
+                        Ver <img src="{{ asset('img/iconFileWord.ico') }}" alt="">
+                      @elseif(pathinfo($doc->url, PATHINFO_EXTENSION) == 'xlsx')
+                        Ver <img src="{{ asset('img/iconFileExcel.png') }}" alt="">
+                      @elseif(pathinfo($doc->url, PATHINFO_EXTENSION) == 'jpg' || pathinfo($doc->url, PATHINFO_EXTENSION) == 'png' || pathinfo($doc->url, PATHINFO_EXTENSION) == 'jpeg')
+                        Ver <img src="{{ asset('img/iconFile.png') }}" alt="">
+                      @endif
+                    </a>
+                  </td>
                   <td>
-                    
+                      {{ pathinfo($doc->url, PATHINFO_EXTENSION) }}
                   </td>
         </tr>
             @endforeach

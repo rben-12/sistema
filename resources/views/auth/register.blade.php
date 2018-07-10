@@ -6,16 +6,18 @@
             <div class="alert alt">
                 <a href="{{ url('home') }}" class="btn btn-success pull-right" ><i class="glyphicon glyphicon-home"></i></a>
                 <h4>
-                    <strong class="l">Registrate</strong>
+                    <strong class="l">Registro de usuario</strong>
                 </h4>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
+            @include('infob')
+            @include('info')
             <div class="panel panel-primary">
                 <div class="panel-heading"><strong>nuevo usuario</strong></div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('register.post') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -71,7 +73,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-success">
-                                    Registrarse
+                                    Guardar
                                 </button>
                             </div>
                         </div>

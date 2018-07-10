@@ -6,7 +6,7 @@
                 <h4>Agregar nuevo documento</h4>    
             </div>
             <div class="modal-body">
-                <form action="{{route('documentos.store')}}" >
+                <form action="{{ route('documentos.store') }}" method="POST">
                     
                     {{csrf_field()}}
                     
@@ -31,13 +31,21 @@
 
                     <div class="form-group">
                         <label for="">fecha del documento</label>
-                        <input type="date" class="form-control"  name="fecha_docs">
+                        <input type="date" class="form-control"  name="fecha_doc">
                     </div>
 
                     <div class="form-group">
                             <label>adjunto</label>
-                            <input type="file" class="form-control" name="url" enctype="multipart/form-data">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                                    <i class="glyphicon glyphicon-file"></i> Cargar
+                                    </a>
+                                </span>
+                                <input id="thumbnail" class="form-control" type="text" name="url">
+                            </div>
                     </div>
+                        {{-- <img id="holder" style="margin-top:15px;max-height:100px;"> --}}
 
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success">Guardar</button>
