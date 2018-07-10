@@ -109,12 +109,13 @@
                             </tb>
                         </table>
                         <h4 class="text-center">Historial de resguardos</h4>
-                        <table class="table">
+                        <table class="table tc table-responsive table-hover table-bordered table-condensed table-striped">
                             <thead class="m">
                                 <tr>
-                                    <th class="t1">N° resguardo</th>
-                                    <th class="t1">Reguardante</th>
-                                    <th class="t1">Extension</th>
+                                    <th class="text-center t1">N° resguardo</th>
+                                    <th class="text-center t1">Reguardante</th>
+                                    <th class="text-center t1">Descrición</th>
+                                    <th class="text-center t1">Fecha</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -122,7 +123,8 @@
                                     <tr>
                                         <td>{{ $item->n_resguardo }}</td>
                                         <td>{{ $item->resguardante }}</td>
-                                        <td>{{ $item->extencion }}</td>
+                                        <td>{{ $item->descripcion }}</td>
+                                        <td>{{ $item->created_at }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

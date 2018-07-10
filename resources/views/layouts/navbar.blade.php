@@ -85,16 +85,24 @@
         <!-- Right Side Of Navbar -->
         <ul class="nav navbar-nav navbar-right">
             <!-- Authentication Links -->
+            @if (Auth::user()->hasRole('admin'))
+            <li class="nav-item">
+                <a href="{{ route('register') }}" class="nav-link">Registrate
+                    <i class="glyphicon glyphicon-plus"></i>
+                </a>
+            </li>
+            @endif
+            
             @if (Auth::guest())
             <li class="nav-item">
                 <a href="{{ route('login') }}" class="nav-link">Ingresar
                     <i class="glyphicon glyphicon-user"></i>
                 </a>
             </li>
-            <li class="nav-item">
+           <!-- <li class="nav-item">
                 <a href="{{ route('register') }}" class="nav-link">Registrate
                     <i class="glyphicon glyphicon-plus"></i>
-                </a>
+                </a> -->
             </li>
             @else
             <li class="dropdown">
