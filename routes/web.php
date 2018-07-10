@@ -66,3 +66,11 @@ Route::POST('/deleteArticuloToRes/{id}', 'ResguardoController@deleteArToRes')
 Route::GET('/getLastResguardo', 'ResguardoController@getNoResguardo')
     ->name('getLastResguardo.get')
     ->middleware('auth');
+
+Route::GET('/register', 'Auth\RegisterController@create')
+    ->name('register.get')
+    ->middleware('auth');
+
+Route::POST('/register', 'Auth\RegisterController@store')
+    ->name('register.post')
+    ->middleware('auth');
