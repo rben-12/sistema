@@ -10,7 +10,7 @@
                 </div>
                 <div class="modal-body">
     
-        <form action="{{route('articulos.store')}}" method="post">
+        <form action="{{route('articulos.store')}}" method="POST">
                 {{csrf_field()}}
             <input type="hidden" name="usuario_id" value="{{ Auth::user()->id }}">
                 <div class="form-group">

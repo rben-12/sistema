@@ -17,18 +17,23 @@
         </div>
             <div class="panel-body">
     
-                {!! Form::open(['route' => ['marcas.update', $marcas, '_method'=>'PUT']]) !!}
+                <form action="{{route('marcas.update', $marcas)}}" method="post">
+                    {{csrf_field()}}
+                    {{method_field('PUT')}}
                         
 
                     <div class="form-group">
                         <label for="">marca</label>
                         <input value="{{$marcas->marca}}" type="text" class="form-control" name="marca">
                     </div>
+
+                    <div class="form-group">
+                        <a type="link" class="btn btn-danger pull-right" href="{{route('marcas.index')}}">Cancelar</a>
+                    </div>
                         
                     <div class="form-group">
-                        {!! Form::submit('Guardar', ['class'=>'btn btn-success']) !!}
+                        <button type="submit" class="btn btn-success pull-right">Guardar</button>
                     </div>
-                {!! Form::close() !!}
                    
                 
             </div>

@@ -36,7 +36,7 @@
                     <table class="table tc  table-striped table-bordered table-hover table-condensed table-responsive">
                         <thead>
                             <tr>
-                                <th class="text-center">#</th>
+                                <th class="text-center">Id</th>
                                 <th class="text-center">Num. resguardo</th>
                                 <th class="text-center">resguardante</th>
                                 <th class="text-center">puesto</th>

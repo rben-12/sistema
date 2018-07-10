@@ -76,17 +76,18 @@
                                     <i class="glyphicon glyphicon-file"></i> Cargar
                                     </a>
                                 </span>
-                                <input id="thumbnail" class="form-control" type="text" name="url">
+                                <input id="thumbnail" class="form-control" type="text" name="url" value="{{ $reguardo->archivo }}">
                             </div>
                     </div> 
     
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success pull-right">Guardar</button>
+                    <a type="link" class="btn btn-danger pull-right" href="{{route('resguardos.index')}}">Cancelar</a>
                 </div>
                 
                 <div class="form-group">
-                    <a type="link" class="btn btn-danger pull-right" href="{{route('resguardos.index')}}">Cancelar</a>
+                    <button type="submit" class="btn btn-success pull-right">Guardar</button>
                 </div>
+            
             </form>
         </div>
     </div>

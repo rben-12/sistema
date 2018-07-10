@@ -64,7 +64,7 @@
 
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success">Guardar</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>  
+                        <a href="{{route('resguardos.index')}}" class="btn btn-danger" >Cancelar</a>  
                     </div>
 
                 </form>    

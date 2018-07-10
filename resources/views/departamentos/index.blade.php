@@ -30,13 +30,13 @@
                 páginas {{$departamentos->currentPage()}} 
                 de {{$departamentos->lastPage()}}
             </p>
-        <table class="table tc table-bordered table-striped table-hover table-responsive">
+        <table class="table tc table-bordered table-striped table-hover table-condensed table-responsive">
             <thead>
                 <tr>
                     <th class="text-center">Departamento</th>
                     <th class="text-center">vlan</th>
                     <th class="text-center">Fecha y Hora</th>
-                    <th>acciones</th>
+                    <th></th>
                 </tr>
             </thead>    
             <tb>
@@ -50,10 +50,10 @@
                         <form action="{{route('departamentos.destroy', $d->id)}}" method="POST">
                             {{ csrf_field() }}
                             {{method_field('DELETE')}}
-                            <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs"> <i class='glyphicon glyphicon-trash'></i></button>
+                            <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs right"> <i class='glyphicon glyphicon-trash'></i></button>
                         </form>
       
-                        <a href="{{route('departamentos.edit', $d->id)}}" class="btn btn-success btn-xs">
+                        <a href="{{route('departamentos.edit', $d->id)}}"  class="btn btn-success btn-xs right">
                           <i class='glyphicon glyphicon-edit'></i></a>
                       </td>
                 </tr>
