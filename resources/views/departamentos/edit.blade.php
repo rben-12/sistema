@@ -29,7 +29,10 @@
                     <input value="{{$departamento->vlan}}" type="text" class="form-control" name="vlan">
                 </div>
                         
-                
+            <div class="form-group">
+            <a type="link" class="btn btn-danger pull-right" href="{{route('departamentos.index')}}">Cancelar</a>
+            </div>
+
             <div class="form-group">
                 <button type="submit" class="btn btn-success pull-right">Guardar</button>
             </div>

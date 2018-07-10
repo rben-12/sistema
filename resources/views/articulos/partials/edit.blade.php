@@ -85,12 +85,13 @@
         </div>
 
         <div class="form-group">
+            <a type="link" class="btn btn-danger pull-right" href="{{route('articulos.index')}}">Cancelar</a>
+        </div>
+
+        <div class="form-group">
             <button type="submit" class="btn btn-success pull-right">Guardar</button>
         </div>
-        
-        <div class="form-group">
-             <a type="link" class="btn btn-danger pull-right" href="{{route('articulos.index')}}">Cancelar</a>
-        </div>
+
     </form>
     </div>
     </div>

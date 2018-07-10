@@ -110,11 +110,11 @@
                         </table>
                         <h4 class="text-center">Historial de resguardos</h4>
                         <table class="table">
-                            <thead>
+                            <thead class="m">
                                 <tr>
-                                    <th>N° resguardo</th>
-                                    <th>Reguardante</th>
-                                    <th>Extension</th>
+                                    <th class="t1">N° resguardo</th>
+                                    <th class="t1">Reguardante</th>
+                                    <th class="t1">Extension</th>
                                 </tr>
                             </thead>
                             <tbody>

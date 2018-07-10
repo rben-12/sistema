@@ -69,6 +69,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="form-group">
+                            <a type="link" class="btn btn-warning pull-right" href="{{route('resguardos.index')}}">regresar</a>
+                        </div>
                     </div>
                 </div>
             </div>

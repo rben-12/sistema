@@ -31,12 +31,12 @@
                 páginas {{$marcas->currentPage()}} 
                 de {{$marcas->lastPage()}}
             </p>
-        <table class="table tc table-bordered table-striped table-hover table-responsive">
+        <table class="table tc table-bordered table-striped table-condensed table-hover table-responsive">
             <thead>
                 <tr>
                     <th class="text-center">Marcas</th>
                     <th class="text-center">Fecha y Hora</th>
-                    <th class="text-center">acciones</th>
+                    <th class="text-center"></th>
                 </tr>
             </thead>    
             <tb>
@@ -48,10 +48,10 @@
                     <form action="{{route('marcas.destroy', $m->id)}}" method="POST">
                       {{ csrf_field() }}
                       {{method_field('DELETE')}}
-                      <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs"> <i class='glyphicon glyphicon-trash'></i></button>
+                      <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs right"> <i class='glyphicon glyphicon-trash'></i></button>
                     </form>
                         <form action="{{route('marcas.edit', $m->id)}}" method="GET">
-                        <button type="submit" class="btn btn-success btn-xs"> <i class='glyphicon glyphicon-edit'></i></button>
+                        <button type="submit" class="btn btn-success btn-xs right"> <i class='glyphicon glyphicon-edit'></i></button>
                       </form>
                     </td>
                 </tr>
