@@ -61,6 +61,7 @@ class ResguardoController extends Controller
         $resguardos->articulo_id = Request()->articulo_id;
         $resguardos->usuario_id = Request()->usuario_id;
         $resguardos->extencion = Request()->extencion;
+        $resguardos->archivo = Request()->url;
 
 
         
@@ -174,7 +175,8 @@ class ResguardoController extends Controller
                     'puesto'=>$request->puesto,
                     'departamento_id'=>$request->departamento_id,
                     'descripcion'=>$request->descripcion,
-                    'estencion'=>$request->extencion
+                    'estencion'=>$request->extencion,
+                    'archivo' => $request->url
             ]);
         // $resguardo = new Resguardo();
 

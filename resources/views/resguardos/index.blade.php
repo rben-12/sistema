@@ -42,11 +42,8 @@
                                 <th class="text-center">puesto</th>
                                 <th class="text-center">departamento</th>
                                 <th class="text-center">descripcion</th>
-                                {{-- <th class="text-center">id asignado</th> --}}
-                                {{-- <th class="text-center">inventario interno</th> --}}
-                                <!--<th class="text-center">descripcion</th>-->
                                 <th class="text-center">id dispositivos</th>
-                                
+                                <th class="text-center">documento</th>
                                 <th>acciones</th>
                             </tr>
                         </thead>    
@@ -59,10 +56,20 @@
                                 <td class="m">{{$r->puesto}}</td>
                                 <td class="m">{{$r->departamento->departamento}}</td>
                                 <td class="m">{{$r->descripcion}}</td>
-                                {{-- <td class="m">{{$r->articulo->id}}</td> --}}
-                                {{-- <td class="m">{{$r->articulo->inv_interno}}</td> --}}
-                                {{-- <!--<td class="m">{{$r->descripcion}}</td>--> --}}
                                 <td class="m">{{$r->articulo_id}}</td>
+                                <td class="m">
+                                    <a href="{{$r->archivo}}" target="_blank">
+                                        @if (pathinfo($r->archivo, PATHINFO_EXTENSION) == 'pdf')
+                                            Ver <img src="{{ asset('img/iconPdf.ico') }}" alt="">
+                                        @elseif(pathinfo($r->archivo, PATHINFO_EXTENSION) == 'docx')
+                                            Ver <img src="{{ asset('img/iconFileWord.ico') }}" alt="">
+                                        @elseif(pathinfo($r->archivo, PATHINFO_EXTENSION) == 'xlsx')
+                                            Ver <img src="{{ asset('img/iconFileExcel.png') }}" alt="">
+                                        @elseif(pathinfo($r->archivo, PATHINFO_EXTENSION) == 'jpg' || pathinfo($r->archivo, PATHINFO_EXTENSION) == 'png' || pathinfo($r->archivo, PATHINFO_EXTENSION) == 'jpeg')
+                                            Ver <img src="{{ asset('img/iconFile.png') }}" alt="">
+                                        @endif
+                                    </a>
+                                </td>
                                 <td>
                                     @if (Auth::user()->hasRole('admin'))
                                         <form action="{{route('resguardos.destroy', $r->id)}}" method="POST">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\User;
 use App\Role;
 use App\Http\Controllers\Controller;
@@ -84,33 +85,34 @@ class RegisterController extends Controller
         // ]);
         // $role = Role::where('name', 'user')->first();
         // $user->roles()->attach($role);
+        $roles = Role::get();
         if (\Auth::user()->hasRole('admin')){
-            return view('auth.register');
+            return view('auth.register',  compact('roles'));
         }
         else{
             return redirect()->route('home');
         }
     }
 
-    protected function store()
+    protected function store(Request $request)
     {
-        // $user = User::create([
-        //     'name' => $data['name'],
-        //     'email' => $data['email'],
-        //     'password' => bcrypt($data['password']),
-        // ]);
-        // $role = Role::where('name', 'user')->first();
-        // $user->roles()->attach($role);
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'rol' => 'required|not_in:0',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
         $user = new User();
-        $user->name=Request()->name;
-        $user->email=Request()->email;
-        $user->password= bcrypt(Request()->password);
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password= bcrypt($request->password);
         // obtenemos con el metodo request los datos enviador desde el form
 //        $user -> fill(request()->all());
         // obtenemos el rol asignado en el form
-        $roles = request()->all();
+        //$roles = request()->all();
         // obtenemos el role de la base de datos
-        $role = Role::where('name', 'user')->first();
+        $role = Role::where('name', $request->role)->first();
         // se guarda el usuario
 //        $user->password = bcrypt(Request()->password);
 //        $user->password = Hash::make(Request()->password);
