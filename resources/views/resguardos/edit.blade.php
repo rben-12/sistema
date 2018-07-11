@@ -76,7 +76,7 @@
                                     <i class="glyphicon glyphicon-file"></i> Cargar
                                     </a>
                                 </span>
-                                <input id="thumbnail" class="form-control" type="text" name="url" value="{{ $reguardo->archivo }}">
+                                <input id="thumbnail" class="form-control" type="text" name="url" value="{{ $resguardo->archivo }}">
                             </div>
                     </div> 
     

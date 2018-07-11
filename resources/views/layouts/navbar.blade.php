@@ -90,7 +90,11 @@
             <!-- Authentication Links -->
             @if (Auth::user()->hasRole('admin'))
             <li class="nav-item">
+<<<<<<< HEAD
                 <a href="{{ route('register.get') }}" class="nav-link">Registrate
+=======
+                <a href="{{ route('register.get') }}" class="nav-link">Registrar
+>>>>>>> 4cc50781e3e720c0721a79433630823f29eaae0f
                     <i class="glyphicon glyphicon-plus"></i>
                 </a>
             </li>

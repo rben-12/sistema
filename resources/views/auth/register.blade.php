@@ -47,6 +47,23 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group{{ $errors->has('rol') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">Rol de usuario</label>
+
+                            <div class="col-md-6">
+                                <select name="rol" class="form-control" required>
+                                    <option value="0">Seleccione una opcion</option>
+                                    @foreach($roles as $m)
+                                        <option value="{{$m->id}}">{{$m->name}}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('rol'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('rol') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
@@ -63,7 +80,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirma tu Password</label>
+                            <label for="password-confirm" class="col-md-4 control-label">Confirmar Password</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>

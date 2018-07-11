@@ -27,7 +27,17 @@
       <div class="panel panel-primary">
         <div class="panel-heading">
           <strong>dispositivos en inventario </strong> 
-          <a href="{{ route('pdf', 'inventario') }}" class="btn btn-info" target="_blank">
+          @php
+            $buscado;
+            $ruta = 'pdf_search';
+          @endphp
+          @if ($buscado == null)
+              @php
+                  $buscado = 'inventario';
+                  $ruta = 'pdf';
+              @endphp
+          @endif
+          <a href="{{ route($ruta, $buscado) }}" class="btn btn-info" target="_blank">
             Exportar PDF
           </a>
           <form class="navbar-form navbar-left pull-right" role="search" action="{{ route('articulos.index') }}" style="margin: 0;" method="GET">

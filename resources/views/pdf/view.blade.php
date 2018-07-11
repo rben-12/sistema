@@ -129,6 +129,16 @@
                     <th class=" text-center">Modelo</th>
                     <th class=" text-center">Status</th>
                     <th class=" text-center">Ubicación</th>
+                @elseif($tipos=='inventario_search')
+                    <th class=" text-center">Categoria</th>
+                    <th class=" text-center">Descripción</th>
+                    <th class=" text-center">Inventario Interno</th>
+                    <th class=" text-center">Inventario Externo</th>
+                    <th class=" text-center">Serie</th>
+                    <th class=" text-center">Marca</th>
+                    <th class=" text-center">Modelo</th>
+                    <th class=" text-center">Status</th>
+                    <th class=" text-center">Ubicación</th>
                 @elseif($tipos=='resguardo')
                     <th class="text-center">Num. resguardo</th>
                     <th class="text-center">Resguardante</th>
@@ -166,6 +176,16 @@
                     <td class="m">{{$a->modelo}}</td>
                     <td class="m">{{$a->status->status}}</td>
                     <td class="m">{{$a->ubicacion}}</td>
+                @elseif($tipos=='inventario_search')
+                    <td class="m">{{$a->categoria}}</td>
+                    <td class="m">{{$a->descripcion}}</td>
+                    <td class="m">{{$a->inv_interno}}</td>
+                    <td class="m">{{$a->inv_externo}}</td>
+                    <td class="m">{{$a->serie}}</td>
+                    <td class="m">{{$a->marca}}</td>
+                    <td class="m">{{$a->modelo}}</td>
+                    <td class="m">{{$a->status}}</td>
+                    <td class="m">{{$a->ubicacion}}</td>
                 @elseif($tipos=='resguardo')
                     <td class="m">{{$a->n_resguardo}}</td>
                     <td class="m">{{$a->resguardante}}</td>
@@ -187,31 +207,34 @@
     </table>
     @if ($tipos=='resguardo_h')
         <footer class="footer">
-            <table>
+            <table class="center">
                 <tr>
-                    <td class="left">
-                        Resguardante <br> &nbsp;
+                    <td width="250">
+                        <strong>Resguardante</strong>
                     </td>
-                    <td class="right">
-                        Autorizó <br> &nbsp;
+                    <td width="250">
+                        <strong>Autorizó</strong>
                     </td>
-                    <!--<td>
-                        Autorizó <br> &nbsp;
-                    </td>-->
                 </tr>
                 <tr>
-                    <td class="left">
-                        <u>{{ $resguardante->resguardante }}</u> <br>
-                        Nombre y firma
+                    <td>&nbsp;</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <u>{{ $resguardante->resguardante }}</u>
                     </td>
-                    <td class="right">
-                        <u>{{ Auth::user()->name }}</u> <br>
-                        Jefe del Depto de soporte a redes <br> y telefonia
+                    <td>
+                        <u>{{ Auth::user()->name }}</u>
                     </td>
-                  <!-- <td>
-                        <u>C. Rafael Leon Diaz</u> <br>
-                        Jefe del Depto de Inventario
-                    </td> -->
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Nombre y firma</strong>
+                    </td>
+                    <td>
+                        <strong>Jefe del Depto de soporte a redes <br> y telefonia</strong>
+                    </td>
                 </tr>
             </table>
         </footer>
