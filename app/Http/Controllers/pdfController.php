@@ -11,6 +11,7 @@ use App\Resguardos_history;
 use PDF;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use DB;
 
 class pdfController extends Controller
 {
@@ -115,19 +116,13 @@ class pdfController extends Controller
     {
         $image = '/img/SPF.png';
         $data = Articulo::where('resguardo_id', '=', $id)->get();
-        
-        // $resguardante = Resguardo::where('n_resguardo', '=', $id)->first();
-        
-        // $data = Resguardos_history::join('resguardos', 'resguardos.id', '=', 'resguardos_histories.resguardo_id')
-        // ->join('articulos', 'articulos.id', '=', 'resguardos_histories.articulo_id')
-        // ->where('resguardos.n_resguardo', '=', $id)->get();
     
         $resguardante = Resguardo::where('n_resguardo', '=', $id)->first();
 
         $tipos = 'resguardo_h';
         $dompdf = new Dompdf();
+        // return view('pdf.view', compact('data', 'image', 'tipos', 'id', 'resguardante'));
         $vista = \View::make('pdf.view', compact('data', 'image', 'tipos', 'id', 'resguardante'));
-        //return view('pdf.view', compact('data', 'image', 'tipos', 'id', 'resguardante'));
         $dompdf->loadHtml($vista);
 
         $dompdf->setPaper('A4');
@@ -137,6 +132,50 @@ class pdfController extends Controller
         if (isset($dompdf)) {
             $x = 260;
             $y = 810;
+            $text = "Page {PAGE_NUM} of {PAGE_COUNT}";
+            $font = $font = $dompdf->getFontMetrics()->get_font("helvetica", "bold");
+            $size = 10;
+            $color = array(0,0,0);
+            $word_space = 0.0;  //  default
+            $char_space = 0.0;  //  default
+            $angle = 0.0;   //  default
+            $dompdf->getCanvas()->page_text($x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle);
+            $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
+        }
+    }
+
+    public function busqueda($buscado)
+    {
+        // dd($buscado);
+        $image = '/img/SPF.png';
+        $data = Articulo::join('marcas AS m', 'articulos.marca_id', '=', 'm.id')
+            ->join('categorias AS c', 'articulos.categoria_id', '=', 'c.id')
+            ->join('statuses AS s', 'articulos.status_id', '=', 's.id')
+            ->select('articulos.*', 'm.marca', 'c.categoria', 's.status')
+            ->where('descripcion', 'LIKE', '%'.$buscado.'%')
+            ->orWhere('marca', 'LIKE', '%'.$buscado.'%')
+            ->orWhere('categoria', 'LIKE', '%'.$buscado.'%')
+            ->orWhere('status', 'LIKE', $buscado.'%')
+            ->orWhere('inv_interno', 'LIKE', '%'.$buscado.'%')
+            ->orWhere('inv_externo', 'LIKE', '%'.$buscado.'%')
+            ->orWhere('serie', 'LIKE', '%'.$buscado.'%')
+            ->orWhere('modelo', 'LIKE', '%'.$buscado.'%')
+            ->orWhere('ubicacion', 'LIKE', '%'.$buscado.'%')
+            ->get();
+        // dd($data);
+        $tipos = 'inventario_search';
+
+        $dompdf = new Dompdf();
+        $vista = \View::make('pdf.view', compact('data', 'image', 'tipos'));
+        $dompdf->loadHtml($vista);
+
+        $dompdf->setPaper('A4', 'landscape');
+
+        $dompdf->render();
+
+        if (isset($dompdf)) {
+            $x = 370;
+            $y = 550;
             $text = "Page {PAGE_NUM} of {PAGE_COUNT}";
             $font = $font = $dompdf->getFontMetrics()->get_font("helvetica", "bold");
             $size = 10;
