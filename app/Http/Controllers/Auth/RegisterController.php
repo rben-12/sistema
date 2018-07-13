@@ -112,7 +112,8 @@ class RegisterController extends Controller
         // obtenemos el rol asignado en el form
         //$roles = request()->all();
         // obtenemos el role de la base de datos
-        $role = Role::where('name', $request->role)->first();
+        // dd($request);
+        $role = Role::find($request->rol);
         // se guarda el usuario
 //        $user->password = bcrypt(Request()->password);
 //        $user->password = Hash::make(Request()->password);

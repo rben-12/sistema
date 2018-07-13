@@ -1,12 +1,13 @@
 
-@extends('layouts.app') @section('content')
+@extends('layouts.app') 
+@section('content')
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
             <div class="alert alt">
-                <a href="{{ url('home') }}" class="btn btn-success pull-right" ><i class="glyphicon glyphicon-home"></i></a>
+                <a href="{{ route('usuarios.index') }}" class="btn btn-success pull-right" ><i class="glyphicon glyphicon-home"></i></a>
                 <h4>
-                    <strong class="l">Registro de usuario</strong>
+                    <strong class="l">Editar usuario</strong>
                 </h4>
             </div>
         </div>
@@ -14,17 +15,17 @@
             @include('infob')
             @include('info')
             <div class="panel panel-primary">
-                <div class="panel-heading"><strong>nuevo usuario</strong></div>
+                <div class="panel-heading"><strong>Editando al usuario: {{ $usuario->name }}</strong></div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register.post') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('usuarios.update', $id) }}">
                         {{ csrf_field() }}
-
+                        {{method_field('PUT')}}
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name"  class="col-md-4 control-label">Nombre</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ $usuario->name }}" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -38,7 +39,7 @@
                             <label for="email" class="col-md-4 control-label">Dirección de E-Mail</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ $usuario->email }}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -53,9 +54,8 @@
                             <div class="col-md-6">
                                 <select name="rol" class="form-control" required>
                                     <option value="0">Seleccione una opcion</option>
-                                    @foreach($roles as $m)
-                                        <option value="{{$m->id}}">{{$m->description}}</option>
-                                    @endforeach
+                                    <option value="1"  @if($rol->role_id=="1") selected @endif>Administrador</option>
+                                    <option value="2"  @if($rol->role_id=="2") selected @endif>Usuario</option>
                                 </select>
                                 @if ($errors->has('rol'))
                                     <span class="help-block">
@@ -69,7 +69,7 @@
                             <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" name="password">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -83,7 +83,7 @@
                             <label for="password-confirm" class="col-md-4 control-label">Confirmar Password</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                             </div>
                         </div>
 

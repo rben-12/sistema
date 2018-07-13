@@ -41,6 +41,10 @@
                         <li>
                             <a href="{{route('resguardos.index')}}">Resguardo</a>
                         </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{route('usuarios.index')}}">Usuarios</a>
+                        </li>
                     @endif
                 </ul> 
             </li>
@@ -115,6 +119,10 @@
                 </a>
 
                 <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="{{ route('config.get') }}">Config</a>
+                    </li>
+                    <li class="divider"></li>
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">

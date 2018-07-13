@@ -18,7 +18,8 @@ Route::group(['middleware'=>'auth'], function(){
         'departamentos' => 'DepartamentoController',
         'incidencias' => 'IncidenciaController',
         'documentos' => 'DocumentoController',
-        'resguardos' => 'ResguardoController'
+        'resguardos' => 'ResguardoController',
+        'usuarios' => 'UserController'
     ]);
 });
 
@@ -74,4 +75,12 @@ Route::GET('/register', 'Auth\RegisterController@create')
 
 Route::POST('/register', 'Auth\RegisterController@store')
     ->name('register.post')
+    ->middleware('auth');
+
+Route::GET('/config', 'UserController@GetchangePwd')
+    ->name('config.get')
+    ->middleware('auth');
+
+Route::PUT('/config/{id}', 'UserController@changePwd')
+    ->name('config.put')
     ->middleware('auth');
