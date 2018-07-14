@@ -35,9 +35,6 @@
         height: 60px;
         }
 
-        .text-center {
-            text-align: center;
-        }
         /* Custom page CSS
         -------------------------------------------------- */
         /* Not required for template or sticky footer method. */
@@ -62,16 +59,34 @@
         .cen {
         float: center ;
         }
-        .border {
-        border-top-width: thin;
-        border-bottom-width: thin;
-        border-right-width: thin;
-        border-left-width: thin;
+        .size {
+        font-size:12px;
+        }
+        .res{
+        margin-left: 70px;
+        float: left ;
+        }
+        .auto{
+        margin-right: 80px;
+        float: right ;
+        }
+        .res1{ 
+        border-top: thin solid;
+        width: 110px;
+        margin-left: 60px;
+        float: left ;
+        }
+        .auto1{
+        border-top: thin solid;
+        width: 110px;
+        margin-right: 60px;
+        float: right ;
         }
     </style>
 </head>
 
 <body>
+    @if($tipos!='resguardo_h')
     <div class="row">
         <div class="col-md-2 left">
             <img src="{{ public_path().$image }}" alt="Logo" height="75px">
@@ -79,80 +94,99 @@
         <div class="col-md-4 center cen">
             <h1 style="font-size:30px; margin: 0px; ">
                 Secretaria de Planeacion y Finanzas <br> Direccion de Informatica <br> 
+    @endif
                 @if ($tipos == 'incidencias')
                     Reporte de Incidencias
                 @elseif($tipos=='inventario')
                     Reporte de Inventario
                 @elseif($tipos=='resguardo')
                     Resguardos
-                @elseif($tipos=='resguardo_h')
-                    Resguardo
-                @endif
+    @endif
             </h1>
         </div>
     </div>
-    <!--<table class="table">
-        <tr>-->
-        <div class="row" style="margin: 10px; font-size:15px;">
+    @if($tipos!='resguardo_h')
+    <div class="row" style="margin: 10px; font-size:15px;">
             <div class="left">
-                Usuario: {{ Auth::user()->name }} <br>
-                @if($tipos=='resguardo_h')
-                   Resguardante: {{ $resguardante->resguardante }}
-                @endif
+                Usuario: {{ Auth::user()->name }}
             </div>
             <div class="right">
-                Fecha: {{$ldate = date('d-m-Y')}} <br>
-                @if($tipos=='resguardo_h')
-                    N° de Resguardo: {{ $id }}
-                @endif
+                Fecha: {{$ldate = date('d-m-Y')}}
             </div>
+    @endif
         </div>
+
+
+    @if($tipos=='resguardo_h')
+    <div class="row">
+    <div class="col-md-2 left">
+        <img src="{{ public_path().$image }}" alt="Logo" height="60px">
+    </div>
+    <div class="col-md-4 center cen">
+        <h1 style="font-size:25px; margin: 0px; ">
+            Secretaria de Planeacion y Finanzas <br> Direccion de Informatica <br>
+                Resguardo
+        </h1>
+    </div>
+    </div>
+        <div class="row" style="margin: 10px; font-size:15px;">
+            <div class="left size">
+                    Usuario: {{ Auth::user()->name }} <br>
+                    Resguardante: {{ $resguardante->resguardante }}
+            </div>  
+            <div class="right size">
+                    Fecha: {{$ldate = date('d-m-Y')}} <br>
+                    N° de Resguardo: {{ $id }}
+            </div>
+    @endif
+        </div>
+
     {{-- <table class="table center table-striped table-bordered table-hover table-condensed table-responsive"> --}}
     <table class="table center table-striped table-bordered table-hover table-condensed table-responsive">
         <thead>
             <tr>
                 @if ($tipos == 'incidencias')
-                    <th class="text-center">Asunto</th>
-                    <th class="text-center">Descripción</th>
-                    <th class="text-center">Encargado</th>
-                    <th class="text-center">Departamento</th>
-                    <th class="text-center">Solucion</th>
-                    <th class="text-center">Fecha Y Hora</th>
+                    <th class="center">Asunto</th>
+                    <th class="center">Descripción</th>
+                    <th class="center">Encargado</th>
+                    <th class="center">Departamento</th>
+                    <th class="center">Solucion</th>
+                    <th class="center">Fecha Y Hora</th>
 
                 @elseif($tipos=='inventario')
-                    <th class=" text-center">Categoria</th>
-                    <th class=" text-center">Descripción</th>
-                    <th class=" text-center">Inventario Interno</th>
-                    <th class=" text-center">Inventario Externo</th>
-                    <th class=" text-center">Serie</th>
-                    <th class=" text-center">Marca</th>
-                    <th class=" text-center">Modelo</th>
-                    <th class=" text-center">Status</th>
-                    <th class=" text-center">Ubicación</th>
+                    <th class=" center">Categoria</th>
+                    <th class=" center">Descripción</th>
+                    <th class=" center">Inventario Interno</th>
+                    <th class=" center">Inventario Externo</th>
+                    <th class=" center">Serie</th>
+                    <th class=" center">Marca</th>
+                    <th class=" center">Modelo</th>
+                    <th class=" center">Status</th>
+                    <th class=" center">Ubicación</th>
                 @elseif($tipos=='inventario_search')
-                    <th class=" text-center">Categoria</th>
-                    <th class=" text-center">Descripción</th>
-                    <th class=" text-center">Inventario Interno</th>
-                    <th class=" text-center">Inventario Externo</th>
-                    <th class=" text-center">Serie</th>
-                    <th class=" text-center">Marca</th>
-                    <th class=" text-center">Modelo</th>
-                    <th class=" text-center">Status</th>
-                    <th class=" text-center">Ubicación</th>
+                    <th class=" center">Categoria</th>
+                    <th class=" center">Descripción</th>
+                    <th class=" center">Inventario Interno</th>
+                    <th class=" center">Inventario Externo</th>
+                    <th class=" center">Serie</th>
+                    <th class=" center">Marca</th>
+                    <th class=" center">Modelo</th>
+                    <th class=" center">Status</th>
+                    <th class=" center">Ubicación</th>
                 @elseif($tipos=='resguardo')
-                    <th class="text-center">Num. resguardo</th>
-                    <th class="text-center">Resguardante</th>
-                    <th class="text-center">Puesto</th>
-                    <th class="text-center">Departamento</th>
-                    <th class="text-center">Descripcion</th>
+                    <th class="center">Num. resguardo</th>
+                    <th class="center">Resguardante</th>
+                    <th class="center">Puesto</th>
+                    <th class="center">Departamento</th>
+                    <th class="center">Descripcion</th>
                 @elseif($tipos=='resguardo_h')
-                    <th class="text-center">Cant</th>
-                    <th class="text-center">Descripcion</th>
-                    <th class="text-center">Serie</th>
-                    <th class="text-center">Marca</th>
-                    <th class="text-center">Modelo</th>
-                    <th class="text-center">Inv Interno</th>
-                    <th class="text-center">Inv externo</th>
+                    <th class="center size m" width="85px" >Categoria</th>
+                    <th class="center size m">Descripcion</th>
+                    <th class="center size m">Serie</th>
+                    <th class="center size m">Marca</th>
+                    <th class="center size m">Modelo</th>
+                    <th class="center size m" width="90px">Inventario Interno</th>
+                    <th class="center size m" width="90px">Inventario externo</th>
                 @endif
             </tr>
         </thead>
@@ -193,13 +227,13 @@
                     <td class="m">{{$a->departamento->departamento}}</td>
                     <td class="m">{{$a->descripcion}}</td>
                 @elseif($tipos=='resguardo_h')
-                    <td class="m">1</td>
-                    <td class="m">{{ $a->descripcion }}</td>
-                    <td class="m">{{ $a->serie }}</td>
-                    <td class="m">{{ $a->marca->marca }}</td>
-                    <td class="m">{{ $a->modelo }}</td>
-                    <td class="m">{{ $a->inv_interno }}</td>
-                    <td class="m">{{$a->inv_externo}}</td>
+                    <td class="m size">{{ $a->categoria->categoria }}</td>
+                    <td class="m size">{{ $a->descripcion }}</td>
+                    <td class="m size">{{ $a->serie }}</td>
+                    <td class="m size">{{ $a->marca->marca }}</td>
+                    <td class="m size">{{ $a->modelo }}</td>
+                    <td class="m size">{{ $a->inv_interno }}</td>
+                    <td class="m size">{{$a->inv_externo}}</td>
                 @endif
             </tr>
         </tbody>
@@ -207,7 +241,7 @@
     </table>
     @if ($tipos=='resguardo_h')
         <footer class="footer">
-            <table class="center">
+            <!--<table class="center">
                 <tr>
                     <td width="250">
                         <strong>Resguardante</strong>
@@ -221,11 +255,15 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>
-                        <u>{{ $resguardante->resguardante }}</u>
+                    <td >
+                    <div class="res">
+                        
+                    </div>
                     </td>
                     <td>
-                        <u>{{ Auth::user()->name }}</u>
+                    <p class="auto">
+                       
+                    </p>
                     </td>
                 </tr>
                 <tr>
@@ -236,7 +274,24 @@
                         <strong>Jefe del Depto de soporte a redes <br> y telefonia</strong>
                     </td>
                 </tr>
-            </table>
+            </table>-->
+        <div class="row">
+            <div class="res center">
+                <strong>Resguardante</strong>
+            </div>
+            <div class="auto center">
+                <strong>Autorizó</strong> 
+            </div>
+        </div>
+        <!--style="margin-top : 40px;"-->
+        <div class="row" style="margin-top : 40px;">
+            <div class="res1 center">
+                {{ $resguardante->resguardante }}
+            </div>
+            <div class="auto1 center">
+                {{ Auth::user()->name }}
+            </div>
+        </div>
         </footer>
     @endif
 </body>
