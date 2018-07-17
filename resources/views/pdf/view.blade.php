@@ -193,54 +193,7 @@
             </tr>
         </thead>
         @foreach ($data as $a)
-        @if (Auth::user()->hasRole('admin'))
-        <tbody>
-            <tr>
-                @if ($tipos == 'incidencias')
-                    <td class="m">{{$a->asunto->asunto}}</td>
-                    <td class="m">{{$a->descripcion}}</td>
-                    <td class="m">{{$a->encargado->encargado}}</td>
-                    <td class="m">{{$a->departamento->departamento}}</td>
-                    <td class="m">{{$a->solucion}}</td>
-                    <td class="m">{{$a->created_at}}</td>
-                @elseif($tipos=='inventario')
-                    <td class="m">{{$a->categoria->categoria}}</td>
-                    <td class="m">{{$a->descripcion}}</td>
-                    <td class="m">{{$a->inv_interno}}</td>
-                    <td class="m">{{$a->inv_externo}}</td>
-                    <td class="m">{{$a->serie}}</td>
-                    <td class="m">{{$a->marca->marca}}</td>
-                    <td class="m">{{$a->modelo}}</td>
-                    <td class="m">{{$a->status->status}}</td>
-                    <td class="m">{{$a->ubicacion}}</td>
-                @elseif($tipos=='inventario_search')
-                    <td class="m">{{$a->categoria}}</td>
-                    <td class="m">{{$a->descripcion}}</td>
-                    <td class="m">{{$a->inv_interno}}</td>
-                    <td class="m">{{$a->inv_externo}}</td>
-                    <td class="m">{{$a->serie}}</td>
-                    <td class="m">{{$a->marca}}</td>
-                    <td class="m">{{$a->modelo}}</td>
-                    <td class="m">{{$a->status}}</td>
-                    <td class="m">{{$a->ubicacion}}</td>
-                @elseif($tipos=='resguardo')
-                    <td class="m">{{$a->n_resguardo}}</td>
-                    <td class="m">{{$a->resguardante}}</td>
-                    <td class="m">{{$a->puesto}}</td>
-                    <td class="m">{{$a->departamento->departamento}}</td>
-                    <td class="m">{{$a->descripcion}}</td>
-                @elseif($tipos=='resguardo_h')
-                    <td class="m size">{{ $a->categoria->categoria }}</td>
-                    <td class="m size">{{ $a->descripcion }}</td>
-                    <td class="m size">{{ $a->serie }}</td>
-                    <td class="m size">{{ $a->marca->marca }}</td>
-                    <td class="m size">{{ $a->modelo }}</td>
-                    <td class="m size">{{ $a->inv_interno }}</td>
-                    <td class="m size">{{$a->inv_externo}}</td>
-                @endif
-            </tr>
-        </tbody>
-        @elseif(Auth::user()->id==$a->usuario_id)
+        @if(Auth::user()->id==$a->usuario_id)
         <tbody>
             <tr>
                 @if ($tipos == 'incidencias')
