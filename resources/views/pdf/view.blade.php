@@ -95,11 +95,9 @@
             <h1 style="font-size:30px; margin: 0px; ">
                 Secretaria de Planeacion y Finanzas <br> Direccion de Informatica <br> 
     @endif
-                @if ($tipos=='incidencias')
+                @if ($tipos == 'incidencias')
                     Reporte de Incidencias
                 @elseif($tipos=='inventario')
-                    Reporte Total de Inventario
-                @elseif($tipos=='inventario_search')
                     Reporte de Inventario
                 @elseif($tipos=='resguardo')
                     Resguardos

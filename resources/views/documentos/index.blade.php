@@ -15,9 +15,8 @@
       @include('infob')
       @include('info') 
   <div class="panel panel-primary">
-      
       <div class="panel-heading"> <strong>Docuementos</strong></div>
-      
+
     <div class="panel-body">
       
       <table  class="table text-center table-striped table-bordered table-hover table-condensed table-responsive">
