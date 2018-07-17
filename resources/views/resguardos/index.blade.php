@@ -72,12 +72,12 @@
                                 </td>
                                 <td>
                                     @if (Auth::user()->hasRole('admin'))
-                                        <form action="{{route('resguardos.destroy', $r->id)}}" method="POST">
+                                        {{-- <form action="{{route('resguardos.destroy', $r->id)}}" method="POST">
                                             {{ csrf_field() }}
                                             {{method_field('DELETE')}}
                                             <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs">
                                             <i class="glyphicon glyphicon-trash"></i></button>
-                                        </form>
+                                        </form> --}}
                                         <a href="{{route('resguardos.edit', $r->id)}}" class="btn btn-success btn-xs">
                                             <i class='glyphicon glyphicon-edit'></i>
                                         </a>
@@ -85,12 +85,12 @@
                                             <i class="glyphicon glyphicon-eye-open"></i>
                                         </a>
                                     @elseif(Auth::user()->id == $r->usuario_id)
-                                        <form action="{{route('resguardos.destroy', $r->id)}}" method="POST">
+                                        {{-- <form action="{{route('resguardos.destroy', $r->id)}}" method="POST">
                                             {{ csrf_field() }}
                                             {{method_field('DELETE')}}
                                             <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs">
                                             <i class="glyphicon glyphicon-trash"></i></button>
-                                        </form>
+                                        </form> --}}
                                         <a href="{{route('resguardos.edit', $r->id)}}" class="btn btn-success btn-xs">
                                             <i class='glyphicon glyphicon-edit'></i>
                                         </a>
