@@ -15,8 +15,11 @@ class ResguardoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+       /* $query = DB::table('resguardos AS r')
+        ->join('')*/
+
         return view('resguardos.index')->with([
             'resguardos' => Resguardo::paginate(10),
             'departamentos' => Departamento::all(),
