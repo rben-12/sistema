@@ -31,6 +31,7 @@
                   <th class="text-center">fecha docs</th>
                   <th class=" text-center">Archivo</th>
                   <th class=" text-center">Tipo de archivo</th>
+                  <th class=" text-center">FileManager</th>
               </tr>
             </thead> 
            
@@ -59,7 +60,10 @@
                   <td>
                       {{ pathinfo($doc->url, PATHINFO_EXTENSION) }}
                   </td>
-        </tr>
+                  <td>
+                    <a target="_blank" href="{{ route('unisharp.lfm.show') }}">abrir FileManager</a>
+                  </td>
+              </tr>
             @endforeach
 
           </tbody>
