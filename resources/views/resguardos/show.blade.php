@@ -40,11 +40,11 @@
                                     <th class="text-center">Id</th>
                                     <th class="text-center">Categoria</th>
                                     <th class="text-center">Descripcion</th>
+                                    <th class="text-center">Inv interno</th>
+                                    <th class="text-center">Inv externo</th>
                                     <th class="text-center">Serie</th>
                                     <th class="text-center">Marca</th>
                                     <th class="text-center">Modelo</th>
-                                    <th class="text-center">Inv interno</th>
-                                    <th class="text-center">Inv externo</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
@@ -54,11 +54,12 @@
                                         <td>{{ $item->id }}</td>
                                         <td class="m">{{ $item->categoria->categoria }}</td>
                                         <td class="m">{{ $item->descripcion }}</td>
+                                        <td class="m">{{ $item->inv_interno }}</td>
+                                        <td class="m">{{ $item->inv_externo }}</td>
                                         <td class="m">{{ $item->serie }}</td>
                                         <td class="m">{{ $item->marca->marca }}</td>
                                         <td class="m">{{ $item->modelo }}</td>
-                                        <td class="m">{{ $item->inv_interno }}</td>
-                                        <td class="m">{{ $item->inv_externo }}</td>
+                                        
                                         <td>
                                             <form action="{{ route('artDeleteRes.delete', $item->id) }}" method="POST">
                                                 {{ csrf_field() }}
