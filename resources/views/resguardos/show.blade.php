@@ -154,6 +154,7 @@
                                                 "<th>Modelo</th>"+
                                                 "<th>Inv interno</th>"+
                                                 "<th>Inv externo</th>"+
+                                                "<th>ID</th>"+
                                                 "<th>Accion</th>"+
                                             "</tr>"+
                                         "</thead>"+
@@ -163,6 +164,7 @@
                                                 "<td>"+data[0].modelo+"</td>"+
                                                 "<td>"+data[0].inv_interno+"</td>"+
                                                 "<td>"+data[0].inv_externo+"</td>"+
+                                                "<td>"+data[0].id+"</td>"+
                                                 "<td>"+boton+"</td>"+
                                             "</tr>"+
                                         "</tbody>"+

@@ -237,6 +237,7 @@ class ResguardoController extends Controller
             ->orWhere('inv_externo', $request->busqueda)
             ->orWhere('serie', $request->busqueda)
             ->orWhere('modelo', $request->busqueda)
+            ->orWhere('id', $request->busqueda)
             ->get();
         if ($busqueda!=null) {
             return response()->json($busqueda);
