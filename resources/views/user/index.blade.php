@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="alert alt">
-                <a href="{{ route('register.get') }}" class="btn btn-success pull-right" ><i class="glyphicon glyphicon-plus"></i> Nuevo</a>
+                <a href="{{ route('register.get') }}" class="btn btn-success pull-right" >Nuevo</a>
                 <h4>
                     <strong class="l">Lista de usuario</strong>
                 </h4>
@@ -44,7 +44,7 @@
                                     <td>{{$item->created_at->format('d/m/Y') }}</td>
                                     <td>{{ $item->description }}</td>
                                     <td>
-                                        <a href="{{ route('usuarios.edit', $item->id) }}" class="btn btn-info btn-xs">
+                                        <a href="{{ route('usuarios.edit', $item->id) }}" class="btn btn-success btn-xs">
                                             <i class='glyphicon glyphicon-edit'></i>
                                         </a>
                                         <button class="delete btn btn-danger btn-xs" data-id="{{ $item->id }}" data-token="{{ csrf_token() }}" data-url="{{ route('usuarios.destroy', $item->id) }}" >

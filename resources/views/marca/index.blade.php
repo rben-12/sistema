@@ -48,7 +48,7 @@
                     <form action="{{route('marcas.destroy', $m->id)}}" method="POST">
                       {{ csrf_field() }}
                       {{method_field('DELETE')}}
-                      <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs right"> <i class='glyphicon glyphicon-trash'></i></button>
+                      <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs right space"> <i class='glyphicon glyphicon-trash'></i></button>
                     </form>
                         <form action="{{route('marcas.edit', $m->id)}}" method="GET">
                         <button type="submit" class="btn btn-success btn-xs right"> <i class='glyphicon glyphicon-edit'></i></button>

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="alert alt">
-                <a href="{{ route('usuarios.index') }}" class="btn btn-success pull-right" ><i class="glyphicon glyphicon-home"></i></a>
+                <a href="{{route('usuarios.index')}}" class="btn btn-success pull-right" >Listado</a>
                 <h4>
                     <strong class="l">Editar usuario</strong>
                 </h4>
@@ -86,12 +86,10 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                             </div>
                         </div>
-
+                        <div class="col-md-6 col-md-offset-4">
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-success">
-                                    Guardar
-                                </button>
+                                <a type="link" class="btn btn-danger right space" href="{{route('usuarios.index')}}">Cancelar</a>
+                                <button type="submit" class="btn btn-success right">Guardar</button>
                             </div>
                         </div>
                     </form>

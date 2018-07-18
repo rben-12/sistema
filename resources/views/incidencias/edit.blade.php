@@ -56,7 +56,8 @@
                         
                 
             <div class="form-group">
-                <button type="submit" class="btn btn-success pull-right">Guardar</button>
+                <a type="link" class="btn btn-danger right space" href="{{route('incidencias.index')}}">Cancelar</a>
+                <button type="submit" class="btn btn-success right">Guardar</button>
             </div>
         </form>
                    

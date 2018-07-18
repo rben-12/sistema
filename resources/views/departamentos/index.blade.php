@@ -50,7 +50,7 @@
                         <form action="{{route('departamentos.destroy', $d->id)}}" method="POST">
                             {{ csrf_field() }}
                             {{method_field('DELETE')}}
-                            <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs right"> <i class='glyphicon glyphicon-trash'></i></button>
+                            <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs right space"> <i class='glyphicon glyphicon-trash'></i></button>
                         </form>
       
                         <a href="{{route('departamentos.edit', $d->id)}}"  class="btn btn-success btn-xs right">

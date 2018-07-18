@@ -30,11 +30,11 @@
                 </div>
                         
             <div class="form-group">
-            <a type="link" class="btn btn-danger pull-right" href="{{route('departamentos.index')}}">Cancelar</a>
+            <a type="link" class="btn btn-danger right space" href="{{route('departamentos.index')}}">Cancelar</a>
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-success pull-right">Guardar</button>
+                <button type="submit" class="btn btn-success right">Guardar</button>
             </div>
         </form>
                    
