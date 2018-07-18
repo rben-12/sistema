@@ -21,7 +21,7 @@
             <div class="form-group">
             <input type="text" name="departamento" class="form-control" placeholder="Buscar departamento...">
             </div>
-            <button class="btn btn-info" type="submit">buscar</button>
+            <button class="btn btn-info" type="submit">Buscar</button>
         </form> <br><br>
     </div>
         <div class="panel-body">

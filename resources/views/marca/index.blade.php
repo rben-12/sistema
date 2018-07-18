@@ -21,7 +21,7 @@
             <div class="form-group">
             <input type="text" name="marca" class="form-control" placeholder="Buscar marca...">
             </div>
-            <button class="btn btn-info" type="submit">buscar</button>
+            <button class="btn btn-info" type="submit">Buscar</button>
         </form> <br><br>
     </div>
     
