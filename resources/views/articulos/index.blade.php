@@ -44,7 +44,7 @@
             <div class="form-group">
             <input type="text" name="query" class="form-control" placeholder="Buscar articulo...">
             </div>
-            <button class="btn btn-info" type="submit">buscar</button>
+            <button class="btn btn-info" type="submit">Buscar</button>
           </form>
         </div>
 

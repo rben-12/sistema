@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Buscar en resguardo...">
                     </div>
-                    <button class="btn btn-info" type="submit">buscar</button>
+                    <button class="btn btn-info" type="submit">Buscar</button>
                     </form>
                 </div>
                     <div class="panel-body">

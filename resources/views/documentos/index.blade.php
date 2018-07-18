@@ -15,7 +15,17 @@
       @include('infob')
       @include('info') 
   <div class="panel panel-primary">
-      <div class="panel-heading"> <strong>Docuementos</strong></div>
+      <div class="panel-heading"> <strong>Docuementos</strong>
+        <a target="_blank" class="btn btn-info" href="{{ route('unisharp.lfm.show') }}"> Manager
+          <i class="glyphicon glyphicon-file"></i></a>
+
+        <form class="navbar-form navbar-left pull-right" role="search" action="" style="margin: 0;" method="GET">
+            <div class="form-group">
+            <input type="text" name="" class="form-control" placeholder="Buscar articulo...">
+            </div>
+            <button class="btn btn-info" type="submit">Buscar</button>
+          </form>
+      </div>
 
     <div class="panel-body">
       
