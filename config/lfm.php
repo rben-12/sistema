@@ -124,6 +124,11 @@ return [
         'image/svg+xml',
         'application/pdf',
         'text/plain',
+        'application/vnd.ms-excel',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'application/docx',
+        'application/msword',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     ],
 
     /*
