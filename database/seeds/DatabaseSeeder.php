@@ -52,9 +52,9 @@ class DatabaseSeeder extends Seeder
         Marca::create([
             'marca' => 'GRANDESTREAM'
         ]); 
-        Asunto::create([
+        /*Asunto::create([
             'asunto' => 'sin internet'
-        ]);
+        ]); */
 
         Encargado::create([
             'encargado' => 'no asignado'

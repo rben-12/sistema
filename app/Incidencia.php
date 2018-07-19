@@ -8,17 +8,17 @@ class Incidencia extends Model
 {
     protected $table ='incidencias';
     protected $fillable =[
-        'asunto_id',
+        'asunto',
         'descripcion',
         'encargado_id',
         'departamento_id',
         'solucion'
     ];
 
-    public function asunto() 
+    /*public function asunto() 
     {
         return $this->belongsTo(Asunto::class, 'asunto_id', 'id');
-    }
+    }*/
 
     public function encargado() 
     {

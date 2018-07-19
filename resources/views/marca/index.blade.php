@@ -36,7 +36,7 @@
                 <tr>
                     <th class="text-center">Marcas</th>
                     <th class="text-center">Fecha y Hora</th>
-                    <th class="text-center"></th>
+                    <th class="text-center" width="65px"></th>
                 </tr>
             </thead>    
             <tb>

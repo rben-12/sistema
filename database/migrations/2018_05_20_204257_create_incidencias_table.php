@@ -15,14 +15,14 @@ class CreateIncidenciasTable extends Migration
     {
         Schema::create('incidencias', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('asunto_id')->unsigned();
+            $table->string('asunto');
             $table->string('descripcion')->nullable();
             $table->integer('encargado_id')->unsigned();
             $table->integer('departamento_id')->unsigned();
             $table->string('solucion')->nullable();
             $table->timestamps();
 
-        $table->foreign('asunto_id')->references('id')->on('asuntos');
+        //$table->foreign('asunto_id')->references('id')->on('asuntos');
         $table->foreign('encargado_id')->references('id')->on('encargados');
         $table->foreign('departamento_id')->references('id')->on('departamentos');
         });

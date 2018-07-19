@@ -13,12 +13,8 @@
 
                 <div class="form-group">
                     <label for="">asunto</label>
-                        <select name="asunto_id" class="form-control" required>
-                        @foreach($asuntos as $asu)
-                        <option value="{{$asu->id}}">{{$asu->asunto}}</option>
-                        @endforeach
-                        </select> 
-                    </div> 
+                    <input type="text" class="form-control" name="asunto">
+                </div> 
 
                 <div class="form-group">
                     <label for="comment">descripcion</label>

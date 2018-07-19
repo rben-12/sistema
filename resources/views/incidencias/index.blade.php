@@ -33,19 +33,21 @@
         <table class="table tc table-bordered table-striped table-hover table-condensed table-responsive">
             <thead>
                 <tr>
+                    <th class="text-center">#</th>
                     <th class="text-center">asunto</th>
                     <th class="text-center">descripción</th>
                     <th class="text-center">encargado</th>
                     <th class="text-center">departamento</th>
                     <th class="text-center">solucion</th>
                     <th class="text-center">Fecha y Hora</th>
-                    <th class="text-center">funciones</th>
+                    <th class="text-center" width="65px"></th>
                 </tr>
             </thead>    
             <tb>
             @foreach($incidencias as $i)
                 <tr>
-                    <td>{{$i->asunto->asunto}}</td>
+                    <td>{{$i->id}}</td>
+                    <td>{{$i->asunto}}</td>
                     <td>{{$i->descripcion}}</td>
                     <td>{{$i->encargado->encargado}}</td>
                     <td>{{$i->departamento->departamento}}</td>
@@ -55,14 +57,14 @@
                         <form action="{{route('incidencias.destroy', $i->id)}}" method="POST">
                             {{ csrf_field() }}
                             {{method_field('DELETE')}}
-                            <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs"> <i class='glyphicon glyphicon-trash'></i></button>
+                            <button type="submit" onclick="return confirm('Seguro que desea eliminar')" class="btn btn-danger btn-xs right space"> <i class='glyphicon glyphicon-trash'></i></button>
                         </form>
       
-                        <a href="{{route('incidencias.edit', $i->id)}}" class="btn btn-success btn-xs">
+                        <a href="{{route('incidencias.edit', $i->id)}}" class="btn btn-success btn-xs right">
                           <i class='glyphicon glyphicon-edit'></i></a>
       
-                        <a href="{{route('incidencias.show', $i->id)}}" class="btn btn-warning btn-xs">
-                          <i class='glyphicon glyphicon-eye-open'></i></a>
+                        <!--<a href="{{route('incidencias.show', $i->id)}}" class="btn btn-warning btn-xs">
+                          <i class='glyphicon glyphicon-eye-open'></i></a>-->
                     </td>
                 </tr>
             @endforeach

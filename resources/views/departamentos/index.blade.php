@@ -36,7 +36,7 @@
                     <th class="text-center">Departamento</th>
                     <th class="text-center">vlan</th>
                     <th class="text-center">Fecha y Hora</th>
-                    <th></th>
+                    <th width="65px"></th>
                 </tr>
             </thead>    
             <tb>

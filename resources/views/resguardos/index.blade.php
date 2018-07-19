@@ -19,9 +19,9 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <strong>resguardos </strong> <a href="{{ route('pdf', 'resguardo') }}" target="_blank" class="btn btn-info" type="button">Exportar PDF</a>
-                    <form class="navbar-form navbar-left pull-right" role="search" action="" style="margin: 0;" method="GET">
+                    <form class="navbar-form navbar-left pull-right" role="search" action="{{ route('resguardos.index') }}" style="margin: 0;" method="GET">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Buscar en resguardo...">
+                        <input type="text" class="form-control" name="query" placeholder="Buscar en resguardo...">
                     </div>
                     <button class="btn btn-info" type="submit">Buscar</button>
                     </form>
@@ -44,7 +44,7 @@
                                 <th class="text-center">descripcion</th>
                                 <th class="text-center">id dispositivos</th>
                                 <th class="text-center">documento</th>
-                                <th>acciones</th>
+                                <th width="30px">acciones</th>
                             </tr>
                         </thead>    
                         <tb>

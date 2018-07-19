@@ -7,6 +7,7 @@ use App\Resguardo;
 use App\Departamento;
 use App\Articulo;
 use App\Resguardos_history;
+use DB;
 
 class ResguardoController extends Controller
 {
@@ -17,8 +18,14 @@ class ResguardoController extends Controller
      */
     public function index()
     {
+        /*$query = DB::table('resguardos')
+        ->where('n_resguardo', 'LIKE', '%'.$request->get('query').'%')
+        ->orwhere('resguardante', 'LIKE', '%'.$request->get('query').'%')
+        ->paginate(2); */
+
         return view('resguardos.index')->with([
             'resguardos' => Resguardo::paginate(10),
+            //'resguardos' => $query,
             'departamentos' => Departamento::all(),
             'articulos' => Articulo::all(),
             'resguardos_h' => Resguardos_history::all()
