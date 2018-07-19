@@ -47,8 +47,9 @@ class pdfController extends Controller
             }
         }
         if ($tipo == 'inventario') {
-            $data = Articulo::get();
+            $data = Articulo::where('usuario_id', \Auth::user()->id)->get();
             $tipos = 'inventario';
+            // dd($data);
             // return View('pdf.view', compact('data'));
             // $vista = \View::make('pdf.view', compact('data', 'image'))->render();
 
