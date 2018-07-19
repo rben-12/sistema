@@ -15,7 +15,7 @@
       @include('infob')
       @include('info') 
   <div class="panel panel-primary">
-      <div class="panel-heading"> <strong>Docuementos</strong>
+      <div class="panel-heading"> <strong>Documentos</strong>
         <a target="_blank" class="btn btn-info" href="{{ route('unisharp.lfm.show') }}"> Manager
           <i class="glyphicon glyphicon-file"></i></a>
 
