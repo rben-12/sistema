@@ -19,7 +19,7 @@ class IncidenciaController extends Controller
     {
         return view('incidencias.index')->with([
             'incidencias' => Incidencia::paginate(4),
-            'asuntos' => Asunto::all(),
+            //'asuntos' => Asunto::all(),
             'encargados' => Encargado::all(),
             'departamentos' => Departamento::all()
         ]);
@@ -68,7 +68,7 @@ class IncidenciaController extends Controller
     {
         return view('incidencias.edit')->with([
             'incidencia' => Incidencia::find($id),
-            'asuntos' => Asunto::all(),
+            //'asuntos' => Asunto::all(),
             'encargados' => Encargado::all(),
             'departamentos' => Departamento::all()
         ]);
