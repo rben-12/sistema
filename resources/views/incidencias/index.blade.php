@@ -19,7 +19,7 @@
         <strong> registro de incidencias </strong> <a href="{{ route('pdf', 'incidencias') }}" target="_blank" class="btn btn-info" type="button">Exportar PDF</a>
         <form class="navbar-form navbar-left pull-right" role="search" action="{{ route('incidencias.index') }}" style="margin: 0;" method="GET">
             <div class="form-group">
-            <input type="text" name="" class="form-control" placeholder="Buscar incidencia...">
+            <input type="text" name="query" class="form-control" placeholder="Buscar incidencia...">
             </div>
             <button class="btn btn-info" type="submit">Buscar</button>
           </form>
@@ -49,8 +49,8 @@
                     <td>{{$i->id}}</td>
                     <td>{{$i->asunto}}</td>
                     <td>{{$i->descripcion}}</td>
-                    <td>{{$i->encargado->encargado}}</td>
-                    <td>{{$i->departamento->departamento}}</td>
+                    <td>{{$i->encargado}}</td>
+                    <td>{{$i->departamento}}</td>
                     <td>{{$i->solucion}}</td>
                     <td>{{$i->created_at}}</td>
                     <td>

@@ -36,7 +36,6 @@
                     <table class="table tc  table-striped table-bordered table-hover table-condensed table-responsive">
                         <thead>
                             <tr>
-                                <th class="text-center">Id</th>
                                 <th class="text-center">Num. resguardo</th>
                                 <th class="text-center">resguardante</th>
                                 <th class="text-center">puesto</th>
@@ -50,11 +49,10 @@
                         <tb>
                         @foreach($resguardos as $r)
                             <tr>
-                                <td class="m">{{$r->id}}</td>
                                 <td class="m">{{$r->n_resguardo}}</td>
                                 <td class="m">{{$r->resguardante}}</td>
                                 <td class="m">{{$r->puesto}}</td>
-                                <td class="m">{{$r->departamento->departamento}}</td>
+                                <td class="m">{{$r->departamento}}</td>
                                 <td class="m">{{$r->descripcion}}</td>
                                 <td class="m">{{$r->articulo_id}}</td>
                                 <td class="m">

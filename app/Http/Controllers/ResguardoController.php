@@ -16,16 +16,19 @@ class ResguardoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        /*$query = DB::table('resguardos')
+        $query = DB::table('resguardos AS r')
+        ->join('departamentos AS d', 'r.departamento_id', '=', 'd.id')
+        //->join('articulos AS a', 'r.articulo_id', '=', 'r.id')
+        ->select('r.*', 'd.departamento')
         ->where('n_resguardo', 'LIKE', '%'.$request->get('query').'%')
         ->orwhere('resguardante', 'LIKE', '%'.$request->get('query').'%')
-        ->paginate(2); */
+        ->paginate(10); 
 
         return view('resguardos.index')->with([
-            'resguardos' => Resguardo::paginate(10),
-            //'resguardos' => $query,
+            //'resguardos' => Resguardo::paginate(10),
+            'resguardos' => $query,
             'departamentos' => Departamento::all(),
             'articulos' => Articulo::all(),
             'resguardos_h' => Resguardos_history::all()

@@ -27,7 +27,7 @@
                         
                 <div class="form-group">
                     <label for="">descripcion</label>
-                    <input value="{{$incidencia->descripcion}}" type="text" class="form-control" name="departamento">
+                    <input value="{{$incidencia->descripcion}}" type="text" class="form-control" name="descripcion">
                 </div>
                 <div class="form-group">
                     <label for="">encargado</label>
@@ -47,7 +47,7 @@
                 </div>    
                 <div class="form-group">
                     <label>solucion</label>
-                    <input value="{{$incidencia->solucion}}" type="text" class="form-control" name="vlan">
+                    <input value="{{$incidencia->solucion}}" type="text" class="form-control" name="solucion">
                 </div>
                         
                 

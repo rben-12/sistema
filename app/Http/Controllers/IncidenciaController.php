@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Incidencia;
-use App\Asunto;
+//use App\Asunto;
 use App\Encargado;
 use App\Departamento;
+use DB;
 
 class IncidenciaController extends Controller
 {
@@ -15,11 +16,19 @@ class IncidenciaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query = DB::table('incidencias AS i')
+        ->join('encargados AS e', 'i.encargado_id', '=', 'e.id')
+        ->join('departamentos AS d', 'i.departamento_id', '=', 'd.id')
+        ->select('i.*', 'e.encargado', 'd.departamento')
+        ->where('asunto', 'LIKE', '%'.$request->get('query').'%')
+        ->orwhere('descripcion', 'LIKE', '%'.$request->get('query').'%')
+        ->paginate(10);
+
         return view('incidencias.index')->with([
-            'incidencias' => Incidencia::paginate(4),
-            //'asuntos' => Asunto::all(),
+            //'incidencias' => Incidencia::paginate(4),
+            'incidencias' => $query,
             'encargados' => Encargado::all(),
             'departamentos' => Departamento::all()
         ]);
@@ -68,7 +77,6 @@ class IncidenciaController extends Controller
     {
         return view('incidencias.edit')->with([
             'incidencia' => Incidencia::find($id),
-            //'asuntos' => Asunto::all(),
             'encargados' => Encargado::all(),
             'departamentos' => Departamento::all()
         ]);
