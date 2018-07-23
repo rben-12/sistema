@@ -40,14 +40,14 @@
                   <th class="text-center">fecha docs</th>
                   <th class=" text-center">Archivo</th>
                   <th class=" text-center">Tipo de archivo</th>
-                  <th class=" text-center">FileManager</th>
+                  <th class=" text-center">Acciones</th>
               </tr>
             </thead> 
            
           
           <tbody> 
             @foreach($documentos as $doc)
-              <tr >
+              <tr id="id{{$doc->id}}">
                 <td class="m">{{$doc->id}}</td>
                   <td class="m">{{$doc->folio}}</td>
                   <td class="m">{{$doc->descripcion}}</td>
@@ -57,8 +57,8 @@
                     <a href="{{$doc->url}}" target="_blank">
                       @if (pathinfo($doc->url, PATHINFO_EXTENSION) == 'pdf')
                         Ver <img src="{{ asset('img/iconPdf.ico') }}" alt="">
-                      @elseif(pathinfo($doc->url, PATHINFO_EXTENSION) == 'docx')
-                        Ver <img src="{{ asset('img/iconFileWord.ico') }}" alt="">
+                      @elseif(pathinfo($doc->url, PATHINFO_EXTENSION) == 'docx' || pathinfo($doc->url, PATHINFO_EXTENSION)=='doc')
+                        Descargar <img src="{{ asset('img/iconFileWord.ico') }}" alt="">
                       @elseif(pathinfo($doc->url, PATHINFO_EXTENSION) == 'xlsx')
                         Ver <img src="{{ asset('img/iconFileExcel.png') }}" alt="">
                       @elseif(pathinfo($doc->url, PATHINFO_EXTENSION) == 'jpg' || pathinfo($doc->url, PATHINFO_EXTENSION) == 'png' || pathinfo($doc->url, PATHINFO_EXTENSION) == 'jpeg')
@@ -70,7 +70,11 @@
                       {{ pathinfo($doc->url, PATHINFO_EXTENSION) }}
                   </td>
                   <td>
-                    <a target="_blank" href="{{ route('unisharp.lfm.show') }}">abrir FileManager</a>
+                    <a href="{{ route('documentos.edit', $doc->id) }}" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+                    <button class="delete btn btn-danger btn-xs" data-id="{{ $doc->id }}" data-url="{{ route('documentos.destroy', $doc->id) }}" >
+                        <i class='glyphicon glyphicon-trash'></i>
+                    </button>
+                    <meta name="csrf-token" content="{{ csrf_token() }}">
                   </td>
               </tr>
             @endforeach
@@ -82,4 +86,44 @@
     </div>
   </div>
 </div>
+@endsection
+@section('scripts')
+    <script>
+      $(document).ready(function(){
+        $(".delete").click(function(e){
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                var id = $(this).data("id");
+                var url = $(this).data("url");
+
+                var opcion = confirm("Clicka en Aceptar o Cancelar");
+                if (opcion == true) {
+                    $.ajax({
+                        url: url,
+                        type: 'delete',
+                        dataType: "JSON",
+                        data: {
+                            "id": id
+                        },
+                        success: function (data)
+                        {
+                            $('#id'+id).remove();
+                            // console.log(data);
+                            $("#respuestaJson").html(data+'<button type="button" class="close" data-dismiss="alert">'+
+                                                                '&times;'+
+                                                           '</button>').show();
+
+                        },
+                        error: function(xhr) {
+                            console.log(xhr.responseText);
+                        }
+                    });
+                }
+            });
+      })
+    </script>
 @endsection

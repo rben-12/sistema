@@ -18,7 +18,23 @@
             
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <strong>resguardos </strong> <a href="{{ route('pdf', 'resguardo') }}" target="_blank" class="btn btn-info" type="button">Exportar PDF</a>
+                    <strong>resguardos </strong>
+                    @php
+                        $buscado;
+                        $ruta = 'pdf_searchR';
+                    @endphp
+                    @if ($buscado == null)
+                        @php
+                            $buscado = 'resguardo';
+                            $ruta = 'pdf';
+                        @endphp
+                    @endif
+                    <a href="{{ route($ruta, $buscado) }}" class="btn btn-info" target="_blank">
+                        Exportar PDF
+                    </a>
+                    {{-- <a href="{{ route('pdf', 'resguardo') }}" target="_blank" class="btn btn-info" type="button">
+                        Exportar PDF
+                    </a> --}}
                     <form class="navbar-form navbar-left pull-right" role="search" action="{{ route('resguardos.index') }}" style="margin: 0;" method="GET">
                     <div class="form-group">
                         <input type="text" class="form-control" name="query" placeholder="Buscar en resguardo...">

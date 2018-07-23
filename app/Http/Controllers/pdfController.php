@@ -162,12 +162,49 @@ class pdfController extends Controller
             ->orWhere('serie', 'LIKE', '%'.$buscado.'%')
             ->orWhere('modelo', 'LIKE', '%'.$buscado.'%')
             ->orWhere('ubicacion', 'LIKE', '%'.$buscado.'%')
+            // ->where('usuario_id', \Auth::user()->id)
             ->get();
-        // dd($data);
+            // ->toSql();
         $tipos = 'inventario_search';
 
         $dompdf = new Dompdf();
         $vista = \View::make('pdf.view', compact('data', 'image', 'tipos'));
+        // return view('pdf.view', compact('data', 'image', 'tipos', 'id', 'resguardante'));
+        $dompdf->loadHtml($vista);
+
+        $dompdf->setPaper('A4', 'landscape');
+
+        $dompdf->render();
+
+        if (isset($dompdf)) {
+            $x = 370;
+            $y = 550;
+            $text = "Page {PAGE_NUM} of {PAGE_COUNT}";
+            $font = $font = $dompdf->getFontMetrics()->get_font("helvetica", "bold");
+            $size = 10;
+            $color = array(0,0,0);
+            $word_space = 0.0;  //  default
+            $char_space = 0.0;  //  default
+            $angle = 0.0;   //  default
+            $dompdf->getCanvas()->page_text($x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle);
+            $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
+        }
+    }
+
+    public function searchResguardo($buscado)
+    {
+        $image = '/img/SPF.png';
+        $data = Resguardo::join('departamentos AS d', 'resguardos.departamento_id', '=', 'd.id')
+        ->select('resguardos.*', 'd.departamento')
+        ->where('n_resguardo', 'LIKE', '%'.$buscado.'%')
+        ->orwhere('resguardante', 'LIKE', '%'.$buscado.'%')
+        ->get();
+        // dd($data);
+        $tipos = 'resguardo_search';
+
+        $dompdf = new Dompdf();
+        $vista = \View::make('pdf.view', compact('data', 'image', 'tipos'));
+        // return view('pdf.view', compact('data', 'image', 'tipos', 'id', 'resguardante'));
         $dompdf->loadHtml($vista);
 
         $dompdf->setPaper('A4', 'landscape');
