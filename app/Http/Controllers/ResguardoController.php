@@ -29,6 +29,7 @@ class ResguardoController extends Controller
         return view('resguardos.index')->with([
             //'resguardos' => Resguardo::paginate(10),
             'resguardos' => $query,
+            'buscado' => $request->get('query'),
             'departamentos' => Departamento::all(),
             'articulos' => Articulo::all(),
             'resguardos_h' => Resguardos_history::all()

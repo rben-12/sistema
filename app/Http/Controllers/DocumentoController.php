@@ -54,7 +54,7 @@ class DocumentoController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -65,7 +65,10 @@ class DocumentoController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('documentos.edit')->with([
+            'tipos' => Tipo::all(),
+            'documentos' => Documento::findOrFail($id)
+        ]);
     }
 
     /**
@@ -77,7 +80,8 @@ class DocumentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Documento::findOrFail($id)->update($request->all());
+        return redirect()->route('documentos.index')->with('infob', 'El registro fue actualizado exitosamento');
     }
 
     /**
@@ -88,6 +92,9 @@ class DocumentoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $array = array('0'=>'Se ha eliminado el registro');
+        // return($id);
+        Documento::find($id)->delete();
+        return response()->json($array);
     }
 }

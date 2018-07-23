@@ -173,6 +173,12 @@
                     <th class=" center">Modelo</th>
                     <th class=" center">Status</th>
                     <th class=" center">Ubicación</th>
+                @elseif($tipos == 'resguardo_search')
+                    <th class="center">Num. resguardo</th>
+                    <th class="center">Resguardante</th>
+                    <th class="center">Puesto</th>
+                    <th class="center">Departamento</th>
+                    <th class="center">Descripcion</th>
                 @elseif($tipos=='resguardo')
                     <th class="center">Num. resguardo</th>
                     <th class="center">Resguardante</th>
@@ -201,8 +207,6 @@
                     <td class="m">{{$a->solucion}}</td>
                     <td class="m">{{$a->created_at}}</td>
                 @elseif($tipos=='inventario')
-                    
-                    
                         <td class="m">{{$a->categoria->categoria}}</td>
                         <td class="m">{{$a->descripcion}}</td>
                         <td class="m">{{$a->inv_interno}}</td>
@@ -213,15 +217,40 @@
                         <td class="m">{{$a->status->status}}</td>
                         <td class="m">{{$a->ubicacion}}</td>
                 @elseif($tipos=='inventario_search')
-                    <td class="m">{{$a->categoria}}</td>
+                    <?php
+                        if (Auth::user()->hasRole('admin')) {
+                            ?>
+                            <td class="m">{{$a->categoria}}</td>
+                            <td class="m">{{$a->descripcion}}</td>
+                            <td class="m">{{$a->inv_interno}}</td>
+                            <td class="m">{{$a->inv_externo}}</td>
+                            <td class="m">{{$a->serie}}</td>
+                            <td class="m">{{$a->marca}}</td>
+                            <td class="m">{{$a->modelo}}</td>
+                            <td class="m">{{$a->status}}</td>
+                            <td class="m">{{$a->ubicacion}}</td>
+                            <?php
+                        }
+                        if (Auth::user()->id == $a->usuario_id) {
+                            ?>
+                            <td class="m">{{$a->categoria}}</td>
+                            <td class="m">{{$a->descripcion}}</td>
+                            <td class="m">{{$a->inv_interno}}</td>
+                            <td class="m">{{$a->inv_externo}}</td>
+                            <td class="m">{{$a->serie}}</td>
+                            <td class="m">{{$a->marca}}</td>
+                            <td class="m">{{$a->modelo}}</td>
+                            <td class="m">{{$a->status}}</td>
+                            <td class="m">{{$a->ubicacion}}</td>
+                            <?php
+                        }
+                    ?>
+                @elseif($tipos == 'resguardo_search')
+                    <td class="m">{{$a->n_resguardo}}</td>
+                    <td class="m">{{$a->resguardante}}</td>
+                    <td class="m">{{$a->puesto}}</td>
+                    <td class="m">{{$a->departamento}}</td>
                     <td class="m">{{$a->descripcion}}</td>
-                    <td class="m">{{$a->inv_interno}}</td>
-                    <td class="m">{{$a->inv_externo}}</td>
-                    <td class="m">{{$a->serie}}</td>
-                    <td class="m">{{$a->marca}}</td>
-                    <td class="m">{{$a->modelo}}</td>
-                    <td class="m">{{$a->status}}</td>
-                    <td class="m">{{$a->ubicacion}}</td>
                 @elseif($tipos=='resguardo')
                     <td class="m">{{$a->n_resguardo}}</td>
                     <td class="m">{{$a->resguardante}}</td>

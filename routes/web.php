@@ -51,6 +51,7 @@ Route::group(['prefix'=>'pdf', 'middleware'=>'auth'], function(){
     $this->get('/{tipo}', 'pdfController@index')->name('pdf');
     $this->get('/resguardo/{id}', 'pdfController@showH')->name('pdf_h');
     $this->get('/{buscado}/search', 'pdfController@busqueda')->name('pdf_search');
+    $this->get('/{buscado}/resguardo', 'pdfController@searchResguardo')->name('pdf_searchR');
 });
 
 Route::get('/getArticulosToAdd', 'ResguardoController@get')
