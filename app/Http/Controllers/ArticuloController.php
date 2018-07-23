@@ -38,7 +38,7 @@ class ArticuloController extends Controller
         ->orWhere('serie', 'LIKE', '%'.$request->get('query').'%')
         ->orWhere('modelo', 'LIKE', '%'.$request->get('query').'%')
         ->orWhere('ubicacion', 'LIKE', '%'.$request->get('query').'%')
-        ->paginate(10);
+        ->paginate(200);
         // dd($query);
         return view('articulos.index')->with([
 	        //'articulos'=>Articulo::paginate(10),
@@ -83,7 +83,7 @@ class ArticuloController extends Controller
         $this->validate($request, [
             'inv_externo' => 'nullable|unique:articulos',
             'inv_interno' => 'nullable|unique:articulos',
-            'serie' => 'unique:articulos',
+            'serie' => 'nullable|unique:articulos',
         ]);
         Articulo::create($request->all());
         return redirect()->route('articulos.index')->with('infob', 'El registro fue agregado exitosamento');

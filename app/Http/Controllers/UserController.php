@@ -11,7 +11,7 @@ class UserController extends Controller
     public function index()
     {
         $usuarios = Role_user::join('roles', 'roles.id', '=', 'role_user.role_id')
-        ->join('users', 'users.id', '=', 'role_user.user_id')->paginate(10);
+        ->join('users', 'users.id', '=', 'role_user.user_id')->paginate(200);
         // dd($usuarios);
         if (\Auth::user()->hasRole('admin')) {
             return view('user.index', compact('usuarios'));

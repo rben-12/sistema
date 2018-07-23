@@ -16,7 +16,7 @@ class DocumentoController extends Controller
     public function index()
     {
         return view('documentos.index')->with([
-            'documentos' => Documento::paginate(10),
+            'documentos' => Documento::paginate(200),
             'tipos' => Tipo::all()
         ]);
     }

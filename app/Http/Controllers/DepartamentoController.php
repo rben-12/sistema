@@ -15,7 +15,7 @@ class DepartamentoController extends Controller
     public function index(Request $request)
     {
         return view('departamentos.index')->with([
-            'departamentos' => Departamento::departamento($request->get('departamento'))->paginate(5)
+            'departamentos' => Departamento::departamento($request->get('departamento'))->paginate(200)
         ]);
     }
 

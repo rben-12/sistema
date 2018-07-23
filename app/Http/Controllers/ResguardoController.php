@@ -24,7 +24,7 @@ class ResguardoController extends Controller
         ->select('r.*', 'd.departamento')
         ->where('n_resguardo', 'LIKE', '%'.$request->get('query').'%')
         ->orwhere('resguardante', 'LIKE', '%'.$request->get('query').'%')
-        ->paginate(10); 
+        ->paginate(200); 
 
         return view('resguardos.index')->with([
             //'resguardos' => Resguardo::paginate(10),
