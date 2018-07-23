@@ -182,11 +182,11 @@
                 @elseif($tipos=='resguardo_h')
                     <th class="center size m" width="85px" >Categoria</th>
                     <th class="center size m">Descripcion</th>
-                    <th class="center size m">Serie</th>
-                    <th class="center size m">Marca</th>
-                    <th class="center size m">Modelo</th>
                     <th class="center size m" width="90px">Inventario Interno</th>
                     <th class="center size m" width="90px">Inventario externo</th>
+                    <th class="center size m">Serie</th>
+                    <th class="center size m">Marca</th>
+                    <th class="center size m">Modelo</th>    
                 @endif
             </tr>
         </thead>

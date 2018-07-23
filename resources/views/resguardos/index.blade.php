@@ -33,6 +33,7 @@
                             de {{$resguardos->lastPage()}}
                         </p>
                         {{-- {{ dd($resguardos) }} --}}
+                <div class="table-responsive">
                     <table class="table tc  table-striped table-bordered table-hover table-condensed table-responsive">
                         <thead>
                             <tr>
@@ -102,6 +103,7 @@
                         </tb>
                     </table>
                     {{$resguardos->links()}}
+                </div>
                 </div>
             </div>
         </div>

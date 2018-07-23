@@ -15,7 +15,7 @@
 
     body {
       font-family: "Whitney SSm A", "Whitney SSm B", "Helvetica Neue", Helvetica, Arial, Sans-Serif;
-      background-color: #2D72D9;
+      background-color: rgb(13, 168, 91);
       color: #fff;
       -moz-font-smoothing: antialiased;
       -webkit-font-smoothing: antialiased;

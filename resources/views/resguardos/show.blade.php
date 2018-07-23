@@ -40,8 +40,8 @@
                                     <th class="text-center">Id</th>
                                     <th class="text-center">Categoria</th>
                                     <th class="text-center">Descripcion</th>
-                                    <th class="text-center">Inv interno</th>
-                                    <th class="text-center">Inv externo</th>
+                                    <th class="text-center" width="20px">Inventario interno</th>
+                                    <th class="text-center" width="20px">Inventario externo</th>
                                     <th class="text-center">Serie</th>
                                     <th class="text-center">Marca</th>
                                     <th class="text-center">Modelo</th>

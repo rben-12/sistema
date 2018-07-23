@@ -65,10 +65,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Categoria::create([
-            'categoria' => 'TELEFONO'
+            'categoria' => 'HARDWARE'
         ]);
         Categoria::create([
-            'categoria' => 'SWITCH'
+            'categoria' => 'SOFTWARE'
         ]);
 
         $this->call(RoleTableSeeder::class);

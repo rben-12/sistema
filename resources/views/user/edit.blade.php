@@ -1,6 +1,4 @@
-
-@extends('layouts.app') 
-@section('content')
+@extends('layouts.app') @section('content')
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
@@ -11,6 +9,7 @@
                 </h4>
             </div>
         </div>
+        
         <div class="col-md-8 col-md-offset-2">
             @include('infob')
             @include('info')
