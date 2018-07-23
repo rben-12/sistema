@@ -10,7 +10,7 @@
       </div>
     </div>
       
-    <div class="col-sm-10 col-sm-offset-1">
+    <div class="col-sm-12 col-sm-offset-0">
         @include('articulos.create')
         
         @include('info') 
@@ -69,8 +69,8 @@
                 <th class=" text-center" width="150px">Descripción</th>
                 <th class=" text-center" width="50px">Inventario Interno</th>
                 <th class=" text-center" width="50px">Inventario Externo</th>
-                <th class=" text-center">Serie</th>
-                <th class=" text-center" width="50px">Marca</th>
+                <th class=" text-center" width="30px">Serie</th>
+                <th class=" text-center" width="30px">Marca</th>
                 <th class=" text-center">Modelo</th>
                 <th class=" text-center">Status</th>
                 <th class=" text-center" width="150px">Ubicación</th>

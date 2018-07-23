@@ -141,7 +141,7 @@
     @endif
         </div>
 
-    {{-- <table class="table center table-striped table-bordered table-hover table-condensed table-responsive"> --}}
+    
     <table class="table center table-striped table-bordered table-hover table-condensed table-responsive">
         <thead>
             <tr>

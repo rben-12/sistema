@@ -38,6 +38,7 @@ class ArticuloController extends Controller
         ->orWhere('serie', 'LIKE', '%'.$request->get('query').'%')
         ->orWhere('modelo', 'LIKE', '%'.$request->get('query').'%')
         ->orWhere('ubicacion', 'LIKE', '%'.$request->get('query').'%')
+        ->orderBy('id', 'asc')
         ->paginate(200);
         // dd($query);
         return view('articulos.index')->with([
