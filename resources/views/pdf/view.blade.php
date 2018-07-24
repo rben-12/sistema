@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Reporte</title>
+    <!-- <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"> -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
     <style>
         thead {
             background: rgba(126, 206, 162, 0.247);
@@ -60,7 +60,7 @@
         float: center ;
         }
         .size {
-        font-size:12px;
+        font-size:11px;
         }
         .res{
         margin-left: 70px;
@@ -316,14 +316,17 @@
         </div>
         <!--style="margin-top : 40px;"-->
         <div class="row" style="margin-top : 40px;">
-            <div class="res1 center">
+            <div class="res1 center size">
                 {{ $resguardante->resguardante }}
             </div>
-            <div class="auto1 center">
+            <div class="auto1 center size">
                 {{ Auth::user()->name }}
             </div>
         </div>
         </footer>
     @endif
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
 </html>

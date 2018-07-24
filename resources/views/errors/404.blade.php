@@ -93,7 +93,7 @@
 
 <div class="error-container">
   <h1>404</h1>
-  <p class="return"><a href="{{ route('documentos.index') }}">Regresar</a></p>
+  <p class="return"><a href="/">Regresar</a></p>
 </div>
 
 </body>
