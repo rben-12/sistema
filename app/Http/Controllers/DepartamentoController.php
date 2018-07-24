@@ -75,7 +75,7 @@ class DepartamentoController extends Controller
     public function update(Request $request, $id)
     {
         Departamento::find($id)->update($request->all());
-        return redirect()->route('departamentos.index')->with('infob', 'El registro fue actualizado exitosamente') ;
+        return redirect()->route('departamentos.index')->with('infob', 'El registro fue actualizado exitosamente');
     }
 
     /**

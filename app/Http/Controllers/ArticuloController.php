@@ -23,6 +23,7 @@ class ArticuloController extends Controller
 
     public function index(Request $request)
     { 
+        set_time_limit(0);
         //return $request->get('query');
         $query = DB::table('articulos AS a')
         ->join('marcas AS m', 'a.marca_id', '=', 'm.id')
@@ -41,8 +42,9 @@ class ArticuloController extends Controller
         ->orderBy('id', 'asc')
         ->paginate(200);
         // dd($query);
+        
         return view('articulos.index')->with([
-	        //'articulos'=>Articulo::paginate(10),
+            //'articulos'=>Articulo::paginate(10),
             'articulos' => $query,
             'buscado' => $request->get('query'),
             'categorias' => Categoria::all(),

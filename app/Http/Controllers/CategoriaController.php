@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Documento;
-use App\Tipo;
+use App\Categoria;
 use DB;
-
-class DocumentoController extends Controller
+class CategoriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,17 +14,12 @@ class DocumentoController extends Controller
      */
     public function index(Request $request)
     {
-        $query = DB::table('documentos AS doc')
-        ->join('tipos AS t', 'doc.tipo_id', '=', 't.id')
-        ->select('doc.*', 't.tipo')
-        ->where('folio', 'LIKE', '%'.$request->get('query').'%')
-        ->orwhere('descripcion', 'LIKE', '%'.$request->get('query').'%')
-        ->orwhere('tipo', 'LIKE', '%'.$request->get('query').'%')
+        $query = DB::table('categorias AS c')
+        ->where('categoria', 'LIKE', '%'.$request->get('query').'%')
         ->paginate(200);
 
-        return view('documentos.index')->with([
-            'documentos' => $query,
-            'tipos' => Tipo::all()
+        return view('categorias.index')->with([
+            'categorias' => $query
         ]);
     }
 
@@ -35,12 +28,9 @@ class DocumentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function create()
     {
-        return view('documentos.create')->with([
-            'tipos' => Tipo::all()
-        ]);
+        return view('categorias.create');
     }
 
     /**
@@ -51,8 +41,8 @@ class DocumentoController extends Controller
      */
     public function store(Request $request)
     {
-        Documento::create($request->all());
-        return redirect()->route('documentos.index')->with('infob', 'El registro fue agregado exitosamento');
+        Categoria::create($request->all());
+        return redirect()->route('categorias.index')->with('infob', 'El registro fue agregado exitosamento');
     }
 
     /**
@@ -63,7 +53,7 @@ class DocumentoController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -74,9 +64,8 @@ class DocumentoController extends Controller
      */
     public function edit($id)
     {
-        return view('documentos.edit')->with([
-            'tipos' => Tipo::all(),
-            'documentos' => Documento::findOrFail($id)
+        return view('categorias.edit')->with([
+            'categoria' => Categoria::find($id)
         ]);
     }
 
@@ -89,8 +78,8 @@ class DocumentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Documento::findOrFail($id)->update($request->all());
-        return redirect()->route('documentos.index')->with('infob', 'El registro fue actualizado exitosamento');
+        Categoria::find($id)->update($request->all());
+        return redirect()->route('categorias.index')->with('infob', 'El registro fue actualizado exitosamente');
     }
 
     /**
@@ -101,9 +90,7 @@ class DocumentoController extends Controller
      */
     public function destroy($id)
     {
-        $array = array('0'=>'Se ha eliminado el registro');
-        // return($id);
-        Documento::find($id)->delete();
-        return response()->json($array);
+        Categoria::destroy($id);
+        return back()->with('info', 'El registro fue eliminano');
     }
 }
