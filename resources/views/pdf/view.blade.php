@@ -231,7 +231,7 @@
                             <td class="m">{{$a->ubicacion}}</td>
                             <?php
                         }
-                        if (Auth::user()->id == $a->usuario_id) {
+                        elseif (Auth::user()->id == $a->usuario_id) {
                             ?>
                             <td class="m">{{$a->categoria}}</td>
                             <td class="m">{{$a->descripcion}}</td>
