@@ -20,7 +20,7 @@
         border-collapse: collapse;
         }
         th, td {
-        padding: 10px;
+        padding: 2px;
         }
         /* Sticky footer styles
 -------------------------------------------------- */
