@@ -20,7 +20,8 @@ Route::group(['middleware'=>'auth'], function(){
         'documentos' => 'DocumentoController',
         'resguardos' => 'ResguardoController',
         'usuarios' => 'UserController',
-        'categorias' => 'CategoriaController'
+        'categorias' => 'CategoriaController',
+        'encargados' => 'EncargadoController'
     ]);
 });
 
