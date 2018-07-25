@@ -14,6 +14,7 @@
                 </div>
                 <div class="form-group">
                     {!! Form::submit('Guardar', ['class'=>'btn btn-success']) !!}
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                 </div>
             {!! Form::close() !!}   
                 <!--</form>-->

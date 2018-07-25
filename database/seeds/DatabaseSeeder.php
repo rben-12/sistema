@@ -65,15 +65,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Categoria::create([
-            'categoria' => 'TELEFONO'
+            'categoria' => 'HARDWARE'
         ]);
         Categoria::create([
-            'categoria' => 'SWITCH'
+            'categoria' => 'SOFTWARE'
         ]);
 
         $this->call(RoleTableSeeder::class);
         $this->call(UserTableSeeder::class);
-        $this->call(ArticulosSeeder::class);
+        //$this->call(ArticulosSeeder::class);
         //$this->call(ArticulosSeeder::class);
     }
 }

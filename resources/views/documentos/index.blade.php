@@ -19,16 +19,22 @@
         <a target="_blank" class="btn btn-info" href="{{ route('unisharp.lfm.show') }}"> Manager
           <i class="glyphicon glyphicon-file"></i></a>
 
-        <form class="navbar-form navbar-left pull-right" role="search" action="" style="margin: 0;" method="GET">
+        <form class="navbar-form navbar-left pull-right" role="search" action="{{route('documentos.index')}}" style="margin: 0;" method="GET">
             <div class="form-group">
-            <input type="text" name="" class="form-control" placeholder="Buscar articulo...">
+            <input type="text" name="query" class="form-control" placeholder="Buscar articulo...">
             </div>
             <button class="btn btn-info" type="submit">Buscar</button>
           </form>
       </div>
 
     <div class="panel-body">
-      
+        <p>
+            {{$documentos->total ()}} registros | 
+            página {{$documentos->currentPage()}} 
+            de {{$documentos->lastPage()}}
+
+          </p>
+    <div class="table-responsive">
       <table  class="table text-center table-striped table-bordered table-hover table-condensed table-responsive">
           
        <thead>
@@ -51,7 +57,7 @@
                 <td class="m">{{$doc->id}}</td>
                   <td class="m">{{$doc->folio}}</td>
                   <td class="m">{{$doc->descripcion}}</td>
-                  <td class="m">{{$doc->tipo->tipo}}</td>
+                  <td class="m">{{$doc->tipo}}</td>
                   <td class="m">{{$doc->fecha_doc}}</td>
                   <td class="m">
                     <a href="{{$doc->url}}" target="_blank">
@@ -81,6 +87,8 @@
 
           </tbody>
         </table>
+        {{ $documentos->links() }}
+      </div>
       </div> 
     </div>
     </div>

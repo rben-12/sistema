@@ -23,6 +23,7 @@ class ArticuloController extends Controller
 
     public function index(Request $request)
     { 
+        set_time_limit(0);
         //return $request->get('query');
         $query = DB::table('articulos AS a')
         ->join('marcas AS m', 'a.marca_id', '=', 'm.id')
@@ -38,10 +39,12 @@ class ArticuloController extends Controller
         ->orWhere('serie', 'LIKE', '%'.$request->get('query').'%')
         ->orWhere('modelo', 'LIKE', '%'.$request->get('query').'%')
         ->orWhere('ubicacion', 'LIKE', '%'.$request->get('query').'%')
-        ->paginate(10);
+        ->orderBy('id', 'asc')
+        ->paginate(200);
         // dd($query);
+        
         return view('articulos.index')->with([
-	        //'articulos'=>Articulo::paginate(10),
+            //'articulos'=>Articulo::paginate(10),
             'articulos' => $query,
             'buscado' => $request->get('query'),
             'categorias' => Categoria::all(),
@@ -83,7 +86,7 @@ class ArticuloController extends Controller
         $this->validate($request, [
             'inv_externo' => 'nullable|unique:articulos',
             'inv_interno' => 'nullable|unique:articulos',
-            'serie' => 'unique:articulos',
+            'serie' => 'nullable|unique:articulos',
         ]);
         Articulo::create($request->all());
         return redirect()->route('articulos.index')->with('infob', 'El registro fue agregado exitosamento');

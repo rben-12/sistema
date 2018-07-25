@@ -10,6 +10,7 @@
                 </h4>
             </div>
         </div>
+        
         <div class="col-md-8 col-md-offset-2">
             @include('infob')
             @include('info')

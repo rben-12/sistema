@@ -8,7 +8,7 @@
                     <strong class="l">inventario</strong>
                 </h4>
             </div>
-            <div class="col-sm-6 col-sm-offset-3">
+            <div class="col-sm-8 col-sm-offset-2">
 
                 <div class="panel panel-primary">
                     <div class="panel-heading">
