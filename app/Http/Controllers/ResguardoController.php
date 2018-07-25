@@ -24,6 +24,10 @@ class ResguardoController extends Controller
         ->select('r.*', 'd.departamento')
         ->where('n_resguardo', 'LIKE', '%'.$request->get('query').'%')
         ->orwhere('resguardante', 'LIKE', '%'.$request->get('query').'%')
+        ->orwhere('puesto', 'LIKE', '%'.$request->get('query').'%')
+        ->orwhere('departamento', 'LIKE', '%'.$request->get('query').'%')
+        ->orwhere('descripcion', 'LIKE', '%'.$request->get('query').'%')
+        //->orwhere('articulo_id', 'LIKE', '%'.$request->get('query').'%')
         ->paginate(200); 
 
         return view('resguardos.index')->with([

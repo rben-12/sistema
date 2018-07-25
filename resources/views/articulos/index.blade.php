@@ -64,15 +64,15 @@
 
             <thead>
               <tr>
-                <th class="text-center">id</th>
-                <th class=" text-center">categoria</th>
+                <th class="text-center" width="10px">id</th>
+                <th class=" text-center" width="30px">categoria</th>
                 <th class=" text-center" width="150px">Descripción</th>
                 <th class=" text-center" width="50px">Inventario Interno</th>
                 <th class=" text-center" width="50px">Inventario Externo</th>
                 <th class=" text-center" width="30px">Serie</th>
                 <th class=" text-center" width="30px">Marca</th>
-                <th class=" text-center">Modelo</th>
-                <th class=" text-center">Status</th>
+                <th class=" text-center" width="30px">Modelo</th>
+                <th class=" text-center" width="30px">Status</th>
                 <th class=" text-center" width="150px">Ubicación</th>
 
                 <!-- <th class=" text-center">Fecha y hora</th> -->

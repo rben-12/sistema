@@ -10,7 +10,7 @@
         </div>
         @include('incidencias.create')
 
-        <div class="col-sm-10 col-sm-offset-1">
+        <div class="col-sm-12">
         @include('infob')
         @include('info')
         
@@ -34,13 +34,13 @@
         <table class="table tc table-bordered table-striped table-hover table-condensed table-responsive">
             <thead>
                 <tr>
-                    <th class="text-center">#</th>
-                    <th class="text-center">asunto</th>
+                    <th class="text-center" width="10px">Id</th>
+                    <th class="text-center" width="150px">asunto</th>
                     <th class="text-center">descripción</th>
-                    <th class="text-center">encargado</th>
-                    <th class="text-center">departamento</th>
+                    <th class="text-center" width="150px">encargado</th>
+                    <th class="text-center" width="180px">departamento</th>
                     <th class="text-center">solucion</th>
-                    <th class="text-center">Fecha y Hora</th>
+                    <th class="text-center" width="150px">Fecha y Hora</th>
                     <th class="text-center" width="65px"></th>
                 </tr>
             </thead>    
