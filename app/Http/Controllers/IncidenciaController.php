@@ -25,6 +25,7 @@ class IncidenciaController extends Controller
         ->where('asunto', 'LIKE', '%'.$request->get('query').'%')
         ->orwhere('descripcion', 'LIKE', '%'.$request->get('query').'%')
         ->orwhere('departamento', 'LIKE', '%'.$request->get('query').'%')
+        ->orwhere('solucion', 'LIKE', '%'.$request->get('query').'%')
         ->paginate(200);
 
         return view('incidencias.index')->with([
