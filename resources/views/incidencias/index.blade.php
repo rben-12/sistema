@@ -30,6 +30,7 @@
                 páginas {{$incidencias->currentPage()}} 
                 de {{$incidencias->lastPage()}}
             </p>
+    <div class="table-responsive">
         <table class="table tc table-bordered table-striped table-hover table-condensed table-responsive">
             <thead>
                 <tr>
@@ -71,6 +72,7 @@
             </tb>
         </table>
         {{$incidencias->links()}}
+    </div>
     </div>
 </div>
     </div>

@@ -64,7 +64,7 @@
 
             <thead>
               <tr>
-                <th class="text-center" >id</th>
+                <th class="text-center">id</th>
                 <th class=" text-center">categoria</th>
                 <th class=" text-center" width="150px">Descripción</th>
                 <th class=" text-center" width="50px">Inventario Interno</th>
