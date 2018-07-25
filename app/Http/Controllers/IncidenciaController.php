@@ -21,6 +21,7 @@ class IncidenciaController extends Controller
         $query = DB::table('incidencias AS i')
         ->join('encargados AS e', 'i.encargado_id', '=', 'e.id')
         ->join('departamentos AS d', 'i.departamento_id', '=', 'd.id')
+        ->join('asuntos AS a', 'i.asunto_id', '=', 'a.id')
         ->select('i.*', 'e.encargado', 'd.departamento')
         ->where('asunto', 'LIKE', '%'.$request->get('query').'%')
         ->orwhere('descripcion', 'LIKE', '%'.$request->get('query').'%')
