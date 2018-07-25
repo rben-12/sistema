@@ -11,7 +11,7 @@
                   </h4>
                 </div>
             </div>
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-sm-10 col-sm-offset-1">
                 @include('info')
                 <div id="alerta_message" class="alert alert-success" hidden>
                     Se guardo correctamente
@@ -34,6 +34,7 @@
                                 Asignar articulo
                             </a>
                         </div> <br>
+                    <div class="table-responsive">
                         <table class="table tc table-striped table-bordered table-hover table-condensed table-responsive">
                             <thead>
                                 <tr>
@@ -70,6 +71,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
                         <div class="form-group">
                             <a type="link" class="btn btn-warning pull-right" href="{{route('resguardos.index')}}">regresar</a>
                         </div>
