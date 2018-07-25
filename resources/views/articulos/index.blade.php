@@ -146,11 +146,6 @@
                     </td>
                   </tr>
                   @endif
-
-                  <!--<a type="link" class="btn btn-info btn-xs pull-right" href="">
-                    <i class='glyphicon glyphicon-time'></i></a>-->
-                
-              
               @endforeach
 
             </tbody>

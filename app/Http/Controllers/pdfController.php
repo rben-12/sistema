@@ -58,7 +58,8 @@ class pdfController extends Controller
             // return $pdf->stream('reporte.pdf');  
 
             $dompdf = new Dompdf();
-            $vista = \View::make('pdf.view', compact('data', 'image', 'tipos'));
+            $vista = \View::make('pdf.inventarioAll', compact('data', 'image', 'tipos'));
+            // return view('pdf.inventarioAll', compact('data', 'image', 'tipos'));
             $dompdf->loadHtml($vista);
 
             $dompdf->setPaper('A4', 'landscape');
@@ -149,10 +150,11 @@ class pdfController extends Controller
     {
         // dd($buscado);
         $image = '/img/SPF.png';
-        $data = Articulo::join('marcas AS m', 'articulos.marca_id', '=', 'm.id')
-            ->join('categorias AS c', 'articulos.categoria_id', '=', 'c.id')
-            ->join('statuses AS s', 'articulos.status_id', '=', 's.id')
-            ->select('articulos.*', 'm.marca', 'c.categoria', 's.status')
+        $data = DB::table('articulos AS a')
+        ->join('marcas AS m', 'a.marca_id', '=', 'm.id')
+        ->join('categorias AS c', 'a.categoria_id', '=', 'c.id')
+        ->join('statuses AS s', 'a.status_id', '=', 's.id')
+        ->select('a.*', 'm.marca', 'c.categoria', 's.status')
             ->where('descripcion', 'LIKE', '%'.$buscado.'%')
             ->orWhere('marca', 'LIKE', '%'.$buscado.'%')
             ->orWhere('categoria', 'LIKE', '%'.$buscado.'%')
@@ -166,10 +168,10 @@ class pdfController extends Controller
             ->get();
             // ->toSql();
         $tipos = 'inventario_search';
-
+        // dd($data);
         $dompdf = new Dompdf();
-        $vista = \View::make('pdf.view', compact('data', 'image', 'tipos'));
-        // return view('pdf.view', compact('data', 'image', 'tipos', 'id', 'resguardante'));
+        $vista = \View::make('pdf.inventarioAll', compact('data', 'image', 'tipos'));
+        // return view('pdf.inventarioAll', compact('data', 'image', 'tipos'));
         $dompdf->loadHtml($vista);
 
         $dompdf->setPaper('A4', 'landscape');
