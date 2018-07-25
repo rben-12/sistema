@@ -198,9 +198,9 @@ class pdfController extends Controller
         ->select('resguardos.*', 'd.departamento')
         ->where('n_resguardo', 'LIKE', '%'.$buscado.'%')
         ->orwhere('resguardante', 'LIKE', '%'.$buscado.'%')
-        ->orwhere('puesto', 'LIKE', '%'.$request->get('query').'%')
-        ->orwhere('departamento', 'LIKE', '%'.$request->get('query').'%')
-        ->orwhere('descripcion', 'LIKE', '%'.$request->get('query').'%')
+        ->orwhere('puesto', 'LIKE', '%'.$buscado.'%')
+        ->orwhere('departamento', 'LIKE', '%'.$buscado.'%')
+        ->orwhere('descripcion', 'LIKE', '%'.$buscado.'%')
         ->get();
         // dd($data);
         $tipos = 'resguardo_search';
