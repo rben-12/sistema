@@ -109,8 +109,12 @@ class ArticuloController extends Controller
         }
         $categorias = Categoria::all();
         $resguardo = Resguardos_history::where('articulo_id', '=', $id)->first();
-        $hResguardo = Resguardos_history::join('resguardos', 'resguardos_histories.resguardo_id', '=' ,'resguardos.id')
+        $hResguardo = Resguardos_history::select('resguardos_histories.id', 
+            'resguardos_histories.articulo_id', 'resguardos_histories.created_at',
+            'resguardos.n_resguardo', 'resguardos.resguardante', 'resguardos.descripcion')
+            ->join('resguardos', 'resguardos_histories.resguardo_id', '=' ,'resguardos.id')
             ->where('resguardos_histories.articulo_id', $id)->get();
+        // dd($hResguardo);
         if ($resguardo!=null) {
             $resguardante = Resguardo::where('id', '=', $resguardo->resguardo_id)->first();
         }
