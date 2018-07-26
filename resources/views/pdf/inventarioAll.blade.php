@@ -20,37 +20,7 @@
         border-collapse: collapse;
         }
         th, td {
-        padding: 10px;
-        }
-        /* Sticky footer styles
--------------------------------------------------- */
-        html {
-        position: relative;
-        min-height: 100%;
-        }
-        body {
-        /* Margin bottom by footer height*/
-        margin-bottom: 60px;
-        }
-        .footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        /* Set the fixed height of the footer here */
-        height: 60px;
-        }
-
-        /* Custom page CSS
-        -------------------------------------------------- */
-        /* Not required for template or sticky footer method. */
-
-        .container {
-        width: auto;
-        max-width: 680px;
-        padding: 0 15px;
-        }
-        .container .text-muted {
-        margin: 20px 0;
+        padding: 2px;
         }
         .m{
         text-transform: uppercase;
@@ -94,7 +64,7 @@
         height: 100px;
         }
         .name{
-        height: 35px;
+        height: 25px;
         }
     </style>
 </head>
@@ -107,6 +77,11 @@
     <div class="center cen">
         <h1 style="font-size:25px; margin: 0px; ">
             Secretaria de Planeacion y Finanzas <br> Direccion de Informatica <br>
+            @if($tipos=='inventario')
+                    Reporte Total de Inventario
+            @elseif($tipos=='inventario_search')
+                    Reporte de Inventario
+            @endif
         </h1>
     </div>
 </header>
@@ -119,7 +94,7 @@
         </div>
     </div>
     {{-- {{dd($tipos)}} --}}
-    <table class=" center" style="width:50%">
+    <table class=" center" style="width:100%">
         <thead>
             <tr>
                 <th class="center">Categoria</th>
@@ -137,24 +112,24 @@
                 @foreach ($data as $a)
                     @if (Auth::user()->hasRole('admin'))
                     <tr>
-                        <td class="m">{{$a->categoria->categoria}}</td>
-                        <td class="m">{{$a->descripcion}}</td>
-                        <td class="m">{{$a->inv_interno}}</td>
-                        <td class="m">{{$a->inv_externo}}</td>
-                        <td class="m">{{$a->serie}}</td>
-                        <td class="m">{{$a->marca->marca}}</td>
-                        <td class="m">{{$a->modelo}}</td>
-                        <td class="m">{{$a->ubicacion}}</td>  
+                        <td class="m size">{{$a->categoria->categoria}}</td>
+                        <td class="m size">{{$a->descripcion}}</td>
+                        <td class="m size">{{$a->inv_interno}}</td>
+                        <td class="m size">{{$a->inv_externo}}</td>
+                        <td class="m size">{{$a->serie}}</td>
+                        <td class="m size">{{$a->marca->marca}}</td>
+                        <td class="m size">{{$a->modelo}}</td>
+                        <td class="m size">{{$a->ubicacion}}</td>  
                     @elseif (Auth::user()->id == $a->usuario_id)
                     <tr>
-                        <td class="m">{{$a->categoria->categoria}}</td>
-                        <td class="m">{{$a->descripcion}}</td>
-                        <td class="m">{{$a->inv_interno}}</td>
-                        <td class="m">{{$a->inv_externo}}</td>
-                        <td class="m">{{$a->serie}}</td>
-                        <td class="m">{{$a->marca->marca}}</td>
-                        <td class="m">{{$a->modelo}}</td>
-                        <td class="m">{{$a->ubicacion}}</td>  
+                        <td class="m size">{{$a->categoria->categoria}}</td>
+                        <td class="m size">{{$a->descripcion}}</td>
+                        <td class="m size">{{$a->inv_interno}}</td>
+                        <td class="m size">{{$a->inv_externo}}</td>
+                        <td class="m size">{{$a->serie}}</td>
+                        <td class="m size">{{$a->marca->marca}}</td>
+                        <td class="m size">{{$a->modelo}}</td>
+                        <td class="m size">{{$a->ubicacion}}</td>  
                     @endif
                 @endforeach
             @endif
@@ -162,24 +137,24 @@
                 @foreach ($data as $a)
                     @if (Auth::user()->hasRole('admin'))
                     <tr>
-                        <td class="m">{{$a->categoria}}</td>
-                        <td class="m">{{$a->descripcion}}</td>
-                        <td class="m">{{$a->inv_interno}}</td>
-                        <td class="m">{{$a->inv_externo}}</td>
-                        <td class="m">{{$a->serie}}</td>
-                        <td class="m">{{$a->marca}}</td>
-                        <td class="m">{{$a->modelo}}</td>
-                        <td class="m">{{$a->ubicacion}}</td>  
+                        <td class="m size">{{$a->categoria}}</td>
+                        <td class="m size">{{$a->descripcion}}</td>
+                        <td class="m size">{{$a->inv_interno}}</td>
+                        <td class="m size">{{$a->inv_externo}}</td>
+                        <td class="m size">{{$a->serie}}</td>
+                        <td class="m size">{{$a->marca}}</td>
+                        <td class="m size">{{$a->modelo}}</td>
+                        <td class="m size">{{$a->ubicacion}}</td>  
                     @elseif (Auth::user()->id == $a->usuario_id)
                     <tr>
-                        <td class="m">{{$a->categoria}}</td>
-                        <td class="m">{{$a->descripcion}}</td>
-                        <td class="m">{{$a->inv_interno}}</td>
-                        <td class="m">{{$a->inv_externo}}</td>
-                        <td class="m">{{$a->serie}}</td>
-                        <td class="m">{{$a->marca}}</td>
-                        <td class="m">{{$a->modelo}}</td>
-                        <td class="m">{{$a->ubicacion}}</td>  
+                        <td class="m size">{{$a->categoria}}</td>
+                        <td class="m size">{{$a->descripcion}}</td>
+                        <td class="m size">{{$a->inv_interno}}</td>
+                        <td class="m size">{{$a->inv_externo}}</td>
+                        <td class="m size">{{$a->serie}}</td>
+                        <td class="m size">{{$a->marca}}</td>
+                        <td class="m size">{{$a->modelo}}</td>
+                        <td class="m size">{{$a->ubicacion}}</td>  
                     @endif
                 @endforeach
             @endif
