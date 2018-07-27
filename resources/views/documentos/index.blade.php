@@ -10,7 +10,7 @@
       </div> 
     </div>
 
-<div class="col-sm-8 col-sm-offset-2">
+<div class="col-sm-10 col-sm-offset-1">
       @include('documentos.create')
       @include('infob')
       @include('info') 
@@ -39,13 +39,13 @@
           
        <thead>
               <tr>
-                  <th class="text-center">id</th>
                   <th class=" text-center">Folio</th>
                   <th class=" text-center">Descripción</th>
                   <th class=" text-center">Tipo</th>
                   <th class="text-center">fecha docs</th>
                   <th class=" text-center">Archivo</th>
                   <th class=" text-center">Tipo de archivo</th>
+                  <th class=" text-center">Fecha del registro</th>
                   <th class=" text-center">Acciones</th>
               </tr>
             </thead> 
@@ -54,7 +54,6 @@
           <tbody> 
             @foreach($documentos as $doc)
               <tr id="id{{$doc->id}}">
-                <td class="m">{{$doc->id}}</td>
                   <td class="m">{{$doc->folio}}</td>
                   <td class="m">{{$doc->descripcion}}</td>
                   <td class="m">{{$doc->tipo}}</td>
@@ -75,6 +74,7 @@
                   <td>
                       {{ pathinfo($doc->url, PATHINFO_EXTENSION) }}
                   </td>
+                  <td>{{$doc->created_at}}</td>
                   <td>
                     <a href="{{ route('documentos.edit', $doc->id) }}" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
                     <button class="delete btn btn-danger btn-xs" data-id="{{ $doc->id }}" data-url="{{ route('documentos.destroy', $doc->id) }}" >
