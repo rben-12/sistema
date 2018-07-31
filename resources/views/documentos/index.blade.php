@@ -39,14 +39,14 @@
           
        <thead>
               <tr>
-                  <th class=" text-center">Folio</th>
+                  <th class=" text-center" width="90">Folio</th>
                   <th class=" text-center">Descripción</th>
-                  <th class=" text-center">Tipo</th>
-                  <th class="text-center">fecha docs</th>
-                  <th class=" text-center">Archivo</th>
-                  <th class=" text-center">Tipo de archivo</th>
-                  <th class=" text-center">Fecha del registro</th>
-                  <th class=" text-center">Acciones</th>
+                  <th class=" text-center" width="90">Tipo</th>
+                  <th class="text-center" width="150">fecha docs</th>
+                  <th class=" text-center"width="170">Archivo</th>
+                  <th class=" text-center" width="90">Tipo de archivo</th>
+                  <th class=" text-center" width="150px">Fecha del registro</th>
+                  <th class=" text-center" width="65px">Acciones</th>
               </tr>
             </thead> 
            
@@ -61,7 +61,7 @@
                   <td class="m">
                     <a href="{{$doc->url}}" target="_blank">
                       @if (pathinfo($doc->url, PATHINFO_EXTENSION) == 'pdf')
-                        Ver <img src="{{ asset('img/iconPdf.ico') }}" alt="">
+                        Descargar <img src="{{ asset('img/iconPdf.ico') }}" alt="">
                       @elseif(pathinfo($doc->url, PATHINFO_EXTENSION) == 'docx' || pathinfo($doc->url, PATHINFO_EXTENSION)=='doc')
                         Descargar <img src="{{ asset('img/iconFileWord.ico') }}" alt="">
                       @elseif(pathinfo($doc->url, PATHINFO_EXTENSION) == 'xlsx')

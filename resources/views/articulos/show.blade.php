@@ -74,6 +74,18 @@
                             </tb>
                             <tb>
                                 <tr>
+                                    <th width="20px" class="t1 m">IP address</th>
+                                    <td class="t2 m">{{$articulo->ip_address}}</td>
+                                </tr>
+                            </tb>
+                            <tb>
+                                <tr>
+                                    <th width="20px" class="t1 m">Mac address</th>
+                                    <td class="t2 m">{{$articulo->mac_address}}</td>
+                                </tr>
+                            </tb>
+                            <tb>
+                                <tr>
                                     <th width="20px" class="t1 m">ubicacion</th>
                                     <td class="t2 m">{{$articulo->ubicacion}}</td>
                                 </tr>
@@ -98,7 +110,7 @@
                                     @if ($articulo->resguardo!=null)
                                         <td class="t2 m">{{$articulo->resguardo->resguardante}}</td>
                                     @else
-                                        <td class="t2 m">No se ha asignao a resguardo</td>
+                                        <td class="t2 m">No se ha asignado a resguardo</td>
                                     @endif
                                     
                                     {{-- @foreach($resguardo->resguardos as $ar)

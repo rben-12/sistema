@@ -113,8 +113,7 @@
     @endif
                 @if ($tipos == 'incidencias')
                     Reporte de Incidencias
-                @elseif($tipos=='inventario')
-                    Reporte de Inventario
+                
                 @elseif($tipos=='resguardo')
                     Resguardos
     @endif
@@ -147,7 +146,7 @@
     </div>
 </header>
         <div class="name" style="margin: 10px; font-size:12px;">
-            <div class="left size">
+            <div class="left size m">
                     Usuario: {{ Auth::user()->name }} <br>
                     Resguardante: {{ $resguardante->resguardante }}
             </div>  
@@ -291,10 +290,10 @@
         </div>
         <!--style="margin-top : 40px;"-->
         <div class="name" style="margin-top : 40px;">
-            <div class="res1 center sizer">
+            <div class="res1 center sizer m">
                 {{ $resguardante->resguardante }}
             </div>
-            <div class="auto1 center sizer">
+            <div class="auto1 center sizer m">
                 {{ Auth::user()->name }}
             </div>
         </div>

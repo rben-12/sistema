@@ -17,6 +17,8 @@ class Articulo extends Model
         'modelo', 
         'status_id', 
         'ubicacion',
+        'ip_address',
+        'mac_address',
         'usuario_id'   
     ];
 

@@ -53,13 +53,14 @@
                     <table class="table tc  table-striped table-bordered table-hover table-condensed table-responsive">
                         <thead>
                             <tr>
-                                <th class="text-center">Num. resguardo</th>
-                                <th class="text-center">resguardante</th>
-                                <th class="text-center">puesto</th>
-                                <th class="text-center">departamento</th>
-                                <th class="text-center">descripcion</th>
-                                <th class="text-center">id dispositivos</th>
-                                <th class="text-center">documento</th>
+                                <th class="text-center" width="60px">Num. resguardo</th>
+                                <th class="text-center" width="160px">resguardante</th>
+                                <th class="text-center" width="150px">puesto</th>
+                                <th class="text-center" width="150px">departamento</th>
+                                <th class="text-center" width="60px">descripcion</th>
+                                <th class="text-center"  width="60px">Extencion</th>
+                                <th class="text-center" width="80px">id dispositivos</th>
+                                <th class="text-center" width="60px">documento</th>
                                 <th width="30px">acciones</th>
                             </tr>
                         </thead>    
@@ -71,6 +72,7 @@
                                 <td class="m">{{$r->puesto}}</td>
                                 <td class="m">{{$r->departamento}}</td>
                                 <td class="m">{{$r->descripcion}}</td>
+                                <td class="m">{{$r->extencion}}</td>
                                 <td class="m">{{$r->articulo_id}}</td>
                                 <td class="m">
                                     <a href="{{$r->archivo}}" target="_blank">

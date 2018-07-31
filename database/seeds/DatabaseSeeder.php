@@ -61,7 +61,23 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Tipo::create([
-            'tipo' => 'memo'
+            'tipo' => 'Circular'
+        ]);
+
+        Tipo::create([
+            'tipo' => 'Memorándum'
+        ]);
+
+        Tipo::create([
+            'tipo' => 'Oficio'
+        ]);
+
+        Tipo::create([
+            'tipo' => 'SIMA'
+        ]);
+
+        Tipo::create([
+            'tipo' => 'Viático'
         ]);
 
         Categoria::create([
