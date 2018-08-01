@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Encargado;
 use DB;
+use Auth;
 
 class EncargadoController extends Controller
 {
@@ -19,9 +20,14 @@ class EncargadoController extends Controller
         ->where('encargado', 'LIKE', '%'.$request->get('query').'%')
         ->paginate(200);
 
+        if (Auth::user()->hasrole('admin')){
         return view('encargados.index')->with([
             'encargados' => $query
         ]);
+        }
+        else{
+            return redirect()->route('home');
+        }
     }
 
     /**
@@ -65,9 +71,14 @@ class EncargadoController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::user()->hasrole('admin')){
         return view('encargados.edit')->with([
             'encargado' => Encargado::find($id)
         ]);
+        }
+        else{
+            return redirect()->route('home');
+        }
     }
 
     /**

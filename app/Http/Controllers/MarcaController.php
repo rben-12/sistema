@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Collective\Html\FormFacade;
 use Illuminate\Http\Request;
 use App\Marca;
+use Auth;
 
 class MarcaController extends Controller
 {
@@ -17,9 +18,14 @@ class MarcaController extends Controller
     
     public function index(Request $request)
     {
+        if (Auth::user()->hasrole('admin')){
         return view('marca.index')->with([
             'marcas' => Marca::marca($request->get('marca'))->paginate(200)
         ]);
+        }
+        else{
+            return redirect()->route('home');
+        }
     }
 
     /**
@@ -63,8 +69,13 @@ class MarcaController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::user()->hasrole('admin')){
         $marcas = Marca::find($id);
-        return view('marca.edit',compact('marcas')); 
+        return view('marca.edit',compact('marcas'));
+        }
+        else{
+            return redirect()->route('home');
+        } 
     }
 
     /**

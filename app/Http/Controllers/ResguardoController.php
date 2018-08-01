@@ -8,6 +8,7 @@ use App\Departamento;
 use App\Articulo;
 use App\Resguardos_history;
 use DB;
+use Auth;
 
 class ResguardoController extends Controller
 {
@@ -30,6 +31,7 @@ class ResguardoController extends Controller
         //->orwhere('articulo_id', 'LIKE', '%'.$request->get('query').'%')
         ->paginate(200); 
 
+        if (Auth::user()->hasrole('admin')){
         return view('resguardos.index')->with([
             //'resguardos' => Resguardo::paginate(10),
             'resguardos' => $query,
@@ -38,6 +40,10 @@ class ResguardoController extends Controller
             'articulos' => Articulo::all(),
             'resguardos_h' => Resguardos_history::all()
         ]);
+        }
+        else{
+            return redirect()->route('home');
+        }
     }
 
     /**
@@ -140,6 +146,7 @@ class ResguardoController extends Controller
      */
     public function show($id)
     {
+        if (Auth::user()->hasrole('admin')){
         // return $id;
         // $resguardoShow = Resguardos_history::join('resguardos', 'resguardos.id', '=', 'resguardos_histories.resguardo_id')
         //     ->join('articulos', 'articulos.id', '=', 'resguardos_histories.articulo_id')
@@ -157,6 +164,10 @@ class ResguardoController extends Controller
         //     'articulo' => Articulo::all(),
         //     'departamentos' => Departamento::all(),
         // ]);
+        }
+        else{
+            return redirect()->route('home');
+        }
     }
 
     /**
@@ -167,11 +178,16 @@ class ResguardoController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::user()->hasrole('admin')){
         return view('resguardos.edit')->with([
             'resguardo' => Resguardo::find($id),
             'articulo' => Articulo::all(),
             'departamentos' => Departamento::all()
         ]); 
+        }
+        else{
+            return redirect()->route('home');
+        }
     }
 
     /**

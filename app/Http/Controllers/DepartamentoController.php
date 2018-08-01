@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Departamento;
+use Auth;
 
 class DepartamentoController extends Controller
 {
@@ -14,9 +15,14 @@ class DepartamentoController extends Controller
      */
     public function index(Request $request)
     {
+        if (Auth::user()->hasrole('admin')){
         return view('departamentos.index')->with([
             'departamentos' => Departamento::departamento($request->get('departamento'))->paginate(200)
         ]);
+        }
+        else{
+            return redirect()->route('home');
+        }
     }
 
     /**
@@ -60,9 +66,14 @@ class DepartamentoController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::user()->hasrole('admin')){
         return view('departamentos.edit')->with([
             'departamento' => Departamento::find($id)
         ]);
+        }
+        else{
+            return redirect()->route('home');
+        }
     }
 
     /**

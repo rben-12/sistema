@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Categoria;
 use DB;
+use Auth;
 class CategoriaController extends Controller
 {
     /**
@@ -18,9 +19,14 @@ class CategoriaController extends Controller
         ->where('categoria', 'LIKE', '%'.$request->get('query').'%')
         ->paginate(200);
 
+        if (Auth::user()->hasrole('admin')){
         return view('categorias.index')->with([
             'categorias' => $query
         ]);
+        }
+        else{
+            return redirect()->route('home');
+        }
     }
 
     /**
@@ -64,9 +70,14 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::user()->hasrole('admin')){
         return view('categorias.edit')->with([
             'categoria' => Categoria::find($id)
         ]);
+        }
+        else{
+            return redirect()->route('home');
+        }
     }
 
     /**
