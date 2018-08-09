@@ -33,16 +33,16 @@
         </div>
         <div class="form-group">
             <label for="">Inventario interno</label>
-            <input value="{{$articulo->inv_interno}}" type="text" name='inv_interno' class="form-control" required>
+            <input value="{{$articulo->inv_interno}}" type="text" name='inv_interno' class="form-control">
         </div>
         <div class="form-group">
             <label for="">Inventario externo</label>
-            <input value="{{$articulo->inv_externo}}" type="text" name='inv_externo' class="form-control" required>
+            <input value="{{$articulo->inv_externo}}" type="text" name='inv_externo' class="form-control">
         </div>
 
         <div class="form-group">
             <label for="">Numero de serie</label>
-            <input value="{{$articulo->serie}}" type="text" name='serie' class="form-control" required>
+            <input value="{{$articulo->serie}}" type="text" name='serie' class="form-control">
         </div>
 
         <div class="form-group">
