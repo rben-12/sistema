@@ -95,17 +95,24 @@ class ResguardoController extends Controller
         if ($n_resguardo!=null) {
             return redirect()->route('resguardos.index')->with('infob', 'ya se ha registrado este numero de resguardo');
         }
-        else
-        {
-            $resguardante = Resguardo::where('resguardante', '=', Request()->resguardante)->first();
-            if ($resguardante==null) {
-                //guardando las tags
-                // if ($resguardos->save()) {
-                    $resguardos->save();
+        else {
+        $resguardos->save();
                     $resguardo_id = $resguardos->id;
                     foreach ($loc as $location)
                     {
-                        // dd($location);
+                        $tag = Articulo::where('id', $location)->update(['resguardo_id'=>$resguardo_id]);
+                    }
+            return redirect()->route('resguardos.index')->with('infob', 'Resguardo creado exitosamente');
+        
+            //$resguardante = Resguardo::where('resguardante', '=', Request()->resguardante)->first();
+            //if ($resguardante) {
+                //guardando las tags
+                // if ($resguardos->save()) {
+                    /*$resguardos->save();
+                    $resguardo_id = $resguardos->id;
+                    foreach ($loc as $location)
+                    {
+                        
                         $tag = Articulo::where('id', $location)->update(['resguardo_id'=>$resguardo_id]);
                         // $tag->articulo_id = $location;
                         // $tag->resguardo_id = $resguardo_id;
@@ -127,6 +134,7 @@ class ResguardoController extends Controller
 
                         //     return redirect()->route('resguardos.index')->with('infob', 'Resguardo creado exitosamente');
                         // // }
+                        //dd($location);
                     }
                     return redirect()->route('resguardos.index')->with('infob', 'Resguardo creado exitosamente');
                 // }
@@ -134,7 +142,7 @@ class ResguardoController extends Controller
             else
             {
                 return redirect()->route('resguardos.index')->with('infob', 'ya se ha registrado a esta persona');
-            }
+            }*/
         }
     }
 

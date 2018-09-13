@@ -234,11 +234,11 @@
                 @elseif($tipos=='resguardo_h')
                     <td class="m sizer">{{ $a->categoria->categoria }}</td>
                     <td class="m sizer">{{ $a->descripcion }}</td>
+                    <td class="m sizer">{{ $a->inv_interno }}</td>
+                    <td class="m sizer">{{$a->inv_externo}}</td>
                     <td class="m sizer">{{ $a->serie }}</td>
                     <td class="m sizer">{{ $a->marca->marca }}</td>
                     <td class="m sizer">{{ $a->modelo }}</td>
-                    <td class="m sizer">{{ $a->inv_interno }}</td>
-                    <td class="m sizer">{{$a->inv_externo}}</td>
                 @endif
             </tr>
         </tbody>
